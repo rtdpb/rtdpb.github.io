@@ -157,3 +157,46 @@ function initReveal() {
   }, 1500);
 }
 document.addEventListener('DOMContentLoaded', initReveal);
+
+// Scroll-driven celestial: the sun arcs left→right across the upsell section as you
+// scroll down and crossfades into a moon; scrolling up reverses it (progress is tied
+// to the section's position, so it's fully bidirectional).
+function initCelestial() {
+  const section = document.querySelector('.section.upsell');
+  const track = document.querySelector('.celestial');
+  const body = document.querySelector('.celestial-body');
+  const sun = document.querySelector('.celestial-sun');
+  const moon = document.querySelector('.celestial-moon');
+  if (!section || !track || !body) return;
+
+  function clamp(v) { return v < 0 ? 0 : (v > 1 ? 1 : v); }
+
+  function update(force) {
+    ticking = false;
+    const rect = section.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    // 0 when the section top reaches the viewport bottom, 1 when its bottom leaves the top
+    const p = (typeof force === 'number') ? clamp(force) : clamp((vh - rect.top) / (rect.height + vh));
+    const travel = track.clientWidth - body.offsetWidth;
+    const x = p * travel;
+    const y = -Math.sin(p * Math.PI) * 20;   // gentle day-arc: highest in the middle
+    body.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+    // Overlapping crossfade (both partly visible around the midpoint → smooth morph)
+    if (sun) sun.style.opacity = String(clamp(1.4 - p * 2.0));
+    if (moon) moon.style.opacity = String(clamp((p - 0.3) * 2.0));
+  }
+
+  var ticking = false;
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+
+  // Debug hook: ?celp=0.5 pins the sun/moon at a fixed progress (for screenshots).
+  const forced = new URLSearchParams(location.search).get('celp');
+  if (forced !== null) { update(parseFloat(forced)); return; }
+
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { update(0.12); return; }   // static sun, don't animate on scroll
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+}
+document.addEventListener('DOMContentLoaded', initCelestial);

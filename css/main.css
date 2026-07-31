@@ -698,7 +698,7 @@ html { scroll-behavior: smooth; }
   position: relative;
   max-width: 900px;
   margin: 0 auto;
-  min-height: 480px;
+  min-height: 520px;
 }
 .upsell-stage::before {   /* soft green glow behind the house */
   content: "";
@@ -710,6 +710,27 @@ html { scroll-behavior: smooth; }
   pointer-events: none;
 }
 .upsell-art { position: relative; z-index: 1; display: block; width: 460px; max-width: 90%; height: auto; margin: 0 auto; }
+
+/* Scroll-driven sun→moon that arcs across the sky (position set by JS on scroll) */
+.celestial {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 46px;            /* a clear "sky" strip above the pills */
+  z-index: 1;              /* behind the product pills (z-index 2) */
+  pointer-events: none;
+}
+.celestial-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 52px;
+  height: 52px;
+  will-change: transform;
+}
+.celestial-body svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.celestial-moon { opacity: 0; }   /* JS crossfades sun→moon as you scroll */
 
 .upsell-pill {
   position: absolute;
@@ -731,8 +752,8 @@ html { scroll-behavior: smooth; }
 .pill-title { font-weight: 700; color: var(--color-green-dark); font-size: 0.95rem; }
 .pill-save { font-size: 0.85rem; font-weight: 600; color: #2E8B62; }
 /* corner placement (desktop) */
-.upsell-pill--tl { top: 24px;  left: 0; }
-.upsell-pill--tr { top: 6px;   right: 0; }
+.upsell-pill--tl { top: 58px;  left: 0; }    /* nudged below the sun's sky strip */
+.upsell-pill--tr { top: 42px;  right: 0; }
 .upsell-pill--bl { bottom: 96px; left: 6px; }
 .upsell-pill--br { bottom: 34px; right: 12px; }
 

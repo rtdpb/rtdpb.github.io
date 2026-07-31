@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=inter:wght@400;500;600;700&family=space-grotesk:wght@500;600;700&display=swap">
 
   <!-- goZERO stylesheet — loads AFTER Pico so token overrides apply -->
-  <link rel="stylesheet" href="/css/main.css?v=12">
+  <link rel="stylesheet" href="/css/main.css?v=13">
 
   <!-- FOUC prevention: synchronous IIFE, NO defer, NO async, NO external src -->
   <script>
@@ -176,6 +176,28 @@
         </div>
 
         <div class="upsell-stage">
+          <!-- Scroll-driven sun that arcs left→right and morphs into a moon (js/components.js) -->
+          <div class="celestial" aria-hidden="true">
+            <div class="celestial-body">
+              <svg class="celestial-sun" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+                <g stroke="#F4C430" stroke-width="3" stroke-linecap="round">
+                  <line x1="26" y1="7" x2="26" y2="1"/>
+                  <line x1="26" y1="51" x2="26" y2="45"/>
+                  <line x1="7" y1="26" x2="1" y2="26"/>
+                  <line x1="51" y1="26" x2="45" y2="26"/>
+                  <line x1="12" y1="12" x2="8" y2="8"/>
+                  <line x1="44" y1="44" x2="40" y2="40"/>
+                  <line x1="12" y1="40" x2="8" y2="44"/>
+                  <line x1="44" y1="12" x2="40" y2="8"/>
+                </g>
+                <circle cx="26" cy="26" r="12" fill="#F4C430"/>
+              </svg>
+              <svg class="celestial-moon" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="26" cy="26" r="14" fill="#C7B979"/>
+                <circle cx="32" cy="21" r="12" fill="#F5F3EE"/>
+              </svg>
+            </div>
+          </div>
           <!-- Locally-built "smart energy home": panels, home battery, heat pump, charger. No external assets. -->
           <svg class="upsell-art" viewBox="0 0 520 400" role="img"
                aria-label="Illustratie: woning met zonnepanelen, thuisbatterij, warmtepomp en laadpaal"
@@ -187,14 +209,7 @@
             </defs>
             <!-- ground platform -->
             <ellipse cx="260" cy="352" rx="205" ry="30" fill="#D6E7DC"/>
-            <!-- sun + rays -->
-            <g stroke="#F4C430" stroke-width="6" stroke-linecap="round">
-              <line x1="430" y1="44" x2="430" y2="28"/>
-              <line x1="464" y1="58" x2="476" y2="46"/>
-              <line x1="478" y1="92" x2="496" y2="92"/>
-              <line x1="396" y1="58" x2="384" y2="46"/>
-            </g>
-            <circle cx="430" cy="92" r="28" fill="#F4C430"/>
+            <!-- (sun/moon is the scroll-driven .celestial element overlaid on the stage) -->
             <!-- clouds -->
             <g fill="#FFFFFF" opacity="0.9">
               <ellipse cx="120" cy="90" rx="40" ry="16"/>
@@ -384,9 +399,9 @@
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@0.552.0/dist/umd/lucide.min.js"></script>
   <!-- components.js FIRST — stamps data-i18n nodes into DOM -->
-  <script src="/js/components.js?v=12"></script>
+  <script src="/js/components.js?v=13"></script>
   <!-- i18n.js SECOND — scans for data-i18n nodes after components registered -->
-  <script src="/js/i18n.js?v=12"></script>
+  <script src="/js/i18n.js?v=13"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
   </script>
