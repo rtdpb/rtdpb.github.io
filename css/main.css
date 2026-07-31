@@ -758,7 +758,7 @@ html { scroll-behavior: smooth; }
 .monitor-intro { display: flex; flex-direction: column; gap: var(--space-lg); }
 .monitor-title { margin: 0; color: #ffffff; font-size: 2rem; line-height: 1.1; }
 .monitor-title span { display: block; }
-.monitor-lead { margin: 0; color: rgba(255, 255, 255, 0.82); }
+.monitor-lead { margin: 0; color: rgba(255, 255, 255, 0.88); }   /* higher contrast on dark (#43) */
 
 /* Interface fragment — live-performance graph + anomaly alert (cat 5) */
 .monitor-panel {
@@ -807,8 +807,8 @@ html { scroll-behavior: smooth; }
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-2xl);
   padding: var(--space-lg) 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 /* Process connectors — reads as Monitoring -> detected -> action */
 .monitor-step { position: relative; }
@@ -825,14 +825,15 @@ html { scroll-behavior: smooth; }
 }
 .monitor-step .step-num {
   display: block;
+  font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.875rem;
-  letter-spacing: 0.08em;
+  font-size: 1.15rem;                 /* more prominent step numbers (#50) */
+  letter-spacing: 0.04em;
   color: var(--color-accent);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
 }
 .monitor-step h3 { margin: 0 0 var(--space-xs); color: #ffffff; }
-.monitor-step p { margin: 0; color: rgba(255, 255, 255, 0.72); font-size: 0.95rem; }
+.monitor-step p { margin: 0; color: rgba(255, 255, 255, 0.82); font-size: 0.95rem; }
 .stats-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1136,7 +1137,7 @@ html { scroll-behavior: smooth; }
 /* (C) FAQ — intro stacked ABOVE the accordion (no more empty left column) */
 .faq-split {
   display: block;
-  max-width: 820px;          /* keeps answer line-length comfortable */
+  max-width: 900px;          /* a touch wider on large screens (#81) */
   margin: 0 auto;
 }
 .faq-intro-col { margin-bottom: var(--space-xl); }
@@ -1193,9 +1194,10 @@ html { scroll-behavior: smooth; }
   position: relative;
   overflow: hidden;
   max-width: 980px;                    /* narrower than the 1200 content span */
-  background: var(--color-cta-band);
+  /* Soft diagonal gradient adds depth so the block feels less like a flat slab (#92/#93) */
+  background: linear-gradient(120deg, #F8D453 0%, var(--color-cta-band) 55%, #EEBB22 100%);
   border-radius: 24px;                 /* rounded to match the card language */
-  padding: var(--space-2xl) var(--space-2xl);
+  padding: var(--space-xl) var(--space-2xl);
   display: grid;
   grid-template-columns: 1fr auto;
   gap: var(--space-2xl);
@@ -1239,7 +1241,7 @@ html { scroll-behavior: smooth; }
   .monitor-steps { grid-template-columns: 1fr; gap: var(--space-lg); }
   .monitor-step:not(:last-child)::after { display: none; }   /* no horizontal arrows when stacked */
   .stats-row { grid-template-columns: 1fr; gap: var(--space-lg); }
-  .cta-inner { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .cta-inner { grid-template-columns: 1fr; gap: var(--space-lg); padding: var(--space-xl) var(--space-lg); }
 }
 
 /* -- 6. FAQ Page (Phase 8 re-cast) ------------------- */
