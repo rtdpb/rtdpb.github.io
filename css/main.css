@@ -527,8 +527,8 @@ html { scroll-behavior: smooth; }
 .help-card:nth-child(2) { --accent: #D9A02B; }   /* payment — amber */
 .help-card:nth-child(3) { --accent: #5E93B8; }   /* expand — blue */
 .help-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-/* Primary card (Serviceverzoek) — tinted fill + stronger presence */
-.help-card--primary { background: #F1F7F2; box-shadow: 0 10px 26px rgba(27,67,50,0.12); }
+/* Primary card (Serviceverzoek) — white fill, stronger shadow for presence */
+.help-card--primary { background: #ffffff; box-shadow: 0 10px 26px rgba(27,67,50,0.12); }
 .help-card h3 { margin: var(--space-lg) 0 var(--space-sm); color: var(--color-green-dark); }
 .help-card p { margin: 0 0 var(--space-lg); color: var(--color-body-green); }
 .icon-circle {
