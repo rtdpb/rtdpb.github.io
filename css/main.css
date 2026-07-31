@@ -312,8 +312,7 @@ h2, h3 { font-size: 1.3rem; line-height: 1.25; }                   /* Heading */
   line-height: 1.4;
 }
 
-/* Pill button system — dark-green fill, white 700 text, soft shadow + hover lift.
-   Mirrors the existing .hero-cta so buttons are consistent sitewide. */
+/* Pill button system — golden fill, dark-green 700 text, soft shadow + hover lift. */
 .btn,
 button[type="submit"],
 a[role="button"] {
@@ -324,21 +323,21 @@ a[role="button"] {
   min-height: 44px;                 /* touch target */
   padding: 0.85rem 2rem;
   border-radius: var(--radius-btn); /* 8px slightly-rounded rectangle (reference) */
-  background: var(--color-green-dark);
-  color: #ffffff;
+  background: var(--color-accent);  /* golden */
+  color: var(--color-green-dark);
   font-weight: 700;
   border: none;
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(27,67,50,0.22);
+  box-shadow: 0 6px 18px rgba(244,196,48,0.35);
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 .btn:hover,
 button[type="submit"]:hover,
 a[role="button"]:hover {
-  background: var(--color-green-mid);
+  background: #E6B41F;              /* slightly deeper gold */
   transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(27,67,50,0.30);
-  color: #ffffff;
+  box-shadow: 0 10px 26px rgba(244,196,48,0.45);
+  color: var(--color-green-dark);
 }
 /* Secondary / text link: dark-green text, underline on hover, no fill (no second-color button) */
 .btn-text {
@@ -380,40 +379,67 @@ a[role="button"]:hover {
 
 /* -- 4. Homepage Sections (Phase 7 re-cast) ------------ */
 
-/* Hero — reference two-column layout + inline SVG illustration (HERO-01/02) */
-.hero { padding: var(--space-2xl) 0 var(--space-3xl); background: var(--color-page-bg); }
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.08fr;   /* give the illustration a touch more room */
-  gap: var(--space-xl);                /* tighter — pulls text + image closer together */
+/* Hero — full-width photo banner with white text over a darkened image */
+.hero--banner {
+  position: relative;
+  display: flex;
   align-items: center;
+  min-height: 560px;
+  padding: 0;
+  overflow: hidden;
+  background: var(--color-band-deep);   /* fallback while the image loads */
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+/* Darkening + left-weighted scrim so white text stays readable */
+.hero--banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(11,38,28,0.90) 0%, rgba(11,38,28,0.66) 42%, rgba(11,38,28,0.30) 100%),
+    linear-gradient(0deg, rgba(11,38,28,0.55), rgba(11,38,28,0.05) 55%);
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--space-lg);   /* 24px inline — same as nav + sections for a consistent left edge */
+  padding: var(--space-3xl) var(--space-lg);
 }
-.hero-copy { text-align: left; }
-/* Golden eyebrow — uppercase, letter-spaced, dash prefix. AA-safe: TEXT uses
-   --color-accent-strong (#9A6A00) on cream; the dash marker uses --color-accent (#F4C430). */
+.hero-copy { text-align: left; max-width: 640px; }
+/* Golden eyebrow on the dark banner */
 .hero-eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 600;
   font-size: 0.875rem;
-  color: var(--color-accent-strong);
+  color: var(--color-accent);
   margin: 0 0 var(--space-md);
 }
 .hero-eyebrow::before { content: "— "; color: var(--color-accent); }
-/* Bigger, more confident display headline — the hero was reading small vs. whitespace */
+/* Big, confident white display headline */
 .hero-copy h1 {
-  max-width: 14ch;
+  max-width: 16ch;
   margin: 0 0 var(--space-md);
-  font-size: clamp(2.4rem, 4.4vw, 3.4rem);
-  line-height: 1.03;
+  font-size: clamp(2.4rem, 4.6vw, 3.5rem);
+  line-height: 1.04;
+  color: #ffffff;
 }
-.hero-body { color: var(--color-body-green); max-width: 46ch; margin: 0 0 var(--space-xl); font-size: 1.0625rem; }
+.hero-body { color: rgba(255,255,255,0.92); max-width: 46ch; margin: 0 0 var(--space-xl); font-size: 1.0625rem; }
 .hero-actions { display: flex; align-items: center; gap: var(--space-lg); flex-wrap: wrap; }
-.hero-cta { min-height: 44px; }   /* green rectangle fill inherited from 3c a[role="button"] */
-.hero-services { color: var(--color-green-dark); font-weight: 700; }
+.hero-cta { min-height: 44px; }   /* golden fill inherited from the button system */
+.hero-services { color: #ffffff; font-weight: 700; }
+.hero-services:hover { color: #ffffff; }
 /* Concrete proof strip under the CTAs — "1.100 installaties • actief in 3 landen" */
 .hero-proof {
   display: flex;
@@ -422,7 +448,7 @@ a[role="button"]:hover {
   margin: var(--space-xl) 0 0;
   font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--color-green-dark);
+  color: #ffffff;
 }
 .hero-proof::before {
   content: "";
@@ -431,18 +457,10 @@ a[role="button"]:hover {
   background: var(--color-green-light);
   flex: 0 0 auto;
 }
-/* Illustration: fluid, no layout shift (svg has viewBox + width:100%; height:auto) */
-.hero-art { position: relative; }
-/* Soft color shape behind the illustration for depth (cat 3) */
-.hero-art::before {
-  content: "";
-  position: absolute;
-  inset: -8% 0 -12% 0;   /* no horizontal negative inset → never bleeds past the viewport */
-  background: radial-gradient(62% 60% at 65% 42%, rgba(82,183,136,0.24), rgba(82,183,136,0) 72%);
-  z-index: 0;
-  pointer-events: none;
+@media (max-width: 599px) {
+  .hero--banner { min-height: 480px; }
+  .hero-inner { padding: var(--space-2xl) var(--space-md); }
 }
-.hero-art svg { position: relative; z-index: 1; width: 100%; height: auto; display: block; }
 
 /* Shared section lead paragraph (centered intro under an h2) */
 .section > .section-inner > h2 { margin: 0 0 var(--space-md); }
@@ -920,18 +938,18 @@ html { scroll-behavior: smooth; }
 .cta-copy, .cta-inner > a { position: relative; z-index: 1; }
 .cta-copy h2 { margin: 0 0 var(--space-sm); color: var(--color-green-dark); font-size: 1.75rem; line-height: 1.15; }
 .cta-body { margin: 0; color: var(--color-green-dark); max-width: 52ch; }
-/* White button — dark-green text (distinct from the green nav CTA; allowed) */
-.cta-btn {
-  background: #ffffff;
-  color: var(--color-green-dark);
-  box-shadow: 0 6px 18px rgba(18, 53, 42, 0.18);
+/* On the golden CTA band the button is dark-green (a golden button would vanish).
+   Scoped selector (0,2,0) so it wins over the global golden a[role="button"]. */
+.section--cta .cta-btn {
+  background: var(--color-green-dark);
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(18, 53, 42, 0.28);
   white-space: nowrap;
 }
-.cta-btn:hover { background: #ffffff; color: var(--color-green-mid); }
+.section--cta .cta-btn:hover { background: var(--color-green-mid); color: #ffffff; }
 
 /* Responsive: reference sections stack on mobile */
 @media (max-width: 768px) {
-  .hero-grid { grid-template-columns: 1fr; gap: var(--space-xl); }
   .help-head { grid-template-columns: 1fr; gap: var(--space-md); }
   .help-grid { grid-template-columns: repeat(2, 1fr); }
   .monitor-head { grid-template-columns: 1fr; gap: var(--space-md); }
@@ -939,7 +957,6 @@ html { scroll-behavior: smooth; }
   .faq-split { grid-template-columns: 1fr; }
 }
 @media (max-width: 599px) {
-  .hero { padding: var(--space-2xl) var(--space-md); }
   .help-grid { grid-template-columns: 1fr; gap: var(--space-md); }
   .monitor-steps { grid-template-columns: 1fr; gap: var(--space-lg); }
   .monitor-step:not(:last-child)::after { display: none; }   /* no horizontal arrows when stacked */

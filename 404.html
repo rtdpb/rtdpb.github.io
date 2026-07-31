@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=inter:wght@400;500;600;700&family=space-grotesk:wght@500;600;700&display=swap">
 
   <!-- goZERO stylesheet — loads AFTER Pico so token overrides apply -->
-  <link rel="stylesheet" href="/css/main.css?v=9">
+  <link rel="stylesheet" href="/css/main.css?v=10">
 
   <!-- FOUC prevention: synchronous IIFE, NO defer, NO async, NO external src -->
   <script>
@@ -31,94 +31,21 @@
 
   <div class="page-wrap">
   <main>
-    <!-- Section 1: Hero (HERO-01/02) — reference two-column layout + inline SVG illustration -->
-    <section class="hero hero-grid">
-      <div class="hero-copy">
-        <p class="hero-eyebrow" data-i18n="home.hero.eyebrow"></p>
-        <h1 data-i18n="home.hero.headline"></h1>
-        <p class="hero-body" data-i18n="home.hero.body"></p>
-        <div class="hero-actions">
-          <a href="/contact.html" role="button" class="hero-cta"><span data-i18n="home.hero.cta"></span> <span aria-hidden="true">↗</span></a>
-          <a href="#diensten" class="btn-text hero-services"><span data-i18n="home.hero.services_link"></span> <span aria-hidden="true">↓</span></a>
+    <!-- Section 1: Hero — full-width photo banner, white text over a darkened image -->
+    <section class="hero hero--banner">
+      <img class="hero-bg" src="/img/hero-wijk.webp"
+           alt="Woonwijk met zonnepanelen op de daken in het avondlicht">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="hero-eyebrow" data-i18n="home.hero.eyebrow"></p>
+          <h1 data-i18n="home.hero.headline"></h1>
+          <p class="hero-body" data-i18n="home.hero.body"></p>
+          <div class="hero-actions">
+            <a href="/contact.html" role="button" class="hero-cta"><span data-i18n="home.hero.cta"></span> <span aria-hidden="true">↗</span></a>
+            <a href="#diensten" class="btn-text hero-services"><span data-i18n="home.hero.services_link"></span> <span aria-hidden="true">↓</span></a>
+          </div>
+          <p class="hero-proof" data-i18n="home.hero.proof"></p>
         </div>
-        <p class="hero-proof" data-i18n="home.hero.proof"></p>
-      </div>
-
-      <div class="hero-art">
-        <!-- Locally-built flat-vector illustration. No external assets. -->
-        <svg viewBox="0 0 560 470" role="img"
-             aria-label="Illustratie: woning met zonnepanelen, zon en live-statuskaarten"
-             xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <filter id="cardShadow" x="-30%" y="-30%" width="160%" height="160%">
-              <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#1B4332" flood-opacity="0.12"/>
-            </filter>
-          </defs>
-
-          <!-- Arched light-green background (rounded top + rounded bottom) -->
-          <path d="M55 235 C55 70 505 70 505 235 L505 415 Q505 440 480 440 L80 440 Q55 440 55 415 Z" fill="#E4EFE7"/>
-
-          <!-- Golden sun, top-right, with rays -->
-          <g stroke="#F4C430" stroke-width="6" stroke-linecap="round">
-            <line x1="452" y1="104" x2="452" y2="86"/>
-            <line x1="487" y1="115" x2="500" y2="102"/>
-            <line x1="498" y1="150" x2="518" y2="150"/>
-            <line x1="487" y1="185" x2="500" y2="198"/>
-            <line x1="417" y1="115" x2="404" y2="102"/>
-          </g>
-          <circle cx="452" cy="150" r="30" fill="#F4C430"/>
-
-          <!-- Soft clouds -->
-          <g fill="#FFFFFF" opacity="0.92">
-            <ellipse cx="150" cy="165" rx="42" ry="18"/>
-            <ellipse cx="188" cy="155" rx="26" ry="13"/>
-            <ellipse cx="345" cy="120" rx="30" ry="13"/>
-          </g>
-
-          <!-- House -->
-          <g>
-            <!-- Wall body -->
-            <rect x="188" y="306" width="176" height="120" rx="8" fill="#F7F1E6"/>
-            <!-- Window -->
-            <rect x="206" y="336" width="42" height="42" rx="5" fill="#CFE3D6" stroke="#B9D3C2" stroke-width="2"/>
-            <!-- Door -->
-            <rect x="246" y="362" width="36" height="64" rx="4" fill="#B77C3E"/>
-            <!-- Slanted roof plane -->
-            <polygon points="188,306 364,306 410,250 234,250" fill="#24503B"/>
-            <!-- Solar panels: a unit grid mapped onto the slanted roof plane -->
-            <g transform="matrix(176 0 46 -56 188 306)" fill="#16324A">
-              <rect x="0.05" y="0.14" width="0.19" height="0.3"/>
-              <rect x="0.29" y="0.14" width="0.19" height="0.3"/>
-              <rect x="0.53" y="0.14" width="0.19" height="0.3"/>
-              <rect x="0.77" y="0.14" width="0.19" height="0.3"/>
-              <rect x="0.05" y="0.52" width="0.19" height="0.3"/>
-              <rect x="0.29" y="0.52" width="0.19" height="0.3"/>
-              <rect x="0.53" y="0.52" width="0.19" height="0.3"/>
-              <rect x="0.77" y="0.52" width="0.19" height="0.3"/>
-            </g>
-          </g>
-
-          <!-- Ground line -->
-          <rect x="150" y="424" width="300" height="7" rx="3.5" fill="#CFE0D4"/>
-
-          <!-- Status card 1 (top-left) — Live productie -->
-          <g filter="url(#cardShadow)">
-            <rect x="86" y="150" width="152" height="58" rx="14" fill="#FFFFFF"/>
-            <circle cx="107" cy="170" r="5" fill="#52B788"/>
-            <text x="122" y="175" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#1B4332" aria-hidden="true">4.82 kW</text>
-            <text x="122" y="194" font-family="Inter, sans-serif" font-size="11" fill="#5A6B60" data-i18n="home.hero.card1_label"></text>
-            <text x="198" y="175" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#52B788" aria-hidden="true">+12%</text>
-          </g>
-
-          <!-- Status card 2 (bottom-right) — Systeem werkt goed -->
-          <g filter="url(#cardShadow)">
-            <rect x="298" y="356" width="184" height="62" rx="14" fill="#FFFFFF"/>
-            <circle cx="320" cy="387" r="12" fill="#DCEBE2"/>
-            <text x="315" y="392" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#2E7D52" aria-hidden="true">✓</text>
-            <text x="342" y="382" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#1B4332" data-i18n="home.hero.card2_title"></text>
-            <text x="342" y="400" font-family="Inter, sans-serif" font-size="11" fill="#5A6B60" data-i18n="home.hero.card2_sub"></text>
-          </g>
-        </svg>
       </div>
     </section>
 
@@ -457,9 +384,9 @@
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@0.552.0/dist/umd/lucide.min.js"></script>
   <!-- components.js FIRST — stamps data-i18n nodes into DOM -->
-  <script src="/js/components.js?v=9"></script>
+  <script src="/js/components.js?v=10"></script>
   <!-- i18n.js SECOND — scans for data-i18n nodes after components registered -->
-  <script src="/js/i18n.js?v=9"></script>
+  <script src="/js/i18n.js?v=10"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
   </script>
