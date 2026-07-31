@@ -178,10 +178,10 @@ function initCelestial() {
     ticking = false;
     const rect = section.getBoundingClientRect();
     const vh = window.innerHeight || document.documentElement.clientHeight;
-    // Flip to night once the section top passes 38% up the viewport; back to day
-    // only after it drops below 55% again (hysteresis band = no flicker).
-    if (!isNight && rect.top < vh * 0.38) setNight(true);
-    else if (isNight && rect.top > vh * 0.55) setNight(false);
+    // Flip to night once the section top passes ~25% up the viewport (i.e. a bit
+    // further down the page); back to day after it drops below 44% (hysteresis).
+    if (!isNight && rect.top < vh * 0.25) setNight(true);
+    else if (isNight && rect.top > vh * 0.44) setNight(false);
   }
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(check); } }
 

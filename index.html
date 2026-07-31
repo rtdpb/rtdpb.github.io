@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=inter:wght@400;500;600;700&family=space-grotesk:wght@500;600;700&display=swap">
 
   <!-- goZERO stylesheet — loads AFTER Pico so token overrides apply -->
-  <link rel="stylesheet" href="/css/main.css?v=17">
+  <link rel="stylesheet" href="/css/main.css?v=18">
 
   <!-- FOUC prevention: synchronous IIFE, NO defer, NO async, NO external src -->
   <script>
@@ -207,6 +207,8 @@
                 <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#1B4332" flood-opacity="0.12"/>
               </filter>
             </defs>
+            <!-- scene group: darkened as a whole at night (the night-lights below stay bright) -->
+            <g class="scene">
             <!-- ground platform -->
             <ellipse cx="260" cy="352" rx="205" ry="30" fill="#D6E7DC"/>
             <!-- (sun/moon is the scroll-driven .celestial element overlaid on the stage) -->
@@ -257,6 +259,20 @@
               <rect x="404" y="272" width="16" height="70" rx="7" fill="#245740"/>
               <rect x="407" y="282" width="10" height="14" rx="2" fill="#DCEBE2"/>
               <path d="M420 300 q18 6 12 34" fill="none" stroke="#52B788" stroke-width="3" stroke-linecap="round"/>
+            </g>
+            </g><!-- /.scene -->
+
+            <!-- Night lights: hidden by day, lit at night (NOT darkened, so they glow) -->
+            <g class="night-lights">
+              <!-- home battery "on": soft glow halo + all cells lit bright -->
+              <ellipse cx="367" cy="255" rx="30" ry="42" fill="#7CF0AE" opacity="0.35"/>
+              <rect x="358" y="236" width="18" height="5" rx="2.5" fill="#8CF6BA"/>
+              <rect x="358" y="246" width="18" height="5" rx="2.5" fill="#8CF6BA"/>
+              <rect x="358" y="256" width="18" height="5" rx="2.5" fill="#8CF6BA"/>
+              <!-- lit window (warm) -->
+              <rect x="207" y="215" width="44" height="44" rx="4" fill="#F6D67A"/>
+              <!-- charging post screen on -->
+              <rect x="407" y="282" width="10" height="14" rx="2" fill="#7CF0AE"/>
             </g>
           </svg>
 
@@ -399,9 +415,9 @@
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@0.552.0/dist/umd/lucide.min.js"></script>
   <!-- components.js FIRST — stamps data-i18n nodes into DOM -->
-  <script src="/js/components.js?v=17"></script>
+  <script src="/js/components.js?v=18"></script>
   <!-- i18n.js SECOND — scans for data-i18n nodes after components registered -->
-  <script src="/js/i18n.js?v=17"></script>
+  <script src="/js/i18n.js?v=18"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
   </script>

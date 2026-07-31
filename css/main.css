@@ -733,21 +733,23 @@ html { scroll-behavior: smooth; }
 .celestial-moon { opacity: 0; }
 
 /* Smooth transitions for the day↔night flip (JS toggles .is-night on the section) */
-.upsell-art { transition: filter 0.9s ease; }
+.upsell-art .scene { transition: filter 0.9s ease; }
+.upsell-art .night-lights { opacity: 0; transition: opacity 0.9s ease; }
 .upsell-pill { transition: background-color 0.9s ease, border-color 0.9s ease; }
 .pill-title, .pill-save { transition: color 0.9s ease; }
 
 /* Night state */
-.upsell.is-night .celestial-body { left: calc(100% - 52px); }
-.upsell.is-night .celestial-sun  { opacity: 0; }
-.upsell.is-night .celestial-moon { opacity: 1; }
-.upsell.is-night .upsell-art     { filter: brightness(0.5) saturate(0.78); }
-.upsell.is-night .upsell-pill    { background: #173A2C; border-color: #255140; }
-.upsell.is-night .pill-title     { color: #ffffff; }
-.upsell.is-night .pill-save      { color: #8FE0B4; }
+.upsell.is-night .celestial-body   { left: calc(100% - 52px); }
+.upsell.is-night .celestial-sun    { opacity: 0; }
+.upsell.is-night .celestial-moon   { opacity: 1; }
+.upsell.is-night .scene            { filter: brightness(0.5) saturate(0.78); }
+.upsell.is-night .night-lights     { opacity: 1; }   /* battery / window / charger light up */
+.upsell.is-night .upsell-pill      { background: #173A2C; border-color: #255140; }
+.upsell.is-night .pill-title       { color: #ffffff; }
+.upsell.is-night .pill-save        { color: #8FE0B4; }
 
 @media (prefers-reduced-motion: reduce) {
-  .celestial-body, .celestial-body svg, .upsell-art, .upsell-pill, .pill-title, .pill-save { transition: none; }
+  .upsell-art .scene, .upsell-art .night-lights, .celestial-body, .celestial-body svg, .upsell-pill, .pill-title, .pill-save { transition: none; }
 }   /* JS crossfades sun→moon as you scroll */
 
 .upsell-pill {
