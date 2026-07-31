@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=inter:wght@400;500;600;700&family=space-grotesk:wght@500;600;700&display=swap">
 
   <!-- goZERO stylesheet — loads AFTER Pico so token overrides apply -->
-  <link rel="stylesheet" href="/css/main.css?v=39">
+  <link rel="stylesheet" href="/css/main.css?v=40">
 
   <!-- FOUC prevention: synchronous IIFE, NO defer, NO async, NO external src -->
   <script>
@@ -187,9 +187,11 @@
         </div>
 
         <div class="upsell-stage">
-          <!-- Scroll-driven sun that arcs left→right and morphs into a moon (js/components.js) -->
+          <!-- Sun/moon on a rotating "sky disk": day = sun at the top of its arc,
+               night = the disk has turned so the moon rides up the arc to the peak. -->
           <div class="celestial" aria-hidden="true">
-            <div class="celestial-body">
+            <div class="celestial-disk">
+              <span class="celestial-orb celestial-orb--sun">
               <svg class="celestial-sun" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
                 <g stroke="#F4C430" stroke-width="3" stroke-linecap="round">
                   <line x1="26" y1="7" x2="26" y2="1"/>
@@ -203,10 +205,13 @@
                 </g>
                 <circle cx="26" cy="26" r="12" fill="#F4C430"/>
               </svg>
+              </span>
+              <span class="celestial-orb celestial-orb--moon">
               <svg class="celestial-moon" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="26" cy="26" r="14" fill="#C7B979"/>
                 <circle cx="32" cy="21" r="12" fill="#F5F3EE"/>
               </svg>
+              </span>
             </div>
           </div>
           <!-- Locally-built "smart energy home": panels, home battery, heat pump, charger. No external assets. -->
@@ -223,8 +228,8 @@
             <!-- ground platform -->
             <ellipse cx="260" cy="352" rx="205" ry="30" fill="#D6E7DC"/>
             <!-- (sun/moon is the scroll-driven .celestial element overlaid on the stage) -->
-            <!-- clouds -->
-            <g fill="#FFFFFF" opacity="0.9">
+            <!-- clouds (daytime only — fade out at night) -->
+            <g class="upsell-clouds" fill="#FFFFFF" opacity="0.9">
               <ellipse cx="120" cy="90" rx="40" ry="16"/>
               <ellipse cx="156" cy="80" rx="24" ry="12"/>
             </g>
@@ -442,9 +447,9 @@
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@0.552.0/dist/umd/lucide.min.js"></script>
   <!-- components.js FIRST — stamps data-i18n nodes into DOM -->
-  <script src="/js/components.js?v=39"></script>
+  <script src="/js/components.js?v=40"></script>
   <!-- i18n.js SECOND — scans for data-i18n nodes after components registered -->
-  <script src="/js/i18n.js?v=39"></script>
+  <script src="/js/i18n.js?v=40"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
   </script>
