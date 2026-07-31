@@ -101,15 +101,31 @@ class SiteFooter extends HTMLElement {
     this.innerHTML = `
       <footer class="site-footer">
         <div class="footer-inner">
-          <div class="footer-brand">
-            <img src="/img/logo.png" alt="goZERO" class="footer-logo" height="28">
+          <div class="footer-col footer-brand">
+            <img src="/img/logo.png" alt="goZERO" class="footer-logo" height="34">
             <p class="footer-tagline" data-i18n="footer.tagline"></p>
+            <div class="lang-switcher lang-switcher--footer" role="group" aria-label="Language">
+              <button type="button" data-lang="nl">NL</button>
+              <button type="button" data-lang="en">EN</button>
+              <button type="button" data-lang="de">DE</button>
+            </div>
           </div>
-          <div class="footer-links">
-            <a href="/index.html#faq" data-i18n="footer.faq"></a>
-            <a href="/contact.html" data-i18n="footer.contact_cta"></a>
-            <span class="footer-copy" data-i18n="footer.copy"></span>
+          <nav class="footer-col footer-nav" aria-label="Footer">
+            <h3 class="footer-heading" data-i18n="footer.nav.heading"></h3>
+            <ul class="footer-list">
+              <li><a href="/index.html#diensten" data-i18n="nav.diensten"></a></li>
+              <li><a href="/index.html#zo-werkt-het" data-i18n="nav.howto"></a></li>
+              <li><a href="/index.html#uitbreiden" data-i18n="nav.uitbreiden"></a></li>
+              <li><a href="/index.html#faq" data-i18n="footer.faq"></a></li>
+            </ul>
+          </nav>
+          <div class="footer-col footer-contact">
+            <h3 class="footer-heading" data-i18n="footer.contact.heading"></h3>
+            <a href="/contact.html" class="footer-cta" data-i18n="footer.contact_cta"></a>
           </div>
+        </div>
+        <div class="footer-bottom">
+          <span class="footer-copy" data-i18n="footer.copy"></span>
         </div>
       </footer>
     `;

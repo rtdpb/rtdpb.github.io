@@ -203,25 +203,74 @@ site-nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rot
 }
 .lang-switcher button:hover { border-color: var(--color-green-mid); }
 
-/* Light single-row footer */
-.site-footer { background: var(--color-page-bg); border-top: 1px solid var(--color-border); }
+/* Full-bleed dark-green footer — a proper closing piece (3 columns + bottom row).
+   The golden top seam bridges the CTA band above into the dark close (#107). */
+.site-footer {
+  background: var(--color-band-deep);
+  color: rgba(255, 255, 255, 0.75);
+  border-top: 3px solid var(--color-accent);
+}
 .footer-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-lg);
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: var(--space-2xl);
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--space-xl) var(--space-md);
-  flex-wrap: wrap;
+  padding: var(--space-2xl) var(--space-lg) var(--space-xl);
 }
-.footer-brand { display: flex; align-items: center; gap: var(--space-md); }
-.footer-logo { display: block; height: 26px; width: auto; }   /* explicit height overrides Pico img{height:auto} */
-.footer-tagline { color: var(--color-body-green); margin: 0; font-size: 0.9rem; }
-.footer-links { display: flex; align-items: center; gap: var(--space-lg); }
-.footer-links a { color: var(--color-green-dark); text-decoration: none; font-weight: 600; }
-.footer-links a:hover { text-decoration: underline; }
-.footer-copy { color: var(--color-body-green); font-size: 0.875rem; }
+.footer-col { display: flex; flex-direction: column; gap: var(--space-md); align-items: flex-start; }
+.footer-logo { display: block; height: 34px; width: auto; filter: brightness(0) invert(1); }  /* white wordmark on dark green */
+.footer-tagline { color: rgba(255, 255, 255, 0.72); margin: 0; font-size: 0.95rem; max-width: 34ch; }
+.footer-heading {
+  margin: 0 0 var(--space-xs);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+/* Neutralise Pico's built-in <nav> styling (flex row + li padding) inside the footer */
+.footer-nav { display: block; }
+.footer-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-sm); }
+.footer-list li { margin: 0; padding: 0; text-align: left; }
+.footer-list a {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+.footer-list a:hover, .footer-list a:focus-visible { color: #ffffff; text-decoration: underline; text-underline-offset: 3px; }
+/* Contact CTA — compact outlined button on dark */
+.footer-cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-btn);
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+.footer-cta:hover, .footer-cta:focus-visible { background: rgba(255, 255, 255, 0.10); border-color: #ffffff; color: #ffffff; }
+/* Footer language switcher — light-on-dark variant */
+.lang-switcher--footer { margin-top: var(--space-sm); }
+.lang-switcher--footer button { color: rgba(255, 255, 255, 0.85); border-color: rgba(255, 255, 255, 0.30); }
+.lang-switcher--footer button:hover { border-color: rgba(255, 255, 255, 0.6); }
+.lang-switcher--footer button[aria-pressed="true"] { background: var(--color-accent); color: var(--color-green-dark); border-color: var(--color-accent); }
+/* Bottom row — secondary copyright, divided from the columns */
+.footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.12); }
+.footer-bottom .footer-copy {
+  display: block;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-md) var(--space-lg);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
 
 /* On narrow screens stack nav + footer so nothing overflows at 375px */
 @media (max-width: 600px) {
@@ -252,7 +301,8 @@ site-nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rot
   .nav-links a { display: block; padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-border); }
   .lang-switcher { justify-content: flex-start; padding-top: var(--space-sm); }
   .nav-cta, .nav-back { align-self: flex-start; }
-  .footer-inner { flex-direction: column; text-align: center; }
+  /* Footer stacks into a single neat column on mobile */
+  .footer-inner { grid-template-columns: 1fr; gap: var(--space-xl); }
 }
 
 /* -- 3b. Section Band System (Phase 6 DS-01) ------------ */
