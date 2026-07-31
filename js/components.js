@@ -184,6 +184,64 @@ function initReveal() {
 }
 document.addEventListener('DOMContentLoaded', initReveal);
 
+// FAQ accordion — smooth open/close. A native <details> snaps open with no
+// transition; we take over the summary click and animate the element's height
+// with the Web Animations API. Exclusivity (one question open at a time) is
+// managed here rather than via the native `name=""` grouping, because that group
+// slams the previously-open item shut with no animation — so the markup uses a
+// plain .faq-item class instead. Tapping an OPEN question's text closes it, which
+// is exactly the "tap to close on mobile" behaviour we want. Reduced-motion (or
+// no WAAPI) falls back to a plain instant toggle that still opens AND closes.
+function initFaqAccordion() {
+  var items = Array.prototype.slice.call(document.querySelectorAll('.faq-list details'));
+  if (!items.length) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canAnimate = !reduce && !!Element.prototype.animate;
+  var DUR = 300, EASE = 'cubic-bezier(0.33, 0, 0.2, 1)';
+
+  // True collapsed height, measured synchronously (no repaint between toggles).
+  function closedHeight(d) {
+    var was = d.open;
+    d.open = false;
+    var h = d.offsetHeight;
+    d.open = was;
+    return h;
+  }
+  function animateHeight(d, from, to, onDone) {
+    if (d.__anim) d.__anim.cancel();
+    d.style.overflow = 'hidden';
+    d.__anim = d.animate({ height: [from + 'px', to + 'px'] }, { duration: DUR, easing: EASE });
+    d.__anim.onfinish = function () {
+      d.__anim = null;
+      d.style.overflow = '';
+      d.style.height = '';
+      if (onDone) onDone();
+    };
+  }
+  function openItem(d) {
+    if (!canAnimate) { d.open = true; return; }
+    var start = d.offsetHeight;   // summary only (still closed)
+    d.open = true;                // render the answer
+    animateHeight(d, start, d.offsetHeight);
+  }
+  function closeItem(d) {
+    if (!canAnimate) { d.open = false; return; }
+    animateHeight(d, d.offsetHeight, closedHeight(d), function () { d.open = false; });
+  }
+
+  items.forEach(function (d) {
+    var summary = d.querySelector('summary');
+    if (!summary) return;
+    summary.addEventListener('click', function (e) {
+      e.preventDefault();         // suppress the instant native toggle
+      if (d.open) { closeItem(d); return; }
+      items.forEach(function (o) { if (o !== d && o.open) closeItem(o); });
+      openItem(d);
+    });
+  });
+}
+document.addEventListener('DOMContentLoaded', initFaqAccordion);
+
 // Day↔night for the upsell section. It stays "day" until you scroll past a
 // threshold, then it flips to "night" with a smooth CSS transition (sun→moon,
 // scene darkens, white pills → dark, dark text → white). Scrolling back up past

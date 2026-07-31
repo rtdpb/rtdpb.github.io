@@ -1073,6 +1073,10 @@ html { scroll-behavior: smooth; }
 @media (max-width: 768px) {
   /* pills reflow into a grid below a smaller illustration */
   .upsell-stage { min-height: 0; }
+  /* Taller sky band so the WHOLE sun (not just its lower half) clears the stage
+     top edge — the orb hangs a fixed distance above the horizon pivot, so growing
+     the band drops the pivot and brings the full sun/moon down into view. */
+  .celestial { height: 100px; }
   .upsell-art { width: 320px; margin-bottom: var(--space-xl); }
   .upsell-pills { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
   .upsell-pill { position: static; width: auto; max-width: none; min-width: 0; }
