@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=inter:wght@400;500;600;700&family=space-grotesk:wght@500;600;700&display=swap">
 
   <!-- goZERO stylesheet — loads AFTER Pico so token overrides apply -->
-  <link rel="stylesheet" href="/css/main.css?v=27">
+  <link rel="stylesheet" href="/css/main.css?v=28">
 
   <!-- FOUC prevention: synchronous IIFE, NO defer, NO async, NO external src -->
   <script>
@@ -304,21 +304,21 @@
           <!-- PLACEHOLDER savings amounts (home.upsell.p1..p4.save) — illustrative figures.
                Replace with real, provable savings per product before launch. -->
           <div class="upsell-pills">
-            <article class="upsell-pill upsell-pill--tl">
+            <article class="upsell-pill upsell-pill--bl">
               <span class="icon-circle icon-circle--mint"><i data-lucide="flame" aria-hidden="true"></i></span>
               <span class="pill-body">
                 <span class="pill-title" data-i18n="home.upsell.p1.title"></span>
                 <span class="pill-save" data-i18n="home.upsell.p1.save"></span>
               </span>
             </article>
-            <article class="upsell-pill upsell-pill--tr">
+            <article class="upsell-pill upsell-pill--tl">
               <span class="icon-circle icon-circle--blue"><i data-lucide="gauge" aria-hidden="true"></i></span>
               <span class="pill-body">
                 <span class="pill-title" data-i18n="home.upsell.p4.title"></span>
                 <span class="pill-save" data-i18n="home.upsell.p4.save"></span>
               </span>
             </article>
-            <article class="upsell-pill upsell-pill--bl">
+            <article class="upsell-pill upsell-pill--tr">
               <span class="icon-circle icon-circle--yellow"><i data-lucide="battery-charging" aria-hidden="true"></i></span>
               <span class="pill-body">
                 <span class="pill-title" data-i18n="home.upsell.p2.title"></span>
@@ -440,9 +440,9 @@
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@0.552.0/dist/umd/lucide.min.js"></script>
   <!-- components.js FIRST — stamps data-i18n nodes into DOM -->
-  <script src="/js/components.js?v=27"></script>
+  <script src="/js/components.js?v=28"></script>
   <!-- i18n.js SECOND — scans for data-i18n nodes after components registered -->
-  <script src="/js/i18n.js?v=27"></script>
+  <script src="/js/i18n.js?v=28"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
   </script>
