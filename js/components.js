@@ -158,46 +158,39 @@ function initReveal() {
 }
 document.addEventListener('DOMContentLoaded', initReveal);
 
-// Scroll-driven celestial: the sun arcs left→right across the upsell section as you
-// scroll down and crossfades into a moon; scrolling up reverses it (progress is tied
-// to the section's position, so it's fully bidirectional).
+// Day↔night for the upsell section. It stays "day" until you scroll past a
+// threshold, then it flips to "night" with a smooth CSS transition (sun→moon,
+// scene darkens, white pills → dark, dark text → white). Scrolling back up past
+// the threshold flips it back. Hysteresis avoids flicker right at the line.
 function initCelestial() {
   const section = document.querySelector('.section.upsell');
-  const track = document.querySelector('.celestial');
-  const body = document.querySelector('.celestial-body');
-  const sun = document.querySelector('.celestial-sun');
-  const moon = document.querySelector('.celestial-moon');
-  if (!section || !track || !body) return;
+  if (!section) return;
 
-  function clamp(v) { return v < 0 ? 0 : (v > 1 ? 1 : v); }
+  let isNight = false;
+  function setNight(on) {
+    if (on === isNight) return;
+    isNight = on;
+    section.classList.toggle('is-night', on);
+  }
 
-  function update(force) {
+  let ticking = false;
+  function check() {
     ticking = false;
     const rect = section.getBoundingClientRect();
     const vh = window.innerHeight || document.documentElement.clientHeight;
-    // 0 when the section top reaches the viewport bottom, 1 when its bottom leaves the top
-    const p = (typeof force === 'number') ? clamp(force) : clamp((vh - rect.top) / (rect.height + vh));
-    const travel = track.clientWidth - body.offsetWidth;
-    const x = p * travel;
-    const y = -Math.sin(p * Math.PI) * 20;   // gentle day-arc: highest in the middle
-    body.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
-    // Overlapping crossfade (both partly visible around the midpoint → smooth morph)
-    if (sun) sun.style.opacity = String(clamp(1.4 - p * 2.0));
-    if (moon) moon.style.opacity = String(clamp((p - 0.3) * 2.0));
+    // Flip to night once the section top passes 38% up the viewport; back to day
+    // only after it drops below 55% again (hysteresis band = no flicker).
+    if (!isNight && rect.top < vh * 0.38) setNight(true);
+    else if (isNight && rect.top > vh * 0.55) setNight(false);
   }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(check); } }
 
-  var ticking = false;
-  // NB: wrap update so the rAF timestamp isn't passed as the `force` argument.
-  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(function () { update(); }); } }
+  // Debug hook: ?night=1 / ?night=0 pins the state for screenshots.
+  const forced = new URLSearchParams(location.search).get('night');
+  if (forced !== null) { setNight(forced !== '0'); return; }
 
-  // Debug hook: ?celp=0.5 pins the sun/moon at a fixed progress (for screenshots).
-  const forced = new URLSearchParams(location.search).get('celp');
-  if (forced !== null) { update(parseFloat(forced)); return; }
-
-  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) { update(0.12); return; }   // static sun, don't animate on scroll
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
-  update();
+  check();
 }
 document.addEventListener('DOMContentLoaded', initCelestial);
