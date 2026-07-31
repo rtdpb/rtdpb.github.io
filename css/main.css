@@ -495,7 +495,7 @@ html { scroll-behavior: smooth; }
 #diensten, #zo-werkt-het, #uitbreiden, #faq { scroll-margin-top: 88px; }   /* clear the sticky navbar */
 
 /* (A) Service cards — "Waarmee kunnen we u helpen?" */
-.section.help { background: #ECF3ED; }   /* very light-green band to give the cards their own zone */
+.section.help { background: var(--color-page-bg); }   /* blends with the page (no separate band) */
 .help-head {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -688,7 +688,7 @@ html { scroll-behavior: smooth; }
 }
 
 /* (B1) Upsell showcase — "meer uit uw energie" (heat pump / battery / charger / energy mgmt) */
-.section.upsell { background: #EFF4F0; }
+.section.upsell { background: var(--color-page-bg); }   /* blends with the page (no separate band) */
 .upsell-head { max-width: var(--width-text); margin: 0 auto var(--space-2xl); text-align: center; }
 .upsell-head h2 { margin: 0 0 var(--space-sm); font-size: 1.75rem; line-height: 1.15; color: var(--color-green-dark); }
 .upsell-lead { margin: 0; color: var(--color-body-green); }
