@@ -294,7 +294,7 @@ function initMotes() {
   const layer = document.createElement('div');
   layer.className = 'motes';
   layer.setAttribute('aria-hidden', 'true');
-  for (let i = 0; i < 16; i++) {
+  for (let i = 0; i < 10; i++) {   // fewer, calmer motes (#118)
     const m = document.createElement('span');
     m.className = 'mote';
     const size = (3 + Math.random() * 3).toFixed(1);
