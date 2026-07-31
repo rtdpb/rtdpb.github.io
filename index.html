@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=inter:wght@400;500;600;700&family=space-grotesk:wght@500;600;700&display=swap">
 
   <!-- goZERO stylesheet — loads AFTER Pico so token overrides apply -->
-  <link rel="stylesheet" href="/css/main.css?v=20">
+  <link rel="stylesheet" href="/css/main.css?v=21">
 
   <!-- FOUC prevention: synchronous IIFE, NO defer, NO async, NO external src -->
   <script>
@@ -116,12 +116,14 @@
                 <line x1="0" y1="100" x2="320" y2="100"/>
               </g>
               <!-- production area + line (dip at x=208 = the anomaly) -->
-              <path d="M10,78 L43,62 L76,70 L109,50 L142,58 L175,44 L208,92 L241,60 L274,52 L307,40 L307,110 L10,110 Z" fill="url(#prodFill)"/>
-              <polyline points="10,78 43,62 76,70 109,50 142,58 175,44 208,92 241,60 274,52 307,40"
+              <path class="panel-area" d="M10,78 L43,62 L76,70 L109,50 L142,58 L175,44 L208,92 L241,60 L274,52 L307,40 L307,110 L10,110 Z" fill="url(#prodFill)"/>
+              <polyline class="panel-line" points="10,78 43,62 76,70 109,50 142,58 175,44 208,92 241,60 274,52 307,40"
                         fill="none" stroke="#52B788" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-              <!-- anomaly marker -->
-              <circle cx="208" cy="92" r="9" fill="rgba(244,196,48,0.18)"/>
-              <circle cx="208" cy="92" r="4" fill="#F4C430"/>
+              <!-- anomaly marker (gently pulses on reveal) -->
+              <g class="panel-anomaly">
+                <circle cx="208" cy="92" r="9" fill="rgba(244,196,48,0.18)"/>
+                <circle cx="208" cy="92" r="4" fill="#F4C430"/>
+              </g>
             </svg>
             <div class="panel-alert">
               <span class="alert-dot"></span>
@@ -430,9 +432,9 @@
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@0.552.0/dist/umd/lucide.min.js"></script>
   <!-- components.js FIRST — stamps data-i18n nodes into DOM -->
-  <script src="/js/components.js?v=20"></script>
+  <script src="/js/components.js?v=21"></script>
   <!-- i18n.js SECOND — scans for data-i18n nodes after components registered -->
-  <script src="/js/i18n.js?v=20"></script>
+  <script src="/js/i18n.js?v=21"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
   </script>
