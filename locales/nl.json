@@ -81,6 +81,20 @@
       "stat3": { "value": "2 werkdagen", "label": "Maximale reactietijd" },
       "panel": { "title": "Live prestaties", "alert": "Afwijking gedetecteerd", "status": "Actie ingepland" }
     },
+    "upsell": {
+      "eyebrow": "Meer uit uw energie",
+      "heading": "Klaar voor de volgende stap?",
+      "lead": "Breid uw installatie uit met een warmtepomp, thuisbatterij, laadpaal of energiemanagement — geïnstalleerd door gecertificeerde partners.",
+      "p1": { "title": "Warmtepomp", "save": "Bespaar tot €700 p/j" },
+      "p2": { "title": "Thuisbatterij", "save": "Bespaar tot €400 p/j" },
+      "p3": { "title": "Laadpaal", "save": "Bespaar tot €300 p/j" },
+      "p4": { "title": "Energiemanagement", "save": "Bespaar tot €150 p/j" },
+      "step1": { "title": "Aanvraag", "desc": "U geeft door waarin u geïnteresseerd bent." },
+      "step2": { "title": "Inspectie", "desc": "Een partner bekijkt uw situatie ter plaatse." },
+      "step3": { "title": "Installatie", "desc": "Alles wordt vakkundig geïnstalleerd." },
+      "partners": "Door gecertificeerde partners",
+      "cta": "Bekijk de mogelijkheden"
+    },
     "faq": {
       "eyebrow": "Snel antwoord",
       "heading": "Veelgestelde vragen",

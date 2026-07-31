@@ -81,6 +81,20 @@
       "stat3": { "value": "2 business days", "label": "Maximum response time" },
       "panel": { "title": "Live performance", "alert": "Deviation detected", "status": "Action scheduled" }
     },
+    "upsell": {
+      "eyebrow": "More from your energy",
+      "heading": "Ready for the next step?",
+      "lead": "Expand your installation with a heat pump, home battery, charging station or energy management — installed by certified partners.",
+      "p1": { "title": "Heat pump", "save": "Save up to €700/yr" },
+      "p2": { "title": "Home battery", "save": "Save up to €400/yr" },
+      "p3": { "title": "Charging station", "save": "Save up to €300/yr" },
+      "p4": { "title": "Energy management", "save": "Save up to €150/yr" },
+      "step1": { "title": "Request", "desc": "You tell us what you're interested in." },
+      "step2": { "title": "Inspection", "desc": "A partner assesses your situation on site." },
+      "step3": { "title": "Installation", "desc": "Everything is installed by a professional." },
+      "partners": "By certified partners",
+      "cta": "See the options"
+    },
     "faq": {
       "eyebrow": "Quick answers",
       "heading": "Frequently asked questions",

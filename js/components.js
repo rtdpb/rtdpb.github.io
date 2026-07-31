@@ -124,6 +124,7 @@ customElements.define('site-footer', SiteFooter);
 function initReveal() {
   const sel = '.hero-copy > *, .hero-art, .help-head, .help-card, ' +
               '.monitor-intro, .monitor-panel, .monitor-step, .stat, ' +
+              '.upsell-head, .upsell-pill, .upsell-step, .upsell-foot, ' +
               '.quote-card, .faq-intro-col, .faq-list details, .cta-inner';
   const els = document.querySelectorAll(sel);
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;

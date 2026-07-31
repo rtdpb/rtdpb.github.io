@@ -81,6 +81,20 @@
       "stat3": { "value": "2 Werktage", "label": "Maximale Reaktionszeit" },
       "panel": { "title": "Live-Leistung", "alert": "Abweichung erkannt", "status": "Maßnahme geplant" }
     },
+    "upsell": {
+      "eyebrow": "Mehr aus Ihrer Energie",
+      "heading": "Bereit für den nächsten Schritt?",
+      "lead": "Erweitern Sie Ihre Anlage mit Wärmepumpe, Heimspeicher, Ladestation oder Energiemanagement — installiert von zertifizierten Partnern.",
+      "p1": { "title": "Wärmepumpe", "save": "Bis zu €700/Jahr sparen" },
+      "p2": { "title": "Heimspeicher", "save": "Bis zu €400/Jahr sparen" },
+      "p3": { "title": "Ladestation", "save": "Bis zu €300/Jahr sparen" },
+      "p4": { "title": "Energiemanagement", "save": "Bis zu €150/Jahr sparen" },
+      "step1": { "title": "Anfrage", "desc": "Sie teilen uns mit, wofür Sie sich interessieren." },
+      "step2": { "title": "Inspektion", "desc": "Ein Partner prüft Ihre Situation vor Ort." },
+      "step3": { "title": "Installation", "desc": "Alles wird fachgerecht installiert." },
+      "partners": "Von zertifizierten Partnern",
+      "cta": "Möglichkeiten ansehen"
+    },
     "faq": {
       "eyebrow": "Schnelle Antwort",
       "heading": "Häufig gestellte Fragen",

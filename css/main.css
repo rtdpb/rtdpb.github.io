@@ -473,7 +473,7 @@ a[role="button"]:hover {
 
 /* Scroll anchoring so sticky-less nav jumps land below the top edge */
 html { scroll-behavior: smooth; }
-#diensten, #zo-werkt-het, #faq { scroll-margin-top: var(--space-lg); }
+#diensten, #zo-werkt-het, #uitbreiden, #faq { scroll-margin-top: 88px; }   /* clear the sticky navbar */
 
 /* (A) Service cards — "Waarmee kunnen we u helpen?" */
 .section.help { background: #ECF3ED; }   /* very light-green band to give the cards their own zone */
@@ -666,6 +666,113 @@ html { scroll-behavior: smooth; }
   font-size: 0.75rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.72);
+}
+
+/* (B1) Upsell showcase — "meer uit uw energie" (heat pump / battery / charger / energy mgmt) */
+.section.upsell { background: #EFF4F0; }
+.upsell-head { max-width: var(--width-text); margin: 0 auto var(--space-2xl); text-align: center; }
+.upsell-head h2 { margin: 0 0 var(--space-sm); font-size: 1.75rem; line-height: 1.15; color: var(--color-green-dark); }
+.upsell-lead { margin: 0; color: var(--color-body-green); }
+
+/* Stage: house SVG centered, product pills floating around it (desktop) */
+.upsell-stage {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: 480px;
+}
+.upsell-stage::before {   /* soft green glow behind the house */
+  content: "";
+  position: absolute;
+  left: 50%; top: 52%;
+  width: 60%; height: 70%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(82,183,136,0.18), rgba(82,183,136,0) 70%);
+  pointer-events: none;
+}
+.upsell-art { position: relative; z-index: 1; display: block; width: 460px; max-width: 90%; height: auto; margin: 0 auto; }
+
+.upsell-pill {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 264px;
+  max-width: 48%;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: 0.6rem 1.1rem 0.6rem 0.6rem;
+  box-shadow: var(--shadow-md);
+}
+.upsell-pill .icon-circle { width: 44px; height: 44px; flex: 0 0 auto; }
+.upsell-pill .icon-circle svg { width: 22px; height: 22px; }
+.pill-body { display: flex; flex-direction: column; line-height: 1.2; }
+.pill-title { font-weight: 700; color: var(--color-green-dark); font-size: 0.95rem; }
+.pill-save { font-size: 0.85rem; font-weight: 600; color: #2E8B62; }
+/* corner placement (desktop) */
+.upsell-pill--tl { top: 24px;  left: 0; }
+.upsell-pill--tr { top: 6px;   right: 0; }
+.upsell-pill--bl { bottom: 96px; left: 6px; }
+.upsell-pill--br { bottom: 34px; right: 12px; }
+
+/* 3-step process */
+.upsell-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2xl);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+.upsell-step { position: relative; }
+.upsell-step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 0; right: calc(var(--space-2xl) / -2);
+  transform: translateX(50%);
+  color: var(--color-green-light);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+.upsell-step .step-num {
+  display: block;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  color: var(--color-accent-strong);
+  margin-bottom: var(--space-sm);
+}
+.upsell-step h3 { margin: 0 0 var(--space-xs); color: var(--color-green-dark); }
+.upsell-step p { margin: 0; color: var(--color-body-green); font-size: 0.95rem; }
+
+/* footer row: certified-partners note + CTA */
+.upsell-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  margin-top: var(--space-xl);
+}
+.upsell-partners { display: flex; align-items: center; gap: var(--space-sm); margin: 0; color: var(--color-body-green); font-weight: 600; }
+.upsell-partners svg { width: 20px; height: 20px; stroke: var(--color-green-light); flex: 0 0 auto; }
+.upsell-cta { min-height: 44px; }
+
+@media (max-width: 768px) {
+  /* pills reflow into a grid below a smaller illustration */
+  .upsell-stage { min-height: 0; }
+  .upsell-art { width: 320px; margin-bottom: var(--space-xl); }
+  .upsell-pills { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+  .upsell-pill { position: static; width: auto; max-width: none; min-width: 0; }
+  .pill-body { min-width: 0; }   /* allow long titles to wrap instead of overflowing the grid cell */
+  .upsell-steps { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .upsell-step:not(:last-child)::after { display: none; }
+  .upsell-foot { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 560px) {
+  .upsell-pills { grid-template-columns: 1fr; }   /* one column when 2-up gets too tight */
 }
 
 /* (B2) Testimonial — human content (cat 9) with a soft shape + overlapping quote mark (cat 3) */
@@ -920,6 +1027,7 @@ html { scroll-behavior: smooth; }
     .hero-copy > *, .hero-art,
     .help-head, .help-card,
     .monitor-intro, .monitor-panel, .monitor-step, .stat,
+    .upsell-head, .upsell-pill, .upsell-step, .upsell-foot,
     .quote-card,
     .faq-intro-col, .faq-list details,
     .cta-inner

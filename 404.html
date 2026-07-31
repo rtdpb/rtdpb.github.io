@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=inter:wght@400;500;600;700&family=space-grotesk:wght@500;600;700&display=swap">
 
   <!-- goZERO stylesheet — loads AFTER Pico so token overrides apply -->
-  <link rel="stylesheet" href="/css/main.css?v=7">
+  <link rel="stylesheet" href="/css/main.css?v=8">
 
   <!-- FOUC prevention: synchronous IIFE, NO defer, NO async, NO external src -->
   <script>
@@ -147,7 +147,7 @@
             <span class="icon-circle icon-circle--blue"><i data-lucide="plus" aria-hidden="true"></i></span>
             <h3 data-i18n="home.help.card3.title"></h3>
             <p data-i18n="home.help.card3.desc"></p>
-            <a href="/contact.html" class="help-link"><span data-i18n="home.help.card3.link"></span> <span aria-hidden="true">→</span></a>
+            <a href="#uitbreiden" class="help-link"><span data-i18n="home.help.card3.link"></span> <span aria-hidden="true">→</span></a>
           </article>
         </div>
       </div>
@@ -239,6 +239,148 @@
       </div>
     </section>
 
+    <!-- Section 3a: Upsell / "meer uit uw energie" — product showcase (HV upsell) -->
+    <section class="section upsell" id="uitbreiden">
+      <div class="section-inner">
+        <p class="eyebrow" data-i18n="home.upsell.eyebrow"></p>
+        <div class="upsell-head">
+          <h2 data-i18n="home.upsell.heading"></h2>
+          <p class="upsell-lead" data-i18n="home.upsell.lead"></p>
+        </div>
+
+        <div class="upsell-stage">
+          <!-- Locally-built "smart energy home": panels, home battery, heat pump, charger. No external assets. -->
+          <svg class="upsell-art" viewBox="0 0 520 400" role="img"
+               aria-label="Illustratie: woning met zonnepanelen, thuisbatterij, warmtepomp en laadpaal"
+               xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="upSoft" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#1B4332" flood-opacity="0.12"/>
+              </filter>
+            </defs>
+            <!-- ground platform -->
+            <ellipse cx="260" cy="352" rx="205" ry="30" fill="#D6E7DC"/>
+            <!-- sun + rays -->
+            <g stroke="#F4C430" stroke-width="6" stroke-linecap="round">
+              <line x1="430" y1="44" x2="430" y2="28"/>
+              <line x1="464" y1="58" x2="476" y2="46"/>
+              <line x1="478" y1="92" x2="496" y2="92"/>
+              <line x1="396" y1="58" x2="384" y2="46"/>
+            </g>
+            <circle cx="430" cy="92" r="28" fill="#F4C430"/>
+            <!-- clouds -->
+            <g fill="#FFFFFF" opacity="0.9">
+              <ellipse cx="120" cy="90" rx="40" ry="16"/>
+              <ellipse cx="156" cy="80" rx="24" ry="12"/>
+            </g>
+            <!-- heat pump unit (left of house) -->
+            <g filter="url(#upSoft)">
+              <rect x="70" y="288" width="70" height="52" rx="10" fill="#EAF2ED" stroke="#C3DBCB" stroke-width="2"/>
+              <circle cx="105" cy="314" r="16" fill="#FFFFFF" stroke="#C3DBCB" stroke-width="2"/>
+              <g stroke="#52B788" stroke-width="3" stroke-linecap="round">
+                <line x1="105" y1="314" x2="105" y2="302"/>
+                <line x1="105" y1="314" x2="115" y2="320"/>
+                <line x1="105" y1="314" x2="95" y2="320"/>
+              </g>
+            </g>
+            <!-- house -->
+            <g>
+              <!-- roof -->
+              <polygon points="170,182 265,120 360,182" fill="#245740"/>
+              <!-- solar panels on roof -->
+              <g transform="translate(214 138)">
+                <rect x="0" y="0" width="102" height="34" rx="3" fill="#1B4332"/>
+                <g stroke="#3C6B54" stroke-width="1.5">
+                  <line x1="34" y1="0" x2="34" y2="34"/><line x1="68" y1="0" x2="68" y2="34"/>
+                  <line x1="0" y1="17" x2="102" y2="17"/>
+                </g>
+              </g>
+              <!-- wall -->
+              <rect x="182" y="182" width="166" height="158" rx="8" fill="#E4EFE7"/>
+              <!-- window -->
+              <rect x="206" y="214" width="46" height="46" rx="5" fill="#CFE3D6" stroke="#B9D3C2" stroke-width="2"/>
+              <!-- door -->
+              <rect x="276" y="262" width="46" height="78" rx="5" fill="#245740"/>
+              <circle cx="313" cy="302" r="3" fill="#DCEBE2"/>
+              <!-- wall-mounted home battery -->
+              <g filter="url(#upSoft)">
+                <rect x="352" y="226" width="30" height="58" rx="7" fill="#FFFFFF" stroke="#C3DBCB" stroke-width="2"/>
+                <rect x="358" y="236" width="18" height="5" rx="2.5" fill="#52B788"/>
+                <rect x="358" y="246" width="18" height="5" rx="2.5" fill="#52B788"/>
+                <rect x="358" y="256" width="18" height="5" rx="2.5" fill="#DCEBE2"/>
+              </g>
+            </g>
+            <!-- EV charging post + cable (right) -->
+            <g filter="url(#upSoft)">
+              <rect x="404" y="272" width="16" height="70" rx="7" fill="#245740"/>
+              <rect x="407" y="282" width="10" height="14" rx="2" fill="#DCEBE2"/>
+              <path d="M420 300 q18 6 12 34" fill="none" stroke="#52B788" stroke-width="3" stroke-linecap="round"/>
+            </g>
+          </svg>
+
+          <!-- PLACEHOLDER savings amounts (home.upsell.p1..p4.save) — illustrative figures.
+               Replace with real, provable savings per product before launch. -->
+          <div class="upsell-pills">
+            <article class="upsell-pill upsell-pill--tl">
+              <span class="icon-circle icon-circle--mint"><i data-lucide="flame" aria-hidden="true"></i></span>
+              <span class="pill-body">
+                <span class="pill-title" data-i18n="home.upsell.p1.title"></span>
+                <span class="pill-save" data-i18n="home.upsell.p1.save"></span>
+              </span>
+            </article>
+            <article class="upsell-pill upsell-pill--tr">
+              <span class="icon-circle icon-circle--blue"><i data-lucide="gauge" aria-hidden="true"></i></span>
+              <span class="pill-body">
+                <span class="pill-title" data-i18n="home.upsell.p4.title"></span>
+                <span class="pill-save" data-i18n="home.upsell.p4.save"></span>
+              </span>
+            </article>
+            <article class="upsell-pill upsell-pill--bl">
+              <span class="icon-circle icon-circle--yellow"><i data-lucide="battery-charging" aria-hidden="true"></i></span>
+              <span class="pill-body">
+                <span class="pill-title" data-i18n="home.upsell.p2.title"></span>
+                <span class="pill-save" data-i18n="home.upsell.p2.save"></span>
+              </span>
+            </article>
+            <article class="upsell-pill upsell-pill--br">
+              <span class="icon-circle icon-circle--mint"><i data-lucide="plug-zap" aria-hidden="true"></i></span>
+              <span class="pill-body">
+                <span class="pill-title" data-i18n="home.upsell.p3.title"></span>
+                <span class="pill-save" data-i18n="home.upsell.p3.save"></span>
+              </span>
+            </article>
+          </div>
+        </div>
+
+        <!-- 3-step process -->
+        <div class="upsell-steps">
+          <div class="upsell-step">
+            <span class="step-num" aria-hidden="true">01</span>
+            <h3 data-i18n="home.upsell.step1.title"></h3>
+            <p data-i18n="home.upsell.step1.desc"></p>
+          </div>
+          <div class="upsell-step">
+            <span class="step-num" aria-hidden="true">02</span>
+            <h3 data-i18n="home.upsell.step2.title"></h3>
+            <p data-i18n="home.upsell.step2.desc"></p>
+          </div>
+          <div class="upsell-step">
+            <span class="step-num" aria-hidden="true">03</span>
+            <h3 data-i18n="home.upsell.step3.title"></h3>
+            <p data-i18n="home.upsell.step3.desc"></p>
+          </div>
+        </div>
+
+        <div class="upsell-foot">
+          <p class="upsell-partners">
+            <i data-lucide="badge-check" aria-hidden="true"></i>
+            <span data-i18n="home.upsell.partners"></span>
+          </p>
+          <a href="/contact.html" role="button" class="upsell-cta"><span data-i18n="home.upsell.cta"></span> <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
     <!-- Section 3b: Testimonial (cat 9 — human content) -->
     <!-- PLACEHOLDER testimonial: illustrative copy so the section can be designed/reviewed.
          Replace quote + name + location with a REAL customer quote before launch (MED-03).
@@ -315,9 +457,9 @@
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@0.552.0/dist/umd/lucide.min.js"></script>
   <!-- components.js FIRST — stamps data-i18n nodes into DOM -->
-  <script src="/js/components.js?v=7"></script>
+  <script src="/js/components.js?v=8"></script>
   <!-- i18n.js SECOND — scans for data-i18n nodes after components registered -->
-  <script src="/js/i18n.js?v=7"></script>
+  <script src="/js/i18n.js?v=8"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
   </script>
