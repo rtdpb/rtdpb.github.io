@@ -47,6 +47,7 @@ class SiteNav extends HTMLElement {
               <ul class="nav-links">
                 <li><a href="/index.html#diensten" data-i18n="nav.diensten"></a></li>
                 <li><a href="/index.html#zo-werkt-het" data-i18n="nav.howto"></a></li>
+                <li><a href="/index.html#uitbreiden" data-i18n="nav.uitbreiden"></a></li>
                 <li><a href="/index.html#faq" data-i18n="nav.faq"></a></li>
               </ul>
               <div class="lang-switcher" role="group" aria-label="Language">

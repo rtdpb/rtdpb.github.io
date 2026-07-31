@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=inter:wght@400;500;600;700&family=space-grotesk:wght@500;600;700&display=swap">
 
   <!-- goZERO stylesheet — loads AFTER Pico so token overrides apply -->
-  <link rel="stylesheet" href="/css/main.css?v=37">
+  <link rel="stylesheet" href="/css/main.css?v=38">
 
   <!-- FOUC prevention: synchronous IIFE, NO defer, NO async, NO external src -->
   <script>
@@ -39,6 +39,7 @@
       <div class="hero-glow" aria-hidden="true"></div>
       <!-- Decorative fake-live production chip. aria-hidden: numbers flicker via JS, "live" is language-neutral. -->
       <div class="hero-badge" aria-hidden="true">
+        <i data-lucide="activity" class="hero-badge-mon"></i>
         <span class="hero-badge-sun">☀</span>
         <span class="hero-badge-val">4.82 kW</span>
         <span class="hero-badge-live"><i class="hero-badge-dot"></i>live</span>
@@ -430,7 +431,7 @@
           <h2 data-i18n="home.cta.heading"></h2>
           <p class="cta-body" data-i18n="home.cta.body"></p>
         </div>
-        <a href="/contact.html" role="button" class="cta-btn"><span data-i18n="home.cta.button"></span> <span aria-hidden="true">↗</span></a>
+        <a href="/contact.html" role="button" class="cta-btn"><i data-lucide="mail" aria-hidden="true"></i> <span data-i18n="home.cta.button"></span> <span aria-hidden="true">↗</span></a>
       </div>
     </section>
   </main>
@@ -441,9 +442,9 @@
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@0.552.0/dist/umd/lucide.min.js"></script>
   <!-- components.js FIRST — stamps data-i18n nodes into DOM -->
-  <script src="/js/components.js?v=37"></script>
+  <script src="/js/components.js?v=38"></script>
   <!-- i18n.js SECOND — scans for data-i18n nodes after components registered -->
-  <script src="/js/i18n.js?v=37"></script>
+  <script src="/js/i18n.js?v=38"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
   </script>

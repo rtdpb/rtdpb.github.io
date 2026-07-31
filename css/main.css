@@ -134,7 +134,7 @@ site-nav { position: sticky; top: 0; z-index: 100; }
 }
 .nav-links {
   display: flex;
-  gap: var(--space-lg);
+  gap: var(--space-md);     /* tighter so the 4th link (Uitbreiden) + Contact button still fit */
   list-style: none;
   margin: 0;
   padding: 0;
@@ -296,9 +296,9 @@ site-nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rot
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* Nav collapses to a hamburger early enough that links + lang + Contact button
-   never crowd (covers tablets too, up to 860px). */
-@media (max-width: 860px) {
+/* Nav collapses to a hamburger early enough that the 4 links + lang + Contact
+   button always keep breathing room (covers tablets + small laptops, up to 1060px). */
+@media (max-width: 1060px) {
   /* Row 1: logo (left) + hamburger (right). Menu drops into row 2, full width. */
   .nav-inner { grid-template-columns: 1fr auto; align-items: center; gap: var(--space-sm) var(--space-md); }
   .nav-logo { grid-column: 1; justify-self: start; }
@@ -697,9 +697,11 @@ html { scroll-behavior: smooth; }
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 /* Per-card accent hue (drives the top bar + icon circle + arrow) */
-.help-card:nth-child(1) { --accent: #2E8B62; }   /* service — green */
-.help-card:nth-child(2) { --accent: #D9A02B; }   /* payment — amber */
-.help-card:nth-child(3) { --accent: #5E93B8; }   /* expand — blue */
+/* Accents harmonised to the brand palette (#36/#116): brand green, brand gold,
+   and a muted brand-leaning teal instead of the off-palette bright blue. */
+.help-card:nth-child(1) { --accent: #2E8B62; }   /* service — brand green */
+.help-card:nth-child(2) { --accent: #C79212; }   /* payment — brand gold (ties to --color-accent) */
+.help-card:nth-child(3) { --accent: #3F8489; }   /* expand — muted teal (brand-leaning) */
 .help-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
 /* Primary card (Serviceverzoek) — white fill, stronger shadow for presence */
 .help-card--primary { background: #ffffff; box-shadow: 0 10px 26px rgba(27,67,50,0.12); }
@@ -772,12 +774,11 @@ html { scroll-behavior: smooth; }
 }
 .panel-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-md); }
 .panel-title { font-weight: 700; color: #ffffff; font-size: 0.95rem; }
+/* "7d" is a static range label, not an interactive filter — de-emphasise it (#46) */
 .panel-range {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 999px;
-  padding: 2px 10px;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.45);
 }
 .panel-chart { width: 100%; height: auto; display: block; }
 .panel-alert {
@@ -971,10 +972,10 @@ html { scroll-behavior: smooth; }
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  /* Grow to fit the content on ONE line (no ugly word-break); the cap keeps a
-     pill from ever running past the illustration. If a label is ever wider than
-     the cap it wraps inside the box (min-width:0 + overflow-wrap) — never spills. */
-  width: max-content;
+  /* Uniform width for all four labels (#58) — wide enough that the longest label
+     in any language (German "Bis zu €700/Jahr sparen") still fits on ONE line, so
+     nothing breaks (min-width:0 + overflow-wrap stay as the ultimate safety net). */
+  width: 296px;
   max-width: 44%;
   background: #ffffff;
   border: 1px solid var(--color-border);
@@ -1459,7 +1460,7 @@ html { scroll-behavior: smooth; }
 .confetti-canvas { position: fixed; inset: 0; z-index: 300; pointer-events: none; }
 
 /* Animated underline for the desktop nav links (replaces the plain underline) */
-@media (min-width: 861px) {
+@media (min-width: 1061px) {
   .nav-links a { position: relative; }
   .nav-links a::after {
     content: "";
@@ -1502,3 +1503,22 @@ textarea:focus-visible {
 .help-card--primary { box-shadow: var(--shadow-md); }
 /* Open FAQ items get a clearer surface + the chevron always rotates (#84/#85) */
 .faq-list details[open] { background: var(--color-surface); border-color: var(--color-green-light); }
+/* FAQ question hover (#89) */
+.faq-list summary:hover { color: var(--color-green-dark); }
+
+/* -- 12. Batch-10 completeness details ------------------- */
+/* Badge monitoring-context icon (#19) — a tiny live-signal glyph so the chip
+   clearly reads as a monitoring view, not just a number. */
+.hero-badge-mon { width: 14px; height: 14px; color: var(--color-green-light); flex: 0 0 auto; }
+/* Small mail icon on the bottom CTA button (#97) */
+.cta-btn svg { width: 18px; height: 18px; flex: 0 0 auto; }
+/* Consistent hero-copy rhythm between intro, title, body, buttons, proof (#15) */
+.hero-eyebrow { margin: 0 0 var(--space-sm); }
+.hero-copy h1 { margin: 0 0 var(--space-md); }
+.hero-body { margin: 0 0 var(--space-lg); }
+.hero-proof { margin: var(--space-lg) 0 0; }
+
+@media (max-width: 599px) {
+  /* Compacter service cards on mobile (#40) */
+  .help-card { padding: var(--space-lg); }
+}
