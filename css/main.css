@@ -1016,8 +1016,10 @@ html { scroll-behavior: smooth; }
 /* corner placement (desktop) — tucked closer to the illustration inside the panel */
 .upsell-pill--tl { top: 62px;  left: 2px; }
 .upsell-pill--tr { top: 52px;  right: 2px; }
-.upsell-pill--bl { bottom: 40px; left: 8px; }
-.upsell-pill--br { bottom: 20px; right: 12px; }
+/* Bottom pills sit low in the empty ground band so they clear the heat-pump (left)
+   and charging-post (right) illustrations instead of covering them (#... night view). */
+.upsell-pill--bl { bottom: 6px; left: 8px; }
+.upsell-pill--br { bottom: 6px; right: 12px; }
 
 /* 3-step process — pulled closer to the illustration so the section reads as one unit (#66/#70) */
 .upsell-steps {
