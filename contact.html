@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="nl" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>goZERO — Contact</title>
+
+  <!-- Pico CSS v2 classless — loads FIRST so our overrides win the cascade -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
+
+  <!-- Bunny Fonts: GDPR-safe Inter (body) + Space Grotesk (display headings) (NOT Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=inter:wght@400;500;600;700&family=space-grotesk:wght@500;600;700&display=swap">
+
+  <!-- goZERO stylesheet — loads AFTER Pico so token overrides apply -->
+  <link rel="stylesheet" href="/css/main.css?v=6">
+
+  <!-- FOUC prevention: synchronous IIFE, NO defer, NO async, NO external src -->
+  <script>
+    (function() {
+      var stored = localStorage.getItem('gozero-lang');
+      if (stored && ['nl','en','de'].indexOf(stored) !== -1) {
+        document.documentElement.lang = stored;
+      }
+    })();
+  </script>
+</head>
+<body>
+  <site-nav variant="simple"></site-nav>
+
+  <main>
+    <section class="section contact-page">
+      <div class="section-inner section-inner--form">
+        <h1 data-i18n="contact.title"></h1>
+        <p class="contact-intro" data-i18n="contact.form.intro"></p>
+
+        <!-- Web3Forms AJAX form. access_key is a PLACEHOLDER — see GO-LIVE BLOCKER comment below. -->
+        <form id="contact-form" class="contact-form card">
+          <!-- === Web3Forms hidden plumbing === -->
+          <!--
+            GO-LIVE BLOCKER (CONT-09 / D-11): access_key is a FAKE placeholder.
+            Web3Forms will return success:false and the form will ALWAYS show the
+            error panel until this is replaced with the real goZERO key AND the
+            real inbox email is configured in the Web3Forms dashboard.
+            Tracked in .planning/STATE.md + .planning/PROJECT.md.
+          -->
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+          <input type="hidden" name="subject" value="Nieuw bericht via goZERO contactformulier">
+          <input type="hidden" name="from_name" value="goZERO Website">
+
+          <!-- === Spam layer 1: Web3Forms native botcheck (server-enforced) === -->
+          <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <!-- === Spam layer 2: custom off-screen honeypot (checked client-side by contact.js) === -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="hp-url">Laat dit veld leeg</label>
+            <input type="text" id="hp-url" name="botcheck_url" tabindex="-1" autocomplete="off">
+          </div>
+
+          <!-- === Real fields === -->
+          <label for="name" data-i18n="contact.form.nameLabel"></label>
+          <input type="text" id="name" name="name" required autocomplete="name"
+                 data-i18n-placeholder="contact.form.namePlaceholder">
+
+          <label for="email" data-i18n="contact.form.emailLabel"></label>
+          <input type="email" id="email" name="email" required autocomplete="email"
+                 data-i18n-placeholder="contact.form.emailPlaceholder">
+
+          <label for="phone" data-i18n="contact.form.phoneLabel"></label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel"
+                 data-i18n-placeholder="contact.form.phonePlaceholder">
+
+          <label for="category" data-i18n="contact.form.categoryLabel"></label>
+          <select id="category" name="category" required>
+            <option value="" disabled selected data-i18n="contact.form.categoryPlaceholder"></option>
+            <option value="service"      data-i18n="contact.form.categories.service"></option>
+            <option value="payment"      data-i18n="contact.form.categories.payment"></option>
+            <option value="cancellation" data-i18n="contact.form.categories.cancellation"></option>
+            <option value="other"        data-i18n="contact.form.categories.other"></option>
+          </select>
+
+          <label for="message" data-i18n="contact.form.messageLabel"></label>
+          <textarea id="message" name="message" rows="6" required
+                    data-i18n-placeholder="contact.form.messagePlaceholder"></textarea>
+
+          <!-- Response-time note — always visible, adjacent to the button (CONT-08 / D-09) -->
+          <p class="contact-response-time" data-i18n="contact.form.responseTime"></p>
+
+          <!-- Hidden i18n label sources contact.js reads (NEVER hardcode "Verzenden…") -->
+          <span id="label-sending" data-i18n="contact.form.sending" hidden></span>
+          <span id="label-submit"  data-i18n="contact.form.submit"  hidden></span>
+
+          <button type="submit" class="contact-submit" data-i18n="contact.form.submit"></button>
+        </form>
+
+        <!-- Pre-stamped, hidden. i18n fills textContent on load AND every language switch. -->
+        <div id="contact-success" class="form-panel form-panel--success" role="status" aria-live="polite" tabindex="-1" hidden>
+          <p data-i18n="contact.form.success"></p>
+        </div>
+        <div id="contact-error" class="form-panel form-panel--error" role="alert" aria-live="assertive" hidden>
+          <p data-i18n="contact.form.error"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <site-footer></site-footer>
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@0.552.0/dist/umd/lucide.min.js"></script>
+  <!-- components.js FIRST — stamps data-i18n nodes into DOM -->
+  <script src="/js/components.js?v=6"></script>
+  <!-- i18n.js SECOND — scans for data-i18n nodes after components registered -->
+  <script src="/js/i18n.js?v=6"></script>
+  <!-- contact.js LAST — needs i18n nodes stamped + engine loaded before wiring submit -->
+  <script src="/js/contact.js?v=6"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+{
+  "nav": {
+    "home": "Home",
+    "faq": "Häufige Fragen",
+    "contact": "Kontakt aufnehmen",
+    "diensten": "Leistungen",
+    "howto": "So funktioniert's",
+    "back": "Zurück zur Startseite"
+  },
+  "footer": {
+    "copy": "© 2026 goZERO",
+    "tagline": "Verwaltung und Service für Solaranlagen",
+    "faq": "Häufige Fragen",
+    "contact_cta": "Kontakt aufnehmen",
+    "contact": {
+      "heading": "Kontakt",
+      "email": "info@gozero.nl [TE BEVESTIGEN]",
+      "cta": "Kontakt aufnehmen"
+    },
+    "nav": {
+      "heading": "Menü",
+      "home": "Startseite",
+      "faq": "Häufige Fragen",
+      "contact": "Kontakt"
+    }
+  },
+  "home": {
+    "title": "goZERO",
+    "hero": {
+      "eyebrow": "Sorgenfreie Solarenergie",
+      "headline": "Immer den klaren Blick auf Ihre Solaranlage.",
+      "body": "Wir überwachen, erkennen und lösen Probleme — oft bevor Sie sie selbst bemerken.",
+      "proof": "1.100 Anlagen • in 3 Ländern aktiv",
+      "stat_label": "Anlagen verwaltet in NL, BE und DE",
+      "cta": "Kontakt aufnehmen",
+      "services_link": "Leistungen",
+      "card1_label": "Live-Produktion",
+      "card2_title": "System läuft einwandfrei",
+      "card2_sub": "Gerade geprüft"
+    },
+    "help": {
+      "eyebrow": "Service für Kunden",
+      "heading": "Womit können wir Ihnen helfen?",
+      "intro": "Wählen Sie das Thema Ihrer Frage. So gelangen Sie direkt zum richtigen Ansprechpartner.",
+      "card1": {
+        "title": "Serviceanfrage",
+        "desc": "Anlage läuft nicht richtig? Melden Sie es direkt.",
+        "link": "Störung melden"
+      },
+      "card2": {
+        "title": "Zahlung & Rechnung",
+        "desc": "Eine Frage zu Zahlung, Rate oder Rechnung.",
+        "link": "Stellen Sie Ihre Frage"
+      },
+      "card3": {
+        "title": "Erweitern",
+        "desc": "Mehr aus Ihrer Energie holen, z. B. mit einem Heimspeicher.",
+        "link": "Möglichkeiten ansehen"
+      }
+    },
+    "monitor": {
+      "eyebrow": "Immer den Blick auf Ihr System",
+      "line1": "Erzeugt.",
+      "line2": "Überwacht.",
+      "line3": "Geregelt.",
+      "lead": "Wir verfolgen die Leistung Ihrer Anlage aus der Ferne. Sehen wir etwas Auffälliges, werden wir aktiv — oft bevor Sie selbst etwas bemerken.",
+      "s1": {
+        "title": "Wir überwachen",
+        "desc": "Die Leistung Ihrer Solarpanels wird kontinuierlich verfolgt."
+      },
+      "s2": {
+        "title": "Wir erkennen",
+        "desc": "Abweichungen und Störungen erscheinen automatisch bei uns."
+      },
+      "s3": {
+        "title": "Wir lösen",
+        "desc": "Wir kümmern uns darum oder melden uns bei Ihnen, wenn es nötig ist."
+      },
+      "stat1": { "label": "Anlagen in Verwaltung" },
+      "stat2": { "label": "Länder aktiv" },
+      "stat3": { "value": "2 Werktage", "label": "Maximale Reaktionszeit" },
+      "panel": { "title": "Live-Leistung", "alert": "Abweichung erkannt", "status": "Maßnahme geplant" }
+    },
+    "faq": {
+      "eyebrow": "Schnelle Antwort",
+      "heading": "Häufig gestellte Fragen",
+      "intro": "Finden Sie sofort eine Antwort auf die Fragen, die unsere Kunden am häufigsten stellen."
+    },
+    "testimonial": {
+      "quote": "Als mein Wechselrichter ausfiel, hatte goZERO es bereits bemerkt, bevor ich etwas ahnte. Innerhalb eines Tages lief alles wieder.",
+      "initials": "dV",
+      "name": "Familie de Vries",
+      "role": "Kunde seit 2021 • Utrecht"
+    },
+    "cta": {
+      "eyebrow": "Sorgenfreie Solarenergie",
+      "heading": "Wir helfen Ihnen gerne weiter.",
+      "body": "Sagen Sie uns, womit wir Ihnen helfen können. Innerhalb von zwei Werktagen erhalten Sie eine Antwort.",
+      "button": "Stellen Sie Ihre Frage"
+    }
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "intro": "Nachfolgend finden Sie Antworten auf die häufigsten Fragen zu Ihrem Mietvertrag, Service und Garantien. Ist Ihre Frage nicht dabei? Kontaktieren Sie uns gerne.",
+    "items": {
+      "q1": {
+        "question": "Kann ich vorzeitig kündigen?",
+        "answer": "Eine Kündigung während der laufenden Mietlaufzeit ist in der Regel nicht möglich; es gilt eine feste Vertragslaufzeit. [TE BEVESTIGEN] Die genaue Kündigungsfrist und die Bedingungen stehen in Ihrem Mietvertrag und können je nach Vertrag unterschiedlich sein. Kontaktieren Sie uns, damit wir Ihre konkrete Situation prüfen können."
+      },
+      "q2": {
+        "question": "Was passiert nach der Mietlaufzeit?",
+        "answer": "Wenn Ihre Mietlaufzeit endet, haben Sie drei Möglichkeiten: Sie können die Anlage zum jeweiligen Restwert kaufen, die Miete verlängern oder die Module kostenlos entfernen lassen. Wir melden uns rechtzeitig vor Vertragsende, um die Optionen mit Ihnen zu besprechen. Unsicher, welche Wahl zu Ihnen passt? Kontaktieren Sie uns."
+      },
+      "q3": {
+        "question": "Wie reiche ich eine Serviceanfrage ein?",
+        "answer": "Eine Serviceanfrage reichen Sie einfach über unser Kontaktformular ein; wählen Sie dabei die Kategorie \"Serviceanfrage\". Beschreiben Sie möglichst genau, was Ihnen auffällt, damit wir Ihnen schneller helfen können. Wir antworten innerhalb von 2 Werktagen. Haben Sie eine dringende Störung? Vermerken Sie dies bitte in Ihrer Nachricht über das Kontaktformular."
+      },
+      "q4": {
+        "question": "Welche Garantien gelten?",
+        "answer": "Für Ihre Anlage gelten verschiedene Garantien, darunter die Herstellergarantie auf die Module und den Wechselrichter. [TE BEVESTIGEN] Die genauen Garantiezeiten und der Deckungsumfang unterscheiden sich je nach Komponente und Vertrag. Die für Sie geltenden Bedingungen finden Sie in Ihrem Vertrag; kontaktieren Sie uns im Zweifel zu Ihrer konkreten Situation."
+      },
+      "q5": {
+        "question": "Wie lange hält mein System?",
+        "answer": "Solarmodule halten im Durchschnitt 25 bis 30 Jahre und erzeugen meist auch danach noch Strom, allerdings mit allmählich abnehmendem Ertrag. Der Wechselrichter hat in der Regel eine kürzere Lebensdauer und wird während der Laufzeit möglicherweise einmal ausgetauscht. Wir überwachen die Leistung Ihrer Anlage fortlaufend. Fragen zum Zustand Ihres Systems? Kontaktieren Sie uns."
+      },
+      "q6": {
+        "question": "Was passiert, wenn ich mein Haus verkaufe?",
+        "answer": "Beim Verkauf Ihres Hauses kann der Mietvertrag in den meisten Fällen auf den neuen Eigentümer übertragen werden, sodass die Anlage einfach liegen bleiben kann. Wir begleiten Sie und den Käufer bei dieser Vertragsübertragung. Informieren Sie uns rechtzeitig, sobald ein Verkauf ansteht, dann wickeln wir die Übertragung reibungslos ab. Kontaktieren Sie uns, um die Übertragung einzuleiten."
+      }
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "form": {
+      "intro": "Haben Sie eine Frage zu Service, Zahlung, Ihrem Vertrag oder etwas anderem? Füllen Sie das Formular aus und wir melden uns so schnell wie möglich bei Ihnen.",
+      "nameLabel": "Name",
+      "namePlaceholder": "Ihr vollständiger Name",
+      "emailLabel": "E-Mail-Adresse",
+      "emailPlaceholder": "sie@beispiel.de",
+      "phoneLabel": "Telefon (optional)",
+      "phonePlaceholder": "Optional — z. B. +49 151 12345678",
+      "categoryLabel": "Betreff",
+      "categoryPlaceholder": "— Betreff wählen —",
+      "categories": {
+        "service": "Serviceanfrage",
+        "payment": "Frage zur Zahlung",
+        "cancellation": "Kündigung / Vertragsänderung",
+        "other": "Sonstige Fragen"
+      },
+      "messageLabel": "Nachricht",
+      "messagePlaceholder": "Wie können wir Ihnen helfen?",
+      "submit": "Nachricht senden",
+      "sending": "Senden…",
+      "responseTime": "Wir antworten innerhalb von 2 Werktagen.",
+      "success": "Vielen Dank für Ihre Nachricht — wir antworten innerhalb von 2 Werktagen.",
+      "error": "Beim Senden ist etwas schiefgelaufen. Schreiben Sie uns direkt an info@gozero.nl [TE BEVESTIGEN] oder versuchen Sie es später erneut."
+    }
+  }
+}

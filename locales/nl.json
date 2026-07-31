@@ -1,0 +1,159 @@
+{
+  "nav": {
+    "home": "Home",
+    "faq": "Veelgestelde vragen",
+    "contact": "Contact opnemen",
+    "diensten": "Diensten",
+    "howto": "Zo werkt het",
+    "back": "Terug naar home"
+  },
+  "footer": {
+    "copy": "© 2026 goZERO",
+    "tagline": "Beheer en service voor zonnepaneelinstallaties",
+    "faq": "Veelgestelde vragen",
+    "contact_cta": "Contact opnemen",
+    "contact": {
+      "heading": "Contact",
+      "email": "info@gozero.nl [TE BEVESTIGEN]",
+      "cta": "Neem contact op"
+    },
+    "nav": {
+      "heading": "Menu",
+      "home": "Home",
+      "faq": "Veelgestelde vragen",
+      "contact": "Contact"
+    }
+  },
+  "home": {
+    "title": "goZERO",
+    "hero": {
+      "eyebrow": "Zorgeloos zonne-energie",
+      "headline": "Altijd zicht op uw zonne-installatie.",
+      "body": "Wij monitoren, signaleren en lossen problemen op — vaak voordat u ze zelf merkt.",
+      "proof": "1.100 installaties • actief in 3 landen",
+      "stat_label": "installaties beheerd in NL, BE en DE",
+      "cta": "Contact opnemen",
+      "services_link": "Diensten",
+      "card1_label": "Live productie",
+      "card2_title": "Systeem werkt goed",
+      "card2_sub": "Zojuist gecontroleerd"
+    },
+    "help": {
+      "eyebrow": "Service voor klanten",
+      "heading": "Waarmee kunnen we u helpen?",
+      "intro": "Kies het onderwerp van uw vraag. Zo komt u direct bij de juiste collega terecht.",
+      "card1": {
+        "title": "Serviceverzoek",
+        "desc": "Installatie werkt niet goed? Meld het direct.",
+        "link": "Storing melden"
+      },
+      "card2": {
+        "title": "Betaling & factuur",
+        "desc": "Een vraag over betaling, termijn of factuur.",
+        "link": "Stel uw vraag"
+      },
+      "card3": {
+        "title": "Uitbreiden",
+        "desc": "Meer uit uw energie halen, bijv. met een thuisbatterij.",
+        "link": "Bekijk mogelijkheden"
+      }
+    },
+    "monitor": {
+      "eyebrow": "Altijd zicht op uw systeem",
+      "line1": "Opgewekt.",
+      "line2": "Gemonitord.",
+      "line3": "Geregeld.",
+      "lead": "Wij volgen de prestaties van uw installatie op afstand. Zien we iets afwijkends, dan komen we in actie — vaak voordat u er zelf iets van merkt.",
+      "s1": {
+        "title": "Wij monitoren",
+        "desc": "De prestaties van uw zonnepanelen worden continu gevolgd."
+      },
+      "s2": {
+        "title": "Wij signaleren",
+        "desc": "Afwijkingen en storingen komen automatisch bij ons in beeld."
+      },
+      "s3": {
+        "title": "Wij lossen op",
+        "desc": "We pakken het op of nemen contact met u op als dat nodig is."
+      },
+      "stat1": { "label": "Installaties in beheer" },
+      "stat2": { "label": "Landen actief" },
+      "stat3": { "value": "2 werkdagen", "label": "Maximale reactietijd" },
+      "panel": { "title": "Live prestaties", "alert": "Afwijking gedetecteerd", "status": "Actie ingepland" }
+    },
+    "faq": {
+      "eyebrow": "Snel antwoord",
+      "heading": "Veelgestelde vragen",
+      "intro": "Vind direct antwoord op de vragen die onze klanten het vaakst stellen."
+    },
+    "testimonial": {
+      "quote": "Toen mijn omvormer uitviel, had goZERO het al gezien voordat ik iets doorhad. Binnen een dag was alles weer opgelost.",
+      "initials": "dV",
+      "name": "Familie de Vries",
+      "role": "Klant sinds 2021 • Utrecht"
+    },
+    "cta": {
+      "eyebrow": "Zorgeloos zonne-energie",
+      "heading": "We helpen u graag verder.",
+      "body": "Vertel ons waar we u mee kunnen helpen. U ontvangt binnen twee werkdagen een reactie.",
+      "button": "Stel uw vraag"
+    }
+  },
+  "faq": {
+    "title": "Veelgestelde vragen",
+    "intro": "Hieronder vindt u antwoorden op de meestgestelde vragen over uw huurcontract, service en garanties. Staat uw vraag er niet bij? Neem gerust contact met ons op.",
+    "items": {
+      "q1": {
+        "question": "Kan ik tussentijds opzeggen?",
+        "answer": "Tussentijds opzeggen tijdens de lopende huurtermijn is in de regel niet mogelijk; er geldt een vaste contractperiode. [TE BEVESTIGEN] De exacte opzegtermijn en voorwaarden staan in uw huurovereenkomst en kunnen per contract verschillen. Neem contact met ons op zodat wij uw specifieke situatie kunnen bekijken."
+      },
+      "q2": {
+        "question": "Wat gebeurt er na de huurtermijn?",
+        "answer": "Als uw huurtermijn afloopt heeft u drie mogelijkheden: u kunt de installatie kopen tegen de dan geldende restwaarde, de huur verlengen, of de panelen kosteloos laten verwijderen. Wij nemen ruim voor het einde van uw contract contact met u op om de opties door te nemen. Twijfelt u welke keuze bij u past? Neem contact met ons op."
+      },
+      "q3": {
+        "question": "Hoe kan ik een serviceverzoek indienen?",
+        "answer": "Een serviceverzoek dient u eenvoudig in via ons contactformulier; kies daarbij de categorie \"Serviceverzoek\". Beschrijf zo duidelijk mogelijk wat u opvalt, dan kunnen wij u sneller helpen. Wij reageren binnen 2 werkdagen. Heeft u een dringende storing? Vermeld dit dan in uw bericht via het contactformulier."
+      },
+      "q4": {
+        "question": "Welke garanties zijn er van toepassing?",
+        "answer": "Op uw installatie zijn verschillende garanties van toepassing, waaronder fabrieksgarantie op de panelen en de omvormer. [TE BEVESTIGEN] De exacte garantietermijnen en dekking verschillen per component en per contract. De voor u geldende voorwaarden vindt u in uw overeenkomst; neem bij twijfel contact met ons op voor uw specifieke situatie."
+      },
+      "q5": {
+        "question": "Hoe lang gaat mijn systeem mee?",
+        "answer": "Zonnepanelen gaan gemiddeld 25 tot 30 jaar mee en blijven ook daarna doorgaans nog stroom opwekken, zij het met een geleidelijk afnemend rendement. De omvormer heeft meestal een kortere levensduur en wordt tijdens de looptijd mogelijk een keer vervangen. Wij monitoren de prestaties van uw installatie doorlopend. Vragen over de staat van uw systeem? Neem contact met ons op."
+      },
+      "q6": {
+        "question": "Wat gebeurt er als ik mijn huis verkoop?",
+        "answer": "Bij verkoop van uw woning kan het huurcontract in de meeste gevallen worden overgedragen aan de nieuwe eigenaar, zodat de installatie gewoon kan blijven liggen. Wij begeleiden u en de koper bij deze contractoverdracht. Laat het ons tijdig weten zodra een verkoop in beeld komt, dan regelen wij de overdracht soepel. Neem contact met ons op om de overdracht in gang te zetten."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "form": {
+      "intro": "Heeft u een vraag over service, betaling, uw contract of iets anders? Vul het formulier in en wij nemen zo snel mogelijk contact met u op.",
+      "nameLabel": "Naam",
+      "namePlaceholder": "Uw volledige naam",
+      "emailLabel": "E-mailadres",
+      "emailPlaceholder": "u@voorbeeld.nl",
+      "phoneLabel": "Telefoon (optioneel)",
+      "phonePlaceholder": "Optioneel — bijv. 06 12345678",
+      "categoryLabel": "Onderwerp",
+      "categoryPlaceholder": "— Kies onderwerp —",
+      "categories": {
+        "service": "Serviceverzoek",
+        "payment": "Betalingsvraag",
+        "cancellation": "Opzegging / contractwijziging",
+        "other": "Overige vragen"
+      },
+      "messageLabel": "Bericht",
+      "messagePlaceholder": "Waarmee kunnen wij u helpen?",
+      "submit": "Verstuur bericht",
+      "sending": "Verzenden…",
+      "responseTime": "We reageren binnen 2 werkdagen.",
+      "success": "Bedankt voor uw bericht — we reageren binnen 2 werkdagen.",
+      "error": "Er ging iets mis bij het verzenden. Mail ons direct op info@gozero.nl [TE BEVESTIGEN] of probeer het later opnieuw."
+    }
+  }
+}

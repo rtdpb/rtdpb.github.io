@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="nl" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>goZERO</title>
+
+  <!-- Pico CSS v2 classless — loads FIRST so our overrides win the cascade -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
+
+  <!-- Bunny Fonts: GDPR-safe Inter (body) + Space Grotesk (display headings) (NOT Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=inter:wght@400;500;600;700&family=space-grotesk:wght@500;600;700&display=swap">
+
+  <!-- goZERO stylesheet — loads AFTER Pico so token overrides apply -->
+  <link rel="stylesheet" href="/css/main.css?v=6">
+
+  <!-- FOUC prevention: synchronous IIFE, NO defer, NO async, NO external src -->
+  <script>
+    (function() {
+      var stored = localStorage.getItem('gozero-lang');
+      if (stored && ['nl','en','de'].indexOf(stored) !== -1) {
+        document.documentElement.lang = stored;
+      }
+    })();
+  </script>
+</head>
+<body>
+  <site-nav></site-nav>
+
+  <main>
+    <!-- Section 1: Hero (HERO-01/02) — reference two-column layout + inline SVG illustration -->
+    <section class="hero hero-grid">
+      <div class="hero-copy">
+        <p class="hero-eyebrow" data-i18n="home.hero.eyebrow"></p>
+        <h1 data-i18n="home.hero.headline"></h1>
+        <p class="hero-body" data-i18n="home.hero.body"></p>
+        <div class="hero-actions">
+          <a href="/contact.html" role="button" class="hero-cta"><span data-i18n="home.hero.cta"></span> <span aria-hidden="true">↗</span></a>
+          <a href="#diensten" class="btn-text hero-services"><span data-i18n="home.hero.services_link"></span> <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="hero-proof" data-i18n="home.hero.proof"></p>
+      </div>
+
+      <div class="hero-art">
+        <!-- Locally-built flat-vector illustration. No external assets. -->
+        <svg viewBox="0 0 560 470" role="img"
+             aria-label="Illustratie: woning met zonnepanelen, zon en live-statuskaarten"
+             xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="cardShadow" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#1B4332" flood-opacity="0.12"/>
+            </filter>
+          </defs>
+
+          <!-- Arched light-green background (rounded top + rounded bottom) -->
+          <path d="M55 235 C55 70 505 70 505 235 L505 415 Q505 440 480 440 L80 440 Q55 440 55 415 Z" fill="#E4EFE7"/>
+
+          <!-- Golden sun, top-right, with rays -->
+          <g stroke="#F4C430" stroke-width="6" stroke-linecap="round">
+            <line x1="452" y1="104" x2="452" y2="86"/>
+            <line x1="487" y1="115" x2="500" y2="102"/>
+            <line x1="498" y1="150" x2="518" y2="150"/>
+            <line x1="487" y1="185" x2="500" y2="198"/>
+            <line x1="417" y1="115" x2="404" y2="102"/>
+          </g>
+          <circle cx="452" cy="150" r="30" fill="#F4C430"/>
+
+          <!-- Soft clouds -->
+          <g fill="#FFFFFF" opacity="0.92">
+            <ellipse cx="150" cy="165" rx="42" ry="18"/>
+            <ellipse cx="188" cy="155" rx="26" ry="13"/>
+            <ellipse cx="345" cy="120" rx="30" ry="13"/>
+          </g>
+
+          <!-- House -->
+          <g>
+            <!-- Wall body -->
+            <rect x="188" y="306" width="176" height="120" rx="8" fill="#F7F1E6"/>
+            <!-- Window -->
+            <rect x="206" y="336" width="42" height="42" rx="5" fill="#CFE3D6" stroke="#B9D3C2" stroke-width="2"/>
+            <!-- Door -->
+            <rect x="246" y="362" width="36" height="64" rx="4" fill="#B77C3E"/>
+            <!-- Slanted roof plane -->
+            <polygon points="188,306 364,306 410,250 234,250" fill="#24503B"/>
+            <!-- Solar panels: a unit grid mapped onto the slanted roof plane -->
+            <g transform="matrix(176 0 46 -56 188 306)" fill="#16324A">
+              <rect x="0.05" y="0.14" width="0.19" height="0.3"/>
+              <rect x="0.29" y="0.14" width="0.19" height="0.3"/>
+              <rect x="0.53" y="0.14" width="0.19" height="0.3"/>
+              <rect x="0.77" y="0.14" width="0.19" height="0.3"/>
+              <rect x="0.05" y="0.52" width="0.19" height="0.3"/>
+              <rect x="0.29" y="0.52" width="0.19" height="0.3"/>
+              <rect x="0.53" y="0.52" width="0.19" height="0.3"/>
+              <rect x="0.77" y="0.52" width="0.19" height="0.3"/>
+            </g>
+          </g>
+
+          <!-- Ground line -->
+          <rect x="150" y="424" width="300" height="7" rx="3.5" fill="#CFE0D4"/>
+
+          <!-- Status card 1 (top-left) — Live productie -->
+          <g filter="url(#cardShadow)">
+            <rect x="86" y="150" width="152" height="58" rx="14" fill="#FFFFFF"/>
+            <circle cx="107" cy="170" r="5" fill="#52B788"/>
+            <text x="122" y="175" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#1B4332" aria-hidden="true">4.82 kW</text>
+            <text x="122" y="194" font-family="Inter, sans-serif" font-size="11" fill="#5A6B60" data-i18n="home.hero.card1_label"></text>
+            <text x="198" y="175" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#52B788" aria-hidden="true">+12%</text>
+          </g>
+
+          <!-- Status card 2 (bottom-right) — Systeem werkt goed -->
+          <g filter="url(#cardShadow)">
+            <rect x="298" y="356" width="184" height="62" rx="14" fill="#FFFFFF"/>
+            <circle cx="320" cy="387" r="12" fill="#DCEBE2"/>
+            <text x="315" y="392" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#2E7D52" aria-hidden="true">✓</text>
+            <text x="342" y="382" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#1B4332" data-i18n="home.hero.card2_title"></text>
+            <text x="342" y="400" font-family="Inter, sans-serif" font-size="11" fill="#5A6B60" data-i18n="home.hero.card2_sub"></text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Section 2: Service cards (HV-01) — "Waarmee kunnen we u helpen?" 3 white cards -->
+    <section class="section help" id="diensten">
+      <div class="section-inner">
+        <p class="eyebrow" data-i18n="home.help.eyebrow"></p>
+        <div class="help-head">
+          <h2 data-i18n="home.help.heading"></h2>
+          <p class="help-intro" data-i18n="home.help.intro"></p>
+        </div>
+        <div class="help-grid">
+          <article class="help-card help-card--primary">
+            <span class="icon-circle icon-circle--mint"><i data-lucide="wrench" aria-hidden="true"></i></span>
+            <h3 data-i18n="home.help.card1.title"></h3>
+            <p data-i18n="home.help.card1.desc"></p>
+            <a href="/contact.html" class="help-link"><span data-i18n="home.help.card1.link"></span> <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="help-card">
+            <span class="icon-circle icon-circle--yellow"><i data-lucide="euro" aria-hidden="true"></i></span>
+            <h3 data-i18n="home.help.card2.title"></h3>
+            <p data-i18n="home.help.card2.desc"></p>
+            <a href="/contact.html" class="help-link"><span data-i18n="home.help.card2.link"></span> <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="help-card">
+            <span class="icon-circle icon-circle--blue"><i data-lucide="plus" aria-hidden="true"></i></span>
+            <h3 data-i18n="home.help.card3.title"></h3>
+            <p data-i18n="home.help.card3.desc"></p>
+            <a href="/contact.html" class="help-link"><span data-i18n="home.help.card3.link"></span> <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Dark monitoring band (HV-02) — "Opgewekt. Gemonitord. Geregeld." -->
+    <section class="section section--monitor" id="zo-werkt-het">
+      <div class="section-inner">
+        <p class="eyebrow eyebrow--on-dark" data-i18n="home.monitor.eyebrow"></p>
+        <div class="monitor-head">
+          <div class="monitor-intro">
+            <h2 class="monitor-title">
+              <span data-i18n="home.monitor.line1"></span>
+              <span data-i18n="home.monitor.line2"></span>
+              <span data-i18n="home.monitor.line3"></span>
+            </h2>
+            <p class="monitor-lead" data-i18n="home.monitor.lead"></p>
+          </div>
+
+          <!-- Interface fragment (cat 5): a live-performance graph with a detected
+               deviation + action status. Decorative (aria-hidden) — it illustrates the
+               promise; the accessible version lives in the numbered steps below. -->
+          <div class="monitor-panel" aria-hidden="true">
+            <div class="panel-top">
+              <span class="panel-title" data-i18n="home.monitor.panel.title"></span>
+              <span class="panel-range">7d</span>
+            </div>
+            <svg class="panel-chart" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="prodFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#52B788" stop-opacity="0.35"/>
+                  <stop offset="1" stop-color="#52B788" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <!-- faint gridlines -->
+              <g stroke="rgba(255,255,255,0.08)" stroke-width="1">
+                <line x1="0" y1="40" x2="320" y2="40"/>
+                <line x1="0" y1="70" x2="320" y2="70"/>
+                <line x1="0" y1="100" x2="320" y2="100"/>
+              </g>
+              <!-- production area + line (dip at x=208 = the anomaly) -->
+              <path d="M10,78 L43,62 L76,70 L109,50 L142,58 L175,44 L208,92 L241,60 L274,52 L307,40 L307,110 L10,110 Z" fill="url(#prodFill)"/>
+              <polyline points="10,78 43,62 76,70 109,50 142,58 175,44 208,92 241,60 274,52 307,40"
+                        fill="none" stroke="#52B788" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+              <!-- anomaly marker -->
+              <circle cx="208" cy="92" r="9" fill="rgba(244,196,48,0.18)"/>
+              <circle cx="208" cy="92" r="4" fill="#F4C430"/>
+            </svg>
+            <div class="panel-alert">
+              <span class="alert-dot"></span>
+              <span class="alert-text" data-i18n="home.monitor.panel.alert"></span>
+              <span class="alert-status" data-i18n="home.monitor.panel.status"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="monitor-steps">
+          <div class="monitor-step">
+            <span class="step-num" aria-hidden="true">01</span>
+            <h3 data-i18n="home.monitor.s1.title"></h3>
+            <p data-i18n="home.monitor.s1.desc"></p>
+          </div>
+          <div class="monitor-step">
+            <span class="step-num" aria-hidden="true">02</span>
+            <h3 data-i18n="home.monitor.s2.title"></h3>
+            <p data-i18n="home.monitor.s2.desc"></p>
+          </div>
+          <div class="monitor-step">
+            <span class="step-num" aria-hidden="true">03</span>
+            <h3 data-i18n="home.monitor.s3.title"></h3>
+            <p data-i18n="home.monitor.s3.desc"></p>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat">
+            <span class="stat-num" aria-hidden="true">1.100+</span>
+            <span class="stat-label" data-i18n="home.monitor.stat1.label"></span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" aria-hidden="true">3</span>
+            <span class="stat-label" data-i18n="home.monitor.stat2.label"></span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" aria-hidden="true" data-i18n="home.monitor.stat3.value"></span>
+            <span class="stat-label" data-i18n="home.monitor.stat3.label"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3b: Testimonial (cat 9 — human content) -->
+    <!-- PLACEHOLDER testimonial: illustrative copy so the section can be designed/reviewed.
+         Replace quote + name + location with a REAL customer quote before launch (MED-03).
+         Do NOT publish this fabricated quote as-is. -->
+    <section class="section testimonial">
+      <div class="section-inner">
+        <figure class="quote-card">
+          <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+          <blockquote class="quote-text" data-i18n="home.testimonial.quote"></blockquote>
+          <figcaption class="quote-person">
+            <span class="quote-avatar" aria-hidden="true" data-i18n="home.testimonial.initials"></span>
+            <span class="quote-meta">
+              <span class="quote-name" data-i18n="home.testimonial.name"></span>
+              <span class="quote-role" data-i18n="home.testimonial.role"></span>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Section 4: FAQ (HV-02) — split layout, reuse faq.items.q1..q6 keys -->
+    <section class="section faq" id="faq">
+      <div class="section-inner faq-split">
+        <div class="faq-intro-col">
+          <p class="eyebrow" data-i18n="home.faq.eyebrow"></p>
+          <h2 data-i18n="home.faq.heading"></h2>
+          <p class="faq-lead" data-i18n="home.faq.intro"></p>
+        </div>
+        <div class="faq-list">
+          <details name="home-faq" open>
+            <summary data-i18n="faq.items.q1.question"></summary>
+            <p data-i18n="faq.items.q1.answer"></p>
+          </details>
+          <details name="home-faq">
+            <summary data-i18n="faq.items.q2.question"></summary>
+            <p data-i18n="faq.items.q2.answer"></p>
+          </details>
+          <details name="home-faq">
+            <summary data-i18n="faq.items.q3.question"></summary>
+            <p data-i18n="faq.items.q3.answer"></p>
+          </details>
+          <details name="home-faq">
+            <summary data-i18n="faq.items.q4.question"></summary>
+            <p data-i18n="faq.items.q4.answer"></p>
+          </details>
+          <details name="home-faq">
+            <summary data-i18n="faq.items.q5.question"></summary>
+            <p data-i18n="faq.items.q5.answer"></p>
+          </details>
+          <details name="home-faq">
+            <summary data-i18n="faq.items.q6.question"></summary>
+            <p data-i18n="faq.items.q6.answer"></p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Golden CTA band (HV-03) -->
+    <section class="section section--cta">
+      <div class="section-inner cta-inner">
+        <div class="cta-copy">
+          <p class="eyebrow eyebrow--on-gold" data-i18n="home.cta.eyebrow"></p>
+          <h2 data-i18n="home.cta.heading"></h2>
+          <p class="cta-body" data-i18n="home.cta.body"></p>
+        </div>
+        <a href="/contact.html" role="button" class="cta-btn"><span data-i18n="home.cta.button"></span> <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <site-footer></site-footer>
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@0.552.0/dist/umd/lucide.min.js"></script>
+  <!-- components.js FIRST — stamps data-i18n nodes into DOM -->
+  <script src="/js/components.js?v=6"></script>
+  <!-- i18n.js SECOND — scans for data-i18n nodes after components registered -->
+  <script src="/js/i18n.js?v=6"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
+  </script>
+</body>
+</html>

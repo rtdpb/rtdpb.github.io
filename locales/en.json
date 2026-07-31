@@ -1,0 +1,159 @@
+{
+  "nav": {
+    "home": "Home",
+    "faq": "FAQ",
+    "contact": "Get in touch",
+    "diensten": "Services",
+    "howto": "How it works",
+    "back": "Back to home"
+  },
+  "footer": {
+    "copy": "© 2026 goZERO",
+    "tagline": "Management and service for solar panel installations",
+    "faq": "FAQ",
+    "contact_cta": "Get in touch",
+    "contact": {
+      "heading": "Contact",
+      "email": "info@gozero.nl [TE BEVESTIGEN]",
+      "cta": "Get in touch"
+    },
+    "nav": {
+      "heading": "Menu",
+      "home": "Home",
+      "faq": "FAQ",
+      "contact": "Contact"
+    }
+  },
+  "home": {
+    "title": "goZERO",
+    "hero": {
+      "eyebrow": "Worry-free solar energy",
+      "headline": "Always a clear view of your solar installation.",
+      "body": "We monitor, flag and resolve issues — often before you even notice them.",
+      "proof": "1,100 installations • active in 3 countries",
+      "stat_label": "installations managed in NL, BE and DE",
+      "cta": "Get in touch",
+      "services_link": "Services",
+      "card1_label": "Live production",
+      "card2_title": "System is healthy",
+      "card2_sub": "Just checked"
+    },
+    "help": {
+      "eyebrow": "Service for customers",
+      "heading": "How can we help you?",
+      "intro": "Choose the topic of your question. That way you reach the right colleague right away.",
+      "card1": {
+        "title": "Service request",
+        "desc": "Installation not working right? Report it now.",
+        "link": "Report a fault"
+      },
+      "card2": {
+        "title": "Payment & invoice",
+        "desc": "A question about payment, an instalment or your invoice.",
+        "link": "Ask your question"
+      },
+      "card3": {
+        "title": "Expand",
+        "desc": "Get more from your energy, e.g. with a home battery.",
+        "link": "See the options"
+      }
+    },
+    "monitor": {
+      "eyebrow": "Always eyes on your system",
+      "line1": "Generated.",
+      "line2": "Monitored.",
+      "line3": "Handled.",
+      "lead": "We track the performance of your installation remotely. If we spot anything unusual, we take action — often before you notice a thing.",
+      "s1": {
+        "title": "We monitor",
+        "desc": "The performance of your solar panels is tracked continuously."
+      },
+      "s2": {
+        "title": "We detect",
+        "desc": "Deviations and faults appear on our radar automatically."
+      },
+      "s3": {
+        "title": "We resolve",
+        "desc": "We handle it, or get in touch with you if that is needed."
+      },
+      "stat1": { "label": "Installations managed" },
+      "stat2": { "label": "Countries active" },
+      "stat3": { "value": "2 business days", "label": "Maximum response time" },
+      "panel": { "title": "Live performance", "alert": "Deviation detected", "status": "Action scheduled" }
+    },
+    "faq": {
+      "eyebrow": "Quick answers",
+      "heading": "Frequently asked questions",
+      "intro": "Find an instant answer to the questions our customers ask most."
+    },
+    "testimonial": {
+      "quote": "When my inverter failed, goZERO had already spotted it before I noticed a thing. Everything was back up within a day.",
+      "initials": "dV",
+      "name": "The de Vries family",
+      "role": "Customer since 2021 • Utrecht"
+    },
+    "cta": {
+      "eyebrow": "Worry-free solar energy",
+      "heading": "We're happy to help you further.",
+      "body": "Tell us what we can help you with. You'll receive a reply within two business days.",
+      "button": "Ask your question"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "intro": "Below you will find answers to the most common questions about your rental contract, service and warranties. Can't find your question? Feel free to contact us.",
+    "items": {
+      "q1": {
+        "question": "Can I cancel early?",
+        "answer": "Cancelling during the ongoing rental term is generally not possible; a fixed contract period applies. [TE BEVESTIGEN] The exact notice period and conditions are stated in your rental agreement and may differ per contract. Contact us so we can review your specific situation."
+      },
+      "q2": {
+        "question": "What happens after the rental term?",
+        "answer": "When your rental term ends you have three options: you can buy the installation at its residual value, extend the rental, or have the panels removed free of charge. We contact you well before your contract ends to go through the options. Unsure which choice suits you? Contact us."
+      },
+      "q3": {
+        "question": "How do I submit a service request?",
+        "answer": "You submit a service request easily through our contact form; select the \"Service request\" category. Describe as clearly as possible what you have noticed, so we can help you faster. We respond within 2 business days. Do you have an urgent fault? Please mention this in your message via the contact form."
+      },
+      "q4": {
+        "question": "Which warranties apply?",
+        "answer": "Several warranties apply to your installation, including the manufacturer's warranty on the panels and the inverter. [TE BEVESTIGEN] The exact warranty periods and coverage differ per component and per contract. The conditions that apply to you are set out in your agreement; when in doubt, contact us about your specific situation."
+      },
+      "q5": {
+        "question": "How long will my system last?",
+        "answer": "Solar panels last 25 to 30 years on average and usually keep generating power afterwards, albeit at a gradually declining yield. The inverter typically has a shorter lifespan and may be replaced once during the term. We continuously monitor the performance of your installation. Questions about the condition of your system? Contact us."
+      },
+      "q6": {
+        "question": "What happens if I sell my house?",
+        "answer": "When you sell your home the rental contract can in most cases be transferred to the new owner, so the installation can simply stay in place. We guide you and the buyer through this contract transfer. Let us know in good time once a sale is on the horizon, and we will arrange the transfer smoothly. Contact us to start the transfer."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "form": {
+      "intro": "Have a question about service, billing, your contract or anything else? Fill in the form and we will get back to you as soon as possible.",
+      "nameLabel": "Name",
+      "namePlaceholder": "Your full name",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "you@example.com",
+      "phoneLabel": "Phone (optional)",
+      "phonePlaceholder": "Optional — e.g. +31 6 12345678",
+      "categoryLabel": "Subject",
+      "categoryPlaceholder": "— Choose a subject —",
+      "categories": {
+        "service": "Service request",
+        "payment": "Billing question",
+        "cancellation": "Cancellation / contract change",
+        "other": "Other questions"
+      },
+      "messageLabel": "Message",
+      "messagePlaceholder": "How can we help you?",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "responseTime": "We respond within 2 business days.",
+      "success": "Thank you for your message — we will respond within 2 business days.",
+      "error": "Something went wrong while sending. Email us directly at info@gozero.nl [TE BEVESTIGEN] or try again later."
+    }
+  }
+}

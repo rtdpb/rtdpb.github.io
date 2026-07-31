@@ -1,0 +1,848 @@
+/* -- 1. Pico Override: goZERO Brand ------------------- */
+:root {
+  --pico-primary:                  #1B4332;
+  --pico-primary-background:       #1B4332;
+  --pico-primary-border:           #1B4332;
+  --pico-primary-underline:        rgba(27, 67, 50, 0.5);
+  --pico-primary-hover:            #245740;
+  --pico-primary-hover-background: #245740;
+  --pico-primary-hover-border:     #245740;
+  --pico-primary-hover-underline:  rgba(36, 87, 64, 0.5);
+  --pico-primary-focus:            rgba(27, 67, 50, 0.25);
+  --pico-primary-inverse:          #ffffff;
+
+  --pico-font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Fallback if Pico scopes under data-theme (v2 sometimes does) */
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+  --pico-primary:                  #1B4332;
+  --pico-primary-background:       #1B4332;
+  --pico-primary-border:           #1B4332;
+  --pico-primary-underline:        rgba(27, 67, 50, 0.5);
+  --pico-primary-hover:            #245740;
+  --pico-primary-hover-background: #245740;
+  --pico-primary-hover-border:     #245740;
+  --pico-primary-hover-underline:  rgba(36, 87, 64, 0.5);
+  --pico-primary-focus:            rgba(27, 67, 50, 0.25);
+  --pico-primary-inverse:          #ffffff;
+}
+
+/* -- 2. Project Design Tokens ------------------------- */
+:root {
+  --color-green-dark:  #1B4332;   /* primary */
+  --color-green-mid:   #245740;   /* hover state */
+  --color-green-light: #52B788;   /* accent / decorative */
+  --color-surface:     #F4F7F5;   /* card backgrounds */
+  --color-text:        #1A1A1A;
+  --color-muted:       #3A3A3A;   /* body copy on light backgrounds */
+  --color-border:      #E3E9E5;   /* card + pill borders */
+  --max-width:         1200px;     /* widened from 1120 for a more confident content span */
+  --radius:            6px;
+  /* Display font (Space Grotesk via Bunny) for headings + big numbers; Inter stays for body */
+  --font-display: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+  --radius-card:       16px;      /* service cards */
+  --shadow-sm:         0 1px 3px rgba(27, 67, 50, 0.06), 0 1px 2px rgba(27, 67, 50, 0.04);
+  --shadow-md:         0 14px 30px rgba(27, 67, 50, 0.13);
+
+  /* v1.2 reference palette (Phase 9 THEME-01) */
+  --color-page-bg:      #F5F3EE;   /* warm cream page background sitewide */
+  --color-accent:       #F4C430;   /* golden-yellow — TEXT only on dark; decorative marker on light */
+  --color-accent-strong:#9A6A00;   /* AA-safe amber TEXT on light (4.73:1 on white) */
+  --color-band-deep:    #12352A;   /* deep-green "Opgewekt" band (Phase 10) */
+  --color-cta-band:     #F4C430;   /* golden CTA band background (Phase 10) */
+  --color-icon-mint:    #DCEBE2;   /* Serviceverzoek icon circle */
+  --color-icon-yellow:  #F7E7B0;   /* Betaling & factuur icon circle */
+  --color-icon-blue:    #DFE6EA;   /* Uitbreiden icon circle */
+  --color-body-green:   #4C5B52;   /* reference grey-green body text on cream (darkened for contrast) */
+  --radius-btn:         8px;       /* reference slightly-rounded rectangle button radius */
+
+  /* 8-point spacing scale (Phase 6 DS-01) */
+  --space-xs:   4px;
+  --space-sm:   8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  /* content widths */
+  --width-text: 760px;   /* hero copy, about, FAQ text bands */
+  --width-form: 680px;   /* contact form band */
+  /* section vertical rhythm (tightened ~30% so sections read as one page, not disconnected blocks) */
+  --section-y:        56px;   /* desktop/tablet band padding */
+  --section-y-mobile: 44px;   /* <=599px band padding */
+}
+
+/* -- 3. Web Component Layout -------------------------- */
+/* Single-tier reference chrome (v1.2): a cream navbar row (logo w/ golden sun
+   dot + links + NL/EN/DE toggle + green CTA) and a light single-row footer.
+   Replaces the v1.1 two-tier sticky nav + dark 3-column footer. */
+
+/* Custom elements default to display:inline — force block so their nav/footer
+   layout (max-width + margin:auto centering) matches the page content exactly. */
+site-nav, site-footer { display: block; }
+/* display:block overrides Pico's `nav { display:flex }` — otherwise .nav-inner
+   becomes a flex ITEM that shrinks to its content width (so max-width:1120 +
+   margin:auto centered the whole logo+menu group, indenting the logo and making
+   it drift with the menu width). Block lets .nav-inner span the full width. */
+.site-nav-bar { display: block; background: var(--color-page-bg); border-bottom: 1px solid transparent; }
+/* CSS GRID: column 1 (auto) is the logo, column 2 (1fr) is the menu. The logo
+   column is sized to the logo ALONE and sits at the content-left edge — it is
+   completely independent of the menu width, so it can NEVER shift when the menu
+   text changes (NL/EN/DE). This replaces flex, which was mis-positioning it. */
+.nav-inner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--space-lg);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-md) var(--space-lg);   /* 24px inline aligns the logo with the hero/sections below */
+}
+.nav-logo { grid-column: 1; justify-self: start; position: relative; text-decoration: none; display: inline-flex; }
+/* Menu (links + language switcher) lives in column 2 and hugs the right edge. */
+.nav-menu { grid-column: 2; justify-self: end; display: flex; align-items: center; gap: var(--space-xl); }
+/* Explicit height overrides Pico's `img { height: auto }` (which ignores the
+   height attribute). Logo.png is cropped tight to the wordmark. */
+.nav-logo img { display: block; height: 38px; width: auto; }
+/* golden sun dot accent above the wordmark (decorative, not text) */
+.nav-logo::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.nav-links {
+  display: flex;
+  gap: var(--space-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 0 0 auto;           /* natural width; centered by the equal side zones */
+  justify-content: center;
+}
+.nav-links a { text-decoration: none; color: var(--color-green-dark); font-weight: 600; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-cta { min-height: 40px; padding: 0.6rem 1.2rem; }   /* inherits green rect button from §3c */
+.nav-back { color: var(--color-green-dark); font-weight: 600; text-decoration: underline; }
+
+/* Compact pill toggle. `width:auto` + `flex:none` override Pico's
+   `[role="group"]` full-width/stretch styling that blew this up to a
+   full-width segmented bar. */
+.lang-switcher { display: inline-flex; gap: var(--space-xs); width: auto; flex: 0 0 auto; }
+.lang-switcher button {
+  padding: 0.35rem 0.7rem;
+  min-height: 34px;
+  font-size: 0.875rem;              /* Label */
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-green-dark);
+  border-radius: 999px;             /* pill switcher */
+  cursor: pointer;
+  width: auto;
+  flex: 0 0 auto;                   /* do not stretch (defeats Pico group flex:1) */
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.lang-switcher button[aria-pressed="true"] {
+  background: var(--color-green-dark);   /* dark-green active fill */
+  color: #ffffff;
+}
+.lang-switcher button:hover { border-color: var(--color-green-mid); }
+
+/* Light single-row footer */
+.site-footer { background: var(--color-page-bg); border-top: 1px solid var(--color-border); }
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md);
+  flex-wrap: wrap;
+}
+.footer-brand { display: flex; align-items: center; gap: var(--space-md); }
+.footer-logo { display: block; height: 26px; width: auto; }   /* explicit height overrides Pico img{height:auto} */
+.footer-tagline { color: var(--color-body-green); margin: 0; font-size: 0.9rem; }
+.footer-links { display: flex; align-items: center; gap: var(--space-lg); }
+.footer-links a { color: var(--color-green-dark); text-decoration: none; font-weight: 600; }
+.footer-links a:hover { text-decoration: underline; }
+.footer-copy { color: var(--color-body-green); font-size: 0.875rem; }
+
+/* On narrow screens stack nav + footer so nothing overflows at 375px */
+@media (max-width: 600px) {
+  .nav-inner { grid-template-columns: 1fr; justify-items: center; gap: var(--space-md); }
+  .nav-logo, .nav-menu { justify-self: center; grid-column: 1; }
+  /* width:100% gives the flex row a boundary so nav-links actually WRAP instead of
+     forcing the menu to its ~440px single-line natural width (real cause of the
+     horizontal overflow on <440px phones). */
+  .nav-menu { flex-direction: column; gap: var(--space-sm); width: 100%; }
+  .nav-links { flex-wrap: wrap; justify-content: center; width: 100%; row-gap: var(--space-sm); }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+
+/* -- 3b. Section Band System (Phase 6 DS-01) ------------ */
+.section {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+}
+.section--surface { background: var(--color-surface); }   /* #F4F7F5 alt band */
+.section--emphasis {                                       /* the ONE dark-green band per page */
+  background: var(--color-green-dark);
+  color: #ffffff;
+}
+.section--emphasis h1,
+.section--emphasis h2,
+.section--emphasis p { color: #ffffff; }
+.section-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+.section-inner--text { max-width: var(--width-text); }
+.section-inner--form { max-width: var(--width-form); }
+@media (max-width: 599px) {
+  .section {
+    padding-top: var(--section-y-mobile);
+    padding-bottom: var(--section-y-mobile);
+  }
+}
+
+/* -- 3c. Typography + Buttons + Cards (Phase 6 DS-01) --- */
+
+/* Sitewide type baseline — Inter, Body role on <body> (400/16/1.6) */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 1rem;          /* 16px Body */
+  line-height: 1.6;
+  color: var(--color-muted);
+  background: var(--color-page-bg);
+  overflow-x: hidden;       /* belt-and-suspenders vs the .section--monitor 100vw scrollbar-gutter overflow */
+  overflow-wrap: break-word; /* never let a long token (email, hyphen-word) force horizontal overflow */
+}
+/* Headings: Space Grotesk display, 700 weight, tight tracking, dark text on light */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+h1 { font-size: clamp(2rem, 3.4vw, 2.6rem); line-height: 1.1; }   /* Display, fluid */
+h2, h3 { font-size: 1.3rem; line-height: 1.25; }                   /* Heading */
+.u-label {                                        /* Label role 14px/400 */
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* Pill button system — dark-green fill, white 700 text, soft shadow + hover lift.
+   Mirrors the existing .hero-cta so buttons are consistent sitewide. */
+.btn,
+button[type="submit"],
+a[role="button"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  min-height: 44px;                 /* touch target */
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-btn); /* 8px slightly-rounded rectangle (reference) */
+  background: var(--color-green-dark);
+  color: #ffffff;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(27,67,50,0.22);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.btn:hover,
+button[type="submit"]:hover,
+a[role="button"]:hover {
+  background: var(--color-green-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(27,67,50,0.30);
+  color: #ffffff;
+}
+/* Secondary / text link: dark-green text, underline on hover, no fill (no second-color button) */
+.btn-text {
+  background: none;
+  box-shadow: none;
+  color: var(--color-green-dark);
+  font-weight: 700;
+  padding: 0;
+  min-height: auto;
+  border-radius: 0;
+}
+.btn-text:hover { background: none; transform: none; box-shadow: none; text-decoration: underline; }
+
+/* Card system — white fill, subtle border, 16px radius, soft shadow, hover lift for interactive */
+.card {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);   /* 16px */
+  padding: var(--space-xl);            /* 32px */
+  box-shadow: var(--shadow-sm);
+}
+.card--interactive { transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.card--interactive:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+/* Accent icon badge (56px circle) — the ONLY large use of accent green (reserved item #1) */
+.icon-badge {
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(82,183,136,0.14);
+}
+.icon-badge svg { width: 28px; height: 28px; stroke: var(--color-green-dark); }
+
+@media (max-width: 599px) {
+  .card { padding: var(--space-lg); }   /* 24px mobile */
+}
+
+/* -- 4. Homepage Sections (Phase 7 re-cast) ------------ */
+
+/* Hero — reference two-column layout + inline SVG illustration (HERO-01/02) */
+.hero { padding: var(--space-2xl) 0 var(--space-3xl); background: var(--color-page-bg); }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.08fr;   /* give the illustration a touch more room */
+  gap: var(--space-xl);                /* tighter — pulls text + image closer together */
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);   /* 24px inline — same as nav + sections for a consistent left edge */
+}
+.hero-copy { text-align: left; }
+/* Golden eyebrow — uppercase, letter-spaced, dash prefix. AA-safe: TEXT uses
+   --color-accent-strong (#9A6A00) on cream; the dash marker uses --color-accent (#F4C430). */
+.hero-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--color-accent-strong);
+  margin: 0 0 var(--space-md);
+}
+.hero-eyebrow::before { content: "— "; color: var(--color-accent); }
+/* Bigger, more confident display headline — the hero was reading small vs. whitespace */
+.hero-copy h1 {
+  max-width: 14ch;
+  margin: 0 0 var(--space-md);
+  font-size: clamp(2.4rem, 4.4vw, 3.4rem);
+  line-height: 1.03;
+}
+.hero-body { color: var(--color-body-green); max-width: 46ch; margin: 0 0 var(--space-xl); font-size: 1.0625rem; }
+.hero-actions { display: flex; align-items: center; gap: var(--space-lg); flex-wrap: wrap; }
+.hero-cta { min-height: 44px; }   /* green rectangle fill inherited from 3c a[role="button"] */
+.hero-services { color: var(--color-green-dark); font-weight: 700; }
+/* Concrete proof strip under the CTAs — "1.100 installaties • actief in 3 landen" */
+.hero-proof {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: var(--space-xl) 0 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-green-dark);
+}
+.hero-proof::before {
+  content: "";
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--color-green-light);
+  flex: 0 0 auto;
+}
+/* Illustration: fluid, no layout shift (svg has viewBox + width:100%; height:auto) */
+.hero-art { position: relative; }
+/* Soft color shape behind the illustration for depth (cat 3) */
+.hero-art::before {
+  content: "";
+  position: absolute;
+  inset: -8% -6% -12% -6%;
+  background: radial-gradient(60% 60% at 65% 40%, rgba(82,183,136,0.22), rgba(82,183,136,0) 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-art svg { position: relative; z-index: 1; width: 100%; height: auto; display: block; }
+
+/* Shared section lead paragraph (centered intro under an h2) */
+.section > .section-inner > h2 { margin: 0 0 var(--space-md); }
+.section-lead {
+  max-width: var(--width-text);
+  margin: 0 0 var(--space-2xl);
+  color: var(--color-muted);
+}
+
+/* Shared eyebrow (golden, uppercase, dash prefix) — reused by all reference sections.
+   AA-safe: TEXT uses --color-accent-strong on cream; the dash uses --color-accent.
+   On the dark band the golden text IS AA-safe, so --on-dark uses --color-accent. */
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--color-accent-strong);
+  margin: 0 0 var(--space-md);
+}
+.eyebrow::before { content: "— "; color: var(--color-accent); }
+.eyebrow--on-dark { color: var(--color-accent); }
+.eyebrow--on-dark::before { color: var(--color-accent); }
+/* On the golden CTA band, eyebrow text is dark green (AA on gold) */
+.eyebrow--on-gold { color: var(--color-green-dark); }
+.eyebrow--on-gold::before { color: var(--color-green-dark); }
+
+/* -- 5. Homepage reference sections (Phase 10 HV-01/02/03) -- */
+
+/* Scroll anchoring so sticky-less nav jumps land below the top edge */
+html { scroll-behavior: smooth; }
+#diensten, #zo-werkt-het, #faq { scroll-margin-top: var(--space-lg); }
+
+/* (A) Service cards — "Waarmee kunnen we u helpen?" */
+.section.help { background: #ECF3ED; }   /* very light-green band to give the cards their own zone */
+.help-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: end;
+  margin-bottom: var(--space-2xl);
+}
+.help-head h2 { margin: 0; font-size: 1.75rem; line-height: 1.15; color: var(--color-green-dark); }
+.help-intro { margin: 0; color: var(--color-body-green); }
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+.help-card {
+  position: relative;                 /* anchor for the stretched whole-card link */
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--accent, var(--color-green-light));   /* per-card accent bar */
+  border-radius: var(--radius-card);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+/* Per-card accent hue (drives the top bar + icon circle + arrow) */
+.help-card:nth-child(1) { --accent: #2E8B62; }   /* service — green */
+.help-card:nth-child(2) { --accent: #D9A02B; }   /* payment — amber */
+.help-card:nth-child(3) { --accent: #5E93B8; }   /* expand — blue */
+.help-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+/* Primary card (Serviceverzoek) — tinted fill + stronger presence */
+.help-card--primary { background: #F1F7F2; box-shadow: 0 10px 26px rgba(27,67,50,0.12); }
+.help-card h3 { margin: var(--space-lg) 0 var(--space-sm); color: var(--color-green-dark); }
+.help-card p { margin: 0 0 var(--space-lg); color: var(--color-body-green); }
+.icon-circle {
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform 0.18s ease;
+}
+.help-card:hover .icon-circle { transform: scale(1.08); }
+.icon-circle svg { width: 28px; height: 28px; stroke: var(--accent, var(--color-green-dark)); }
+.icon-circle--mint   { background: var(--color-icon-mint); }
+.icon-circle--yellow { background: var(--color-icon-yellow); }
+.icon-circle--blue   { background: var(--color-icon-blue); }
+.help-link {
+  margin-top: auto;
+  color: var(--color-green-dark);
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.help-link span[aria-hidden] { color: var(--accent, var(--color-green-dark)); transition: transform 0.18s ease; }
+.help-card:hover .help-link span[aria-hidden] { transform: translateX(4px); }
+/* Stretched link: the whole card is clickable, no nested anchors */
+.help-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-card);
+}
+
+/* (B) Dark monitoring band — "Opgewekt. Gemonitord. Geregeld." */
+/* Full-bleed ONLY the dark monitoring band — its background spans the whole
+   viewport width while .section-inner keeps content at max-width. The golden
+   CTA band stays a contained block (per user preference). */
+.section--monitor {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+html { overflow-x: hidden; }   /* guard against the 100vw scrollbar overflow */
+/* Faint line-grid over the deep green adds texture (cat 3) without new assets */
+.section--monitor {
+  background-color: var(--color-band-deep);
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 46px 46px;
+  color: #ffffff;
+}
+.monitor-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+  margin-bottom: var(--space-2xl);
+}
+.monitor-intro { display: flex; flex-direction: column; gap: var(--space-lg); }
+.monitor-title { margin: 0; color: #ffffff; font-size: 2rem; line-height: 1.1; }
+.monitor-title span { display: block; }
+.monitor-lead { margin: 0; color: rgba(255, 255, 255, 0.82); }
+
+/* Interface fragment — live-performance graph + anomaly alert (cat 5) */
+.monitor-panel {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-card);
+  padding: var(--space-lg);
+}
+.panel-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-md); }
+.panel-title { font-weight: 700; color: #ffffff; font-size: 0.95rem; }
+.panel-range {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+.panel-chart { width: 100%; height: auto; display: block; }
+.panel-alert {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.alert-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(244, 196, 48, 0.18);
+  flex: 0 0 auto;
+}
+.alert-text { color: rgba(255, 255, 255, 0.88); font-size: 0.875rem; font-weight: 600; }
+.alert-status {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  border: 1px solid rgba(244, 196, 48, 0.4);
+  border-radius: 999px;
+  padding: 2px 10px;
+  white-space: nowrap;
+}
+.monitor-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2xl);
+  padding: var(--space-xl) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+/* Process connectors — reads as Monitoring -> detected -> action */
+.monitor-step { position: relative; }
+.monitor-step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 0;
+  right: calc(var(--space-2xl) / -2);
+  transform: translateX(50%);
+  color: var(--color-accent);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.monitor-step .step-num {
+  display: block;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+.monitor-step h3 { margin: 0 0 var(--space-xs); color: #ffffff; }
+.monitor-step p { margin: 0; color: rgba(255, 255, 255, 0.72); font-size: 0.95rem; }
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  text-align: center;
+  padding-top: var(--space-2xl);
+}
+.stat-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #ffffff;
+}
+.stat-label {
+  display: block;
+  margin-top: var(--space-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* (B2) Testimonial — human content (cat 9) with a soft shape + overlapping quote mark (cat 3) */
+.testimonial { position: relative; overflow: hidden; }
+.quote-card {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-2xl) var(--space-2xl) var(--space-xl);
+  box-shadow: var(--shadow-md);
+}
+/* Soft color shape behind the card (cat 3) */
+.quote-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -28px;
+  right: -28px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244,196,48,0.28), rgba(244,196,48,0) 70%);
+  pointer-events: none;
+}
+/* Big quotation mark, overlapping above the card's top-left edge (overlap, cat 3) */
+.quote-mark {
+  position: absolute;
+  top: -0.35em;
+  left: 24px;
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 1;
+  color: var(--color-green-light);
+}
+.quote-text {
+  margin: 0 0 var(--space-xl);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--color-text);
+}
+.quote-person { display: flex; align-items: center; gap: var(--space-md); }
+.quote-avatar {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--color-green-dark);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+.quote-meta { display: flex; flex-direction: column; }
+.quote-name { font-weight: 700; color: var(--color-green-dark); }
+.quote-role { font-size: 0.875rem; color: var(--color-body-green); }
+
+/* (C) FAQ — intro stacked ABOVE the accordion (no more empty left column) */
+.faq-split {
+  display: block;
+  max-width: 820px;          /* keeps answer line-length comfortable */
+  margin: 0 auto;
+}
+.faq-intro-col { margin-bottom: var(--space-xl); }
+.faq-intro-col h2 { margin: 0 0 var(--space-sm); font-size: 1.75rem; line-height: 1.15; color: var(--color-green-dark); }
+.faq-lead { margin: 0; color: var(--color-body-green); max-width: 60ch; }
+
+/* FAQ accordion — shared by homepage .faq .faq-list AND the FAQ page .faq-list */
+.faq-list details {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  padding: 0 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+.faq-list summary {
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 1rem 0;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+/* Chevron affordance: points down when closed, rotates up when open */
+.faq-list summary::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--color-green-dark);
+  border-bottom: 2px solid var(--color-green-dark);
+  transform: rotate(45deg);
+  transform-origin: 60% 60%;
+  transition: transform 0.2s ease;
+  flex: 0 0 auto;
+  margin-left: var(--space-md);
+}
+.faq-list details[open] summary { color: var(--color-green-dark); }
+.faq-list details[open] summary::after { transform: rotate(-135deg); }
+.faq-list details > p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+  margin: 0 0 1rem;
+  max-width: 66ch;   /* shorter, more readable line length */
+}
+
+/* (D) Golden CTA — contained rounded block on cream (no longer a full-width slab) */
+.section--cta { background: transparent; }
+.cta-inner {
+  position: relative;
+  overflow: hidden;
+  max-width: 980px;                    /* narrower than the 1200 content span */
+  background: var(--color-cta-band);
+  border-radius: 24px;                 /* rounded to match the card language */
+  padding: var(--space-2xl) var(--space-2xl);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+/* Soft sun glow, top-right — subtle energy visual */
+.cta-inner::before {
+  content: "";
+  position: absolute;
+  top: -70px;
+  right: -50px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.45), rgba(255,255,255,0) 70%);
+  pointer-events: none;
+}
+.cta-copy, .cta-inner > a { position: relative; z-index: 1; }
+.cta-copy h2 { margin: 0 0 var(--space-sm); color: var(--color-green-dark); font-size: 1.75rem; line-height: 1.15; }
+.cta-body { margin: 0; color: var(--color-green-dark); max-width: 52ch; }
+/* White button — dark-green text (distinct from the green nav CTA; allowed) */
+.cta-btn {
+  background: #ffffff;
+  color: var(--color-green-dark);
+  box-shadow: 0 6px 18px rgba(18, 53, 42, 0.18);
+  white-space: nowrap;
+}
+.cta-btn:hover { background: #ffffff; color: var(--color-green-mid); }
+
+/* Responsive: reference sections stack on mobile */
+@media (max-width: 768px) {
+  .hero-grid { grid-template-columns: 1fr; gap: var(--space-xl); }
+  .help-head { grid-template-columns: 1fr; gap: var(--space-md); }
+  .help-grid { grid-template-columns: repeat(2, 1fr); }
+  .monitor-head { grid-template-columns: 1fr; gap: var(--space-md); }
+  .monitor-lead { align-self: start; }
+  .faq-split { grid-template-columns: 1fr; }
+}
+@media (max-width: 599px) {
+  .hero { padding: var(--space-2xl) var(--space-md); }
+  .help-grid { grid-template-columns: 1fr; gap: var(--space-md); }
+  .monitor-steps { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .monitor-step:not(:last-child)::after { display: none; }   /* no horizontal arrows when stacked */
+  .stats-row { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .cta-inner { grid-template-columns: 1fr; gap: var(--space-lg); }
+}
+
+/* -- 6. FAQ Page (Phase 8 re-cast) ------------------- */
+.faq-page { text-align: left; }
+.faq-page h1 { margin: 0 0 0.75rem; }        /* Display from 3c */
+.faq-intro {
+  font-size: 1rem;                            /* Body */
+  line-height: 1.7;
+  color: var(--color-muted);
+  margin: 0 0 2rem;
+}
+.faq-list { margin: 0; }
+
+/* -- 7. Contact Page (Phase 8 re-cast) --------------- */
+.contact-page { text-align: left; }
+.contact-page h1 { margin: 0 0 0.75rem; }    /* Display from 3c */
+.contact-intro {
+  font-size: 1rem;                            /* Body */
+  line-height: 1.7;
+  color: var(--color-muted);
+  margin: 0 0 2rem;
+}
+
+/* Form — inherits .card (fill/border/16px radius/shadow) from 3c; add field rhythm */
+.contact-form { margin: 0; }
+.contact-form label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea { margin-bottom: 1rem; }
+.contact-form textarea { resize: vertical; }
+
+.contact-response-time {
+  font-size: 0.875rem;                        /* Label */
+  color: var(--color-muted);
+  margin: 0 0 1rem;
+}
+.contact-submit { width: auto; }              /* pill button, not full-width */
+
+/* Off-screen custom honeypot — NOT display:none (RESEARCH pitfall 5) */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Success / error panels — reuse card tokens */
+.form-panel {
+  border-radius: var(--radius-card);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  margin-top: 1.5rem;
+}
+.form-panel p { margin: 0; font-size: 1rem; line-height: 1.6; }
+.form-panel--success {
+  background: var(--color-surface);
+  border-color: var(--color-green-light);
+  color: var(--color-green-dark);
+}
+.form-panel--error {
+  background: #ffffff;
+  border-color: #C0392B;                      /* single one-off error color (no token exists) */
+  color: #C0392B;
+}
+[hidden] { display: none !important; }        /* assert hidden over Pico */
+
+@media (max-width: 599px) {
+  .contact-form { padding: 24px; }
+}
