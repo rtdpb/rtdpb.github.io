@@ -1021,10 +1021,11 @@ html { scroll-behavior: smooth; }
 }
 
 /* (B2) Testimonial — human content (cat 9) with a soft shape + overlapping quote mark (cat 3) */
-.testimonial { position: relative; overflow: hidden; }
+/* Grounded on a soft surface band so the card no longer floats in empty white (#71/#80) */
+.testimonial { position: relative; overflow: hidden; background: var(--color-surface); }
 .quote-card {
   position: relative;
-  max-width: 720px;
+  max-width: 780px;
   margin: 0 auto;
   background: #ffffff;
   border: 1px solid var(--color-border);
@@ -1045,41 +1046,53 @@ html { scroll-behavior: smooth; }
   background: radial-gradient(circle, rgba(244,196,48,0.28), rgba(244,196,48,0) 70%);
   pointer-events: none;
 }
-/* Big quotation mark, overlapping above the card's top-left edge (overlap, cat 3) */
+/* Quotation mark — smaller, subtler accent tucked in the corner (#75) */
 .quote-mark {
   position: absolute;
-  top: -0.35em;
-  left: 24px;
+  top: 6px;
+  left: 22px;
   font-family: var(--font-display);
-  font-size: 5rem;
+  font-size: 3.25rem;
   line-height: 1;
   color: var(--color-green-light);
+  opacity: 0.45;
+}
+/* 5 gold stars — reads immediately as a real review (social proof, #72) */
+.quote-stars {
+  display: block;
+  color: var(--color-accent);
+  font-size: 1.05rem;
+  letter-spacing: 4px;
+  margin-bottom: var(--space-md);
 }
 .quote-text {
-  margin: 0 0 var(--space-xl);
-  font-size: 1.25rem;
-  line-height: 1.5;
+  margin: 0 0 var(--space-lg);
+  font-size: 1.2rem;
+  line-height: 1.45;
   font-weight: 500;
   color: var(--color-text);
 }
 .quote-person { display: flex; align-items: center; gap: var(--space-md); }
+/* Refined initials-avatar: gradient fill + soft mint ring (#74) — a clear place a
+   real customer photo can drop in later (just swap the background for an <img>). */
 .quote-avatar {
   flex: 0 0 auto;
-  width: 48px;
-  height: 48px;
+  width: 54px;
+  height: 54px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: var(--color-green-dark);
+  background: linear-gradient(135deg, var(--color-green-light), var(--color-green-dark));
+  box-shadow: 0 0 0 3px rgba(82, 183, 136, 0.22);
   color: #ffffff;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.05rem;
   letter-spacing: 0.02em;
 }
-.quote-meta { display: flex; flex-direction: column; }
-.quote-name { font-weight: 700; color: var(--color-green-dark); }
-.quote-role { font-size: 0.875rem; color: var(--color-body-green); }
+.quote-meta { display: flex; flex-direction: column; gap: 2px; }
+.quote-name { font-weight: 700; font-size: 1.05rem; color: var(--color-green-dark); }
+.quote-role { font-size: 0.85rem; color: var(--color-body-green); }
 
 /* (C) FAQ — intro stacked ABOVE the accordion (no more empty left column) */
 .faq-split {
