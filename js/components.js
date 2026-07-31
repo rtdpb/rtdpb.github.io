@@ -42,6 +42,14 @@ class SiteNav extends HTMLElement {
         <nav class="site-nav-bar" aria-label="Hoofdmenu">
           <div class="nav-inner">
             ${logo}
+            <!-- Mobile-only language switcher: lives in the top bar (between logo and
+                 hamburger) so switching language never requires opening the menu.
+                 Hidden on desktop, where the in-menu switcher is used instead. -->
+            <div class="lang-switcher lang-switcher--top" role="group" aria-label="Language">
+              <button type="button" data-lang="nl">NL</button>
+              <button type="button" data-lang="en">EN</button>
+              <button type="button" data-lang="de">DE</button>
+            </div>
             ${toggle}
             <div class="nav-menu" id="nav-menu">
               <ul class="nav-links">

@@ -134,6 +134,7 @@ site-nav { position: sticky; top: 0; z-index: 100; }
 }
 .nav-links {
   display: flex;
+  align-items: center;      /* keep every link on the same vertical centre as the pill + button */
   gap: var(--space-md);     /* tighter so the 4th link (Uitbreiden) + Contact button still fit */
   list-style: none;
   margin: 0;
@@ -141,6 +142,8 @@ site-nav { position: sticky; top: 0; z-index: 100; }
   flex: 0 0 auto;           /* natural width; centered by the equal side zones */
   justify-content: center;
 }
+.nav-links li { display: flex; align-items: center; margin: 0; padding: 0; }
+.nav-links a { line-height: 1; }   /* tight box so flex-centring is exact (no leading offset) */
 .nav-links a { text-decoration: none; color: var(--color-green-dark); font-weight: 600; }
 .nav-links a:hover { text-decoration: underline; }
 /* Pico sets `nav ul:first-of-type { margin-left: -8px }` (specificity 0,1,2) which
@@ -209,6 +212,8 @@ site-nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rot
   border-radius: 999px;
   overflow: hidden;
 }
+/* The top-bar (mobile) switcher is hidden on desktop; the in-menu one is used there. */
+.lang-switcher--top { display: none; }
 .lang-switcher button {
   padding: 0.32rem 0.68rem;
   min-height: 32px;
@@ -299,10 +304,15 @@ site-nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rot
 /* Nav collapses to a hamburger early enough that the 4 links + lang + Contact
    button always keep breathing room (covers tablets + small laptops, up to 1060px). */
 @media (max-width: 1060px) {
-  /* Row 1: logo (left) + hamburger (right). Menu drops into row 2, full width. */
-  .nav-inner { grid-template-columns: 1fr auto; align-items: center; gap: var(--space-sm) var(--space-md); }
+  /* Row 1: logo (left) + language switcher + hamburger (right). Menu drops into row 2. */
+  .nav-inner { grid-template-columns: auto 1fr auto auto; align-items: center; gap: var(--space-sm) var(--space-md); }
   .nav-logo { grid-column: 1; justify-self: start; }
-  .nav-toggle { display: inline-flex; }
+  /* Top-bar language switcher lives between the logo and the hamburger */
+  .lang-switcher--top { display: inline-flex; grid-column: 3; align-self: center; }
+  .lang-switcher--top button { padding: 0.28rem 0.55rem; min-height: 34px; }
+  .nav-toggle { display: inline-flex; grid-column: 4; }
+  /* Hide the in-menu switcher on mobile so the open menu doesn't show a duplicate */
+  .nav-menu .lang-switcher { display: none; }
   .nav-menu {
     grid-column: 1 / -1;
     flex-direction: column;
@@ -324,7 +334,6 @@ site-nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rot
     width: 100%;
   }
   .nav-links a { display: block; padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-border); }
-  .lang-switcher { justify-content: flex-start; align-self: flex-start; margin-top: var(--space-sm); }
   .nav-cta, .nav-back { align-self: flex-start; }
 }
 /* Footer stacks to one column on small screens only (3 columns still fit on tablet) */
