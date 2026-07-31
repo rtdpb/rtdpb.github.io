@@ -357,7 +357,7 @@ function initHero() {
   }
   if (val) {
     updateBadge();                                          // correct day/night value immediately
-    if (!reduce) setInterval(updateBadge, 2200);            // gentle live flicker (motion only)
+    if (!reduce) setInterval(updateBadge, 3600);            // calmer, less frequent live flicker (#18)
   }
 
   // Cursor-follow glow — desktop pointer-fine only.

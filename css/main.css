@@ -378,7 +378,7 @@ a[role="button"] {
   font-weight: 700;
   border: none;
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(244,196,48,0.35);
+  box-shadow: 0 4px 14px rgba(244,196,48,0.26);   /* softer, less dominant (#13) */
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 .btn:hover,
@@ -386,7 +386,7 @@ button[type="submit"]:hover,
 a[role="button"]:hover {
   background: #E6B41F;              /* slightly deeper gold */
   transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(244,196,48,0.45);
+  box-shadow: 0 8px 20px rgba(244,196,48,0.34);
   color: var(--color-green-dark);
 }
 /* Secondary / text link: dark-green text, underline on hover, no fill (no second-color button) */
@@ -462,9 +462,11 @@ a[role="button"]:hover {
   position: absolute;
   inset: 0;
   z-index: 1;
+  /* Lighter on the right so the photo stays natural + lively (#8), still a strong
+     left-weighted scrim to keep the white text high-contrast (#9). */
   background:
-    linear-gradient(90deg, rgba(11,38,28,0.90) 0%, rgba(11,38,28,0.66) 42%, rgba(11,38,28,0.30) 100%),
-    linear-gradient(0deg, rgba(11,38,28,0.55), rgba(11,38,28,0.05) 55%);
+    linear-gradient(90deg, rgba(11,38,28,0.88) 0%, rgba(11,38,28,0.55) 40%, rgba(11,38,28,0.12) 100%),
+    linear-gradient(0deg, rgba(11,38,28,0.45), rgba(11,38,28,0) 52%);
 }
 .hero-inner {
   position: relative;
@@ -496,8 +498,21 @@ a[role="button"]:hover {
 .hero-body { color: rgba(255,255,255,0.92); max-width: 46ch; margin: 0 0 var(--space-xl); font-size: 1.0625rem; }
 .hero-actions { display: flex; align-items: center; gap: var(--space-lg); flex-wrap: wrap; }
 .hero-cta { min-height: 44px; }   /* golden fill inherited from the button system */
-.hero-services { color: #ffffff; font-weight: 700; }
-.hero-services:hover { color: #ffffff; }
+/* Secondary CTA as a "ghost" button so it clearly reads as an alternative action
+   next to the golden primary (#6/#14) */
+.hero-services {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: 44px;
+  padding: 0.6rem 1.2rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-btn);
+  color: #ffffff;
+  font-weight: 700;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+.hero-services:hover { color: #ffffff; background: rgba(255, 255, 255, 0.12); border-color: #ffffff; }
 /* Concrete proof strip under the CTAs — "1.100 installaties • actief in 3 landen" */
 .hero-proof {
   display: flex;
@@ -540,17 +555,17 @@ a[role="button"]:hover {
   bottom: var(--space-2xl);
   display: inline-flex;
   align-items: center;
-  gap: var(--space-sm);
-  padding: 0.5rem 0.85rem;
+  gap: 7px;
+  padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  background: rgba(11, 38, 28, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(11, 38, 28, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(8px) saturate(1.1);
   -webkit-backdrop-filter: blur(8px) saturate(1.1);
   color: #ffffff;
-  font-size: 0.875rem;
+  font-size: 0.8rem;                              /* calmer + smaller so it doesn't rival the CTA (#16/#17) */
   font-weight: 600;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 .hero-badge-sun { color: var(--color-accent); }
 .hero-badge-val { font-variant-numeric: tabular-nums; }
