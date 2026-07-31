@@ -1260,6 +1260,44 @@ html { scroll-behavior: smooth; }
   }
 }
 
+/* -- 10. Sitewide sparkle / reward (playful v23) -------- */
+/* Scroll-progress "sunbeam" — fixed above the sticky nav; fills L→R as you scroll.
+   Fixed + pointer-events:none, so it never disturbs the sticky nav or layout. */
+.scroll-beam {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 200;                 /* above the sticky nav (z 100) */
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, #F4C430, #E6B41F 55%, #F6D67A);
+  box-shadow: 0 0 8px rgba(244, 196, 48, 0.55);
+  pointer-events: none;
+}
+
+/* Floating light motes — faint golden particles drifting slowly upward (JS-injected;
+   skipped for reduced-motion). z-index 1 keeps them above section backgrounds but
+   below the sticky nav (100) and scroll-beam (200). */
+.motes { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.mote {
+  position: absolute;
+  bottom: -12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #F4C430 0%, rgba(244, 196, 48, 0.85) 38%, rgba(244, 196, 48, 0) 78%);
+  animation-name: moteDrift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes moteDrift {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(14px, -55vh); }
+  100% { transform: translate(-8px, -110vh); }
+}
+
+/* Confetti overlay canvas (contact form success sun-burst) */
+.confetti-canvas { position: fixed; inset: 0; z-index: 300; pointer-events: none; }
+
 /* Animated underline for the desktop nav links (replaces the plain underline) */
 @media (min-width: 601px) {
   .nav-links a { position: relative; }

@@ -246,6 +246,54 @@ function initCountUp() {
 }
 document.addEventListener('DOMContentLoaded', initCountUp);
 
+// Scroll-progress "sunbeam" — a thin golden bar fixed at the very top that fills
+// as you scroll. Injected here so it appears on every page (both load this file).
+// Fixed + pointer-events:none → never affects layout or the sticky nav.
+function initScrollBeam() {
+  const beam = document.createElement('div');
+  beam.className = 'scroll-beam';
+  beam.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(beam);
+  let ticking = false;
+  function apply() {
+    ticking = false;
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - doc.clientHeight;
+    const p = max > 0 ? (window.scrollY || doc.scrollTop) / max : 0;
+    beam.style.transform = 'scaleX(' + Math.min(Math.max(p, 0), 1) + ')';
+  }
+  const onScroll = function () { if (!ticking) { ticking = true; requestAnimationFrame(apply); } };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  apply();
+}
+document.addEventListener('DOMContentLoaded', initScrollBeam);
+
+// Floating light "motes" — a handful of very faint, very slow golden particles
+// drifting upward sitewide (like sunlight in the air). Kept extremely subtle so
+// it never competes with content. Skipped entirely for reduced-motion.
+function initMotes() {
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  const layer = document.createElement('div');
+  layer.className = 'motes';
+  layer.setAttribute('aria-hidden', 'true');
+  for (let i = 0; i < 16; i++) {
+    const m = document.createElement('span');
+    m.className = 'mote';
+    const size = (3 + Math.random() * 3).toFixed(1);
+    m.style.left = (Math.random() * 100).toFixed(1) + '%';
+    m.style.width = size + 'px';
+    m.style.height = size + 'px';
+    m.style.animationDuration = (18 + Math.random() * 16).toFixed(1) + 's';
+    m.style.animationDelay = (-Math.random() * 30).toFixed(1) + 's';
+    m.style.opacity = (0.12 + Math.random() * 0.16).toFixed(2);
+    layer.appendChild(m);
+  }
+  document.body.appendChild(layer);
+}
+document.addEventListener('DOMContentLoaded', initMotes);
+
 // Hero photo touches: (1) subtle parallax on the background, (2) a fake-live kW
 // readout that gently flickers, (3) a cursor-follow warm glow (desktop only).
 function initHero() {
