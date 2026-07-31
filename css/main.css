@@ -748,8 +748,37 @@ html { scroll-behavior: smooth; }
 .upsell.is-night .pill-title       { color: #ffffff; }
 .upsell.is-night .pill-save        { color: #8FE0B4; }
 
+/* Heat-pump fan — slow continuous spin around its own centre (runs day + night) */
+.upsell-fan { transform-box: fill-box; transform-origin: center; animation: fanSpin 9s linear infinite; }
+@keyframes fanSpin { to { transform: rotate(360deg); } }
+
+/* Twinkling stars — invisible by day; fade in + gentle twinkle when .is-night */
+.upsell-stars { opacity: 0; transition: opacity 1.1s ease; }
+.upsell-stars circle { transform-box: fill-box; transform-origin: center; }
+.upsell.is-night .upsell-stars { opacity: 1; }
+.upsell.is-night .upsell-stars circle { animation: twinkle 3.2s ease-in-out infinite; }
+.upsell.is-night .upsell-stars circle:nth-child(2) { animation-delay: 0.5s; }
+.upsell.is-night .upsell-stars circle:nth-child(3) { animation-delay: 1.1s; }
+.upsell.is-night .upsell-stars circle:nth-child(4) { animation-delay: 1.7s; }
+.upsell.is-night .upsell-stars circle:nth-child(5) { animation-delay: 0.8s; }
+.upsell.is-night .upsell-stars circle:nth-child(6) { animation-delay: 2.2s; }
+.upsell.is-night .upsell-stars circle:nth-child(7) { animation-delay: 1.4s; }
+@keyframes twinkle {
+  0%, 100% { opacity: 0.35; transform: scale(0.8); }
+  50%      { opacity: 1;    transform: scale(1.15); }
+}
+
+/* EV charge pulse — a short bright dash travels up the cable (night only) */
+.upsell-charge { stroke-dasharray: 4 80; stroke-dashoffset: 84; opacity: 0; }
+.upsell.is-night .upsell-charge { opacity: 1; animation: chargeFlow 1.8s linear infinite; }
+@keyframes chargeFlow { from { stroke-dashoffset: 84; } to { stroke-dashoffset: 0; } }
+
 @media (prefers-reduced-motion: reduce) {
   .upsell-art .scene, .upsell-art .night-lights, .celestial-body, .celestial-body svg, .upsell-pill, .pill-title, .pill-save { transition: none; }
+  /* Settle the delight loops: fan stops, stars show without twinkle, no charge pulse */
+  .upsell-fan, .upsell-stars circle { animation: none; }
+  .upsell-stars { transition: none; }
+  .upsell.is-night .upsell-charge { animation: none; opacity: 0; }
 }   /* JS crossfades sun→moon as you scroll */
 
 .upsell-pill {

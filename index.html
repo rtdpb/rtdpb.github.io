@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=inter:wght@400;500;600;700&family=space-grotesk:wght@500;600;700&display=swap">
 
   <!-- goZERO stylesheet — loads AFTER Pico so token overrides apply -->
-  <link rel="stylesheet" href="/css/main.css?v=19">
+  <link rel="stylesheet" href="/css/main.css?v=20">
 
   <!-- FOUC prevention: synchronous IIFE, NO defer, NO async, NO external src -->
   <script>
@@ -221,7 +221,7 @@
             <g filter="url(#upSoft)">
               <rect x="70" y="288" width="70" height="52" rx="10" fill="#EAF2ED" stroke="#C3DBCB" stroke-width="2"/>
               <circle cx="105" cy="314" r="16" fill="#FFFFFF" stroke="#C3DBCB" stroke-width="2"/>
-              <g stroke="#52B788" stroke-width="3" stroke-linecap="round">
+              <g class="upsell-fan" stroke="#52B788" stroke-width="3" stroke-linecap="round">
                 <line x1="105" y1="314" x2="105" y2="302"/>
                 <line x1="105" y1="314" x2="115" y2="320"/>
                 <line x1="105" y1="314" x2="95" y2="320"/>
@@ -273,6 +273,21 @@
               <rect x="207" y="215" width="44" height="44" rx="4" fill="#F6D67A"/>
               <!-- charging post screen on -->
               <rect x="407" y="282" width="10" height="14" rx="2" fill="#7CF0AE"/>
+              <!-- charge pulse travelling up the EV cable (night-only, via CSS dash animation) -->
+              <path class="upsell-charge" d="M420 300 q18 6 12 34" fill="none"
+                    stroke="#8CF6BA" stroke-width="3" stroke-linecap="round"/>
+            </g>
+
+            <!-- Twinkling stars — appear only at night (.upsell.is-night), gentle fade+twinkle.
+                 Soft warm gold (not white) so they read as sparkles on the cream sky, echoing the moon. -->
+            <g class="upsell-stars" fill="#E4C766">
+              <circle cx="44"  cy="60"  r="2"/>
+              <circle cx="100" cy="40"  r="1.6"/>
+              <circle cx="250" cy="50"  r="2.2"/>
+              <circle cx="330" cy="44"  r="1.6"/>
+              <circle cx="430" cy="90"  r="2"/>
+              <circle cx="478" cy="52"  r="1.8"/>
+              <circle cx="462" cy="140" r="1.5"/>
             </g>
           </svg>
 
@@ -415,9 +430,9 @@
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@0.552.0/dist/umd/lucide.min.js"></script>
   <!-- components.js FIRST — stamps data-i18n nodes into DOM -->
-  <script src="/js/components.js?v=19"></script>
+  <script src="/js/components.js?v=20"></script>
   <!-- i18n.js SECOND — scans for data-i18n nodes after components registered -->
-  <script src="/js/i18n.js?v=19"></script>
+  <script src="/js/i18n.js?v=20"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
   </script>
