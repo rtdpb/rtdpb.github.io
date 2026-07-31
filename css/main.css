@@ -886,18 +886,22 @@ html { scroll-behavior: smooth; }
   max-width: 840px;
   margin: 0 auto;
   min-height: 408px;
-  /* Day sky: one smooth wash from a soft blue top into the light ground — a plain
-     2-stop gradient so there is NO visible seam between the sky and the scene.
+  /* Day: a RADIAL ground-glow rather than a top→bottom linear wash. A linear
+     gradient flips hue across a horizontal midline (the eye reads it as a "shelf"
+     splitting sky from scene); a radial centred low-centre has no horizontal line,
+     so the light ground melts up into the blue sky as one scene.
      Top padding opens a clear sky band for the sun/moon arc, above the pills. */
-  background: linear-gradient(180deg, #CFE6F3 0%, #EDF4EF 100%);
+  background: radial-gradient(135% 105% at 50% 100%, #EDF4EF 0%, #DCEEF0 45%, #CFE6F3 100%);
   border: 1px solid var(--color-border);
   border-radius: 28px;
   padding: 46px var(--space-lg) var(--space-lg);
   overflow: hidden;
   transition: background 1s ease;
 }
-/* Night sky: one smooth wash from dark navy into deep green (seamless too) */
-.upsell.is-night .upsell-stage { background: linear-gradient(180deg, #0E2233 0%, #143A2B 100%); }
+/* Night: same radial ground-glow — a warm green ground low-centre (behind the
+   house) fading up to a navy sky at the top. No horizontal hue line, so the
+   sun/moon sky and the house read as one continuous scene. */
+.upsell.is-night .upsell-stage { background: radial-gradient(135% 105% at 50% 100%, #17442F 0%, #123328 45%, #0E2233 100%); }
 .upsell-stage::before {   /* soft green glow behind the house */
   content: "";
   position: absolute;
