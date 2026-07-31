@@ -868,7 +868,7 @@ html { scroll-behavior: smooth; }
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  width: 264px;
+  width: 280px;
   max-width: 48%;
   background: #ffffff;
   border: 1px solid var(--color-border);
@@ -878,9 +878,12 @@ html { scroll-behavior: smooth; }
 }
 .upsell-pill .icon-circle { width: 44px; height: 44px; flex: 0 0 auto; }
 .upsell-pill .icon-circle svg { width: 22px; height: 22px; }
-.pill-body { display: flex; flex-direction: column; line-height: 1.2; }
-.pill-title { font-weight: 700; color: var(--color-green-dark); font-size: 0.95rem; }
-.pill-save { font-size: 0.85rem; font-weight: 600; color: #2E8B62; }
+/* min-width:0 lets the text column shrink below its longest word, and
+   overflow-wrap/hyphens let a long compound word (e.g. "Energiemanagement",
+   "Ladestation") break instead of spilling out — so NO language ever overflows. */
+.pill-body { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
+.pill-title { font-weight: 700; color: var(--color-green-dark); font-size: 0.9rem; overflow-wrap: break-word; hyphens: auto; }
+.pill-save { font-size: 0.85rem; font-weight: 600; color: #2E8B62; overflow-wrap: break-word; }
 /* corner placement (desktop) */
 .upsell-pill--tl { top: 58px;  left: 0; }    /* nudged below the sun's sky strip */
 .upsell-pill--tr { top: 42px;  right: 0; }
