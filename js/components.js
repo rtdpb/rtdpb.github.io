@@ -204,10 +204,11 @@ function initCelestial() {
     ticking = false;
     const rect = section.getBoundingClientRect();
     const vh = window.innerHeight || document.documentElement.clientHeight;
-    // Flip to night once the section top passes ~25% up the viewport (i.e. a bit
-    // further down the page); back to day after it drops below 44% (hysteresis).
-    if (!isNight && rect.top < vh * 0.25) setNight(true);
-    else if (isNight && rect.top > vh * 0.44) setNight(false);
+    // Flip to night once the section top passes ~28% up the viewport; back to day
+    // as soon as it drops below 36% again. The gap is small hysteresis to avoid
+    // flicker, but tight enough that the sun returns promptly when scrolling up.
+    if (!isNight && rect.top < vh * 0.28) setNight(true);
+    else if (isNight && rect.top > vh * 0.36) setNight(false);
   }
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(check); } }
 
