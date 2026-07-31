@@ -82,11 +82,26 @@
 /* Custom elements default to display:inline — force block so their nav/footer
    layout (max-width + margin:auto centering) matches the page content exactly. */
 site-nav, site-footer { display: block; }
+/* Sticky standard menu bar — stays pinned at the top on scroll */
+site-nav { position: sticky; top: 0; z-index: 100; }
 /* display:block overrides Pico's `nav { display:flex }` — otherwise .nav-inner
    becomes a flex ITEM that shrinks to its content width (so max-width:1120 +
    margin:auto centered the whole logo+menu group, indenting the logo and making
    it drift with the menu width). Block lets .nav-inner span the full width. */
-.site-nav-bar { display: block; background: var(--color-page-bg); border-bottom: 1px solid transparent; }
+.site-nav-bar {
+  display: block;
+  background: var(--color-page-bg);
+  border-bottom: 1px solid transparent;
+  transition: background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+/* On scroll: frosted background + soft shadow so the bar reads as a floating menu bar */
+.site-nav-bar.is-scrolled {
+  background: rgba(245, 243, 238, 0.85);
+  backdrop-filter: saturate(1.1) blur(10px);
+  -webkit-backdrop-filter: saturate(1.1) blur(10px);
+  border-bottom-color: var(--color-border);
+  box-shadow: 0 6px 24px rgba(27, 67, 50, 0.08);
+}
 /* CSS GRID: column 1 (auto) is the logo, column 2 (1fr) is the menu. The logo
    column is sized to the logo ALONE and sits at the content-left edge — it is
    completely independent of the menu width, so it can NEVER shift when the menu
@@ -128,8 +143,41 @@ site-nav, site-footer { display: block; }
 }
 .nav-links a { text-decoration: none; color: var(--color-green-dark); font-weight: 600; }
 .nav-links a:hover { text-decoration: underline; }
+/* Pico sets `nav ul:first-of-type { margin-left: -8px }` (specificity 0,1,2) which
+   pulls the whole menu 8px left of the logo/switcher — most visible as clipped text
+   in the mobile dropdown. Override with higher specificity so everything aligns. */
+.nav-inner .nav-links { margin-left: 0; }
 .nav-cta { min-height: 40px; padding: 0.6rem 1.2rem; }   /* inherits green rect button from §3c */
 .nav-back { color: var(--color-green-dark); font-weight: 600; text-decoration: underline; }
+
+/* Hamburger toggle — hidden on desktop, shown on mobile via the media query below */
+.nav-toggle {
+  display: none;
+  grid-column: 2;
+  justify-self: end;
+  width: 44px; height: 44px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: var(--radius-btn);
+  box-shadow: none;
+  cursor: pointer;
+}
+.nav-toggle:hover { background: rgba(27, 67, 50, 0.06); }
+.nav-toggle span {
+  display: block;
+  width: 22px; height: 2px;
+  border-radius: 2px;
+  background: var(--color-green-dark);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.nav-toggle span + span { margin-top: 5px; }
+/* Bars morph into an X when the menu is open */
+site-nav.is-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+site-nav.is-open .nav-toggle span:nth-child(2) { opacity: 0; }
+site-nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* Compact pill toggle. `width:auto` + `flex:none` override Pico's
    `[role="group"]` full-width/stretch styling that blew this up to a
@@ -176,13 +224,33 @@ site-nav, site-footer { display: block; }
 
 /* On narrow screens stack nav + footer so nothing overflows at 375px */
 @media (max-width: 600px) {
-  .nav-inner { grid-template-columns: 1fr; justify-items: center; gap: var(--space-md); }
-  .nav-logo, .nav-menu { justify-self: center; grid-column: 1; }
-  /* width:100% gives the flex row a boundary so nav-links actually WRAP instead of
-     forcing the menu to its ~440px single-line natural width (real cause of the
-     horizontal overflow on <440px phones). */
-  .nav-menu { flex-direction: column; gap: var(--space-sm); width: 100%; }
-  .nav-links { flex-wrap: wrap; justify-content: center; width: 100%; row-gap: var(--space-sm); }
+  /* Row 1: logo (left) + hamburger (right). Menu drops into row 2, full width. */
+  .nav-inner { grid-template-columns: 1fr auto; align-items: center; gap: var(--space-sm) var(--space-md); }
+  .nav-logo { grid-column: 1; justify-self: start; }
+  .nav-toggle { display: inline-flex; }
+  .nav-menu {
+    grid-column: 1 / -1;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-sm);
+    width: 100%;
+    /* collapsed by default; expands when site-nav.is-open */
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    transition: max-height 0.32s ease, opacity 0.25s ease, margin-top 0.32s ease;
+  }
+  site-nav.is-open .nav-menu { max-height: 70vh; opacity: 1; margin-top: var(--space-sm); }
+  .nav-links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+  }
+  .nav-links a { display: block; padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-border); }
+  .lang-switcher { justify-content: flex-start; padding-top: var(--space-sm); }
+  .nav-cta, .nav-back { align-self: flex-start; }
   .footer-inner { flex-direction: column; text-align: center; }
 }
 
@@ -223,9 +291,11 @@ body {
   line-height: 1.6;
   color: var(--color-muted);
   background: var(--color-page-bg);
-  overflow-x: hidden;       /* belt-and-suspenders vs the .section--monitor 100vw scrollbar-gutter overflow */
   overflow-wrap: break-word; /* never let a long token (email, hyphen-word) force horizontal overflow */
 }
+/* .page-wrap is a plain wrapper — nothing overflows horizontally (the dark band is
+   a normal full-width section, and decorative shapes are contained at the source),
+   so no overflow clip is needed and the sticky navbar + IntersectionObserver work. */
 /* Headings: Space Grotesk display, 700 weight, tight tracking, dark text on light */
 h1, h2, h3 {
   font-family: var(--font-display);
@@ -366,8 +436,8 @@ a[role="button"]:hover {
 .hero-art::before {
   content: "";
   position: absolute;
-  inset: -8% -6% -12% -6%;
-  background: radial-gradient(60% 60% at 65% 40%, rgba(82,183,136,0.22), rgba(82,183,136,0) 70%);
+  inset: -8% 0 -12% 0;   /* no horizontal negative inset → never bleeds past the viewport */
+  background: radial-gradient(62% 60% at 65% 42%, rgba(82,183,136,0.24), rgba(82,183,136,0) 72%);
   z-index: 0;
   pointer-events: none;
 }
@@ -476,14 +546,9 @@ html { scroll-behavior: smooth; }
 }
 
 /* (B) Dark monitoring band — "Opgewekt. Gemonitord. Geregeld." */
-/* Full-bleed ONLY the dark monitoring band — its background spans the whole
-   viewport width while .section-inner keeps content at max-width. The golden
-   CTA band stays a contained block (per user preference). */
-.section--monitor {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-}
-html { overflow-x: hidden; }   /* guard against the 100vw scrollbar overflow */
+/* The dark band spans full width naturally — <main> has no horizontal padding, so
+   a normal section already reaches both edges. (The old width:100vw hack caused a
+   scrollbar-gutter overflow and forced overflow-x:hidden, which broke sticky nav.) */
 /* Faint line-grid over the deep green adds texture (cat 3) without new assets */
 .section--monitor {
   background-color: var(--color-band-deep);
@@ -845,4 +910,61 @@ html { overflow-x: hidden; }   /* guard against the 100vw scrollbar overflow */
 
 @media (max-width: 599px) {
   .contact-form { padding: 24px; }
+}
+
+/* -- 8. Motion — scroll reveal + micro-interactions ---- */
+/* All gated by html.js (set in the head IIFE) so no-JS users always see content,
+   and by prefers-reduced-motion so we never animate for users who opt out. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js :is(
+    .hero-copy > *, .hero-art,
+    .help-head, .help-card,
+    .monitor-intro, .monitor-panel, .monitor-step, .stat,
+    .quote-card,
+    .faq-intro-col, .faq-list details,
+    .cta-inner
+  ) {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  html.js .is-visible { opacity: 1 !important; transform: none !important; }
+
+  /* Stagger within groups for a livelier cascade */
+  .hero-copy > *:nth-child(2) { transition-delay: 0.06s; }
+  .hero-copy > *:nth-child(3) { transition-delay: 0.12s; }
+  .hero-copy > *:nth-child(4) { transition-delay: 0.18s; }
+  .hero-copy > *:nth-child(5) { transition-delay: 0.24s; }
+  .help-card:nth-child(2) { transition-delay: 0.08s; }
+  .help-card:nth-child(3) { transition-delay: 0.16s; }
+  .monitor-step:nth-child(2) { transition-delay: 0.08s; }
+  .monitor-step:nth-child(3) { transition-delay: 0.16s; }
+  .stat:nth-child(2) { transition-delay: 0.08s; }
+  .stat:nth-child(3) { transition-delay: 0.16s; }
+
+  /* Gentle float on the hero illustration */
+  .hero-art svg { animation: floaty 6s ease-in-out infinite; }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+}
+
+/* Animated underline for the desktop nav links (replaces the plain underline) */
+@media (min-width: 601px) {
+  .nav-links a { position: relative; }
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -4px;
+    height: 2px;
+    background: var(--color-green-dark);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .nav-links a:hover { text-decoration: none; }
+  .nav-links a:hover::after { transform: scaleX(1); }
 }

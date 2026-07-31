@@ -13,11 +13,12 @@
   <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=inter:wght@400;500;600;700&family=space-grotesk:wght@500;600;700&display=swap">
 
   <!-- goZERO stylesheet — loads AFTER Pico so token overrides apply -->
-  <link rel="stylesheet" href="/css/main.css?v=6">
+  <link rel="stylesheet" href="/css/main.css?v=7">
 
   <!-- FOUC prevention: synchronous IIFE, NO defer, NO async, NO external src -->
   <script>
     (function() {
+      document.documentElement.classList.add('js');   // enables scroll-reveal CSS (no-JS users keep content visible)
       var stored = localStorage.getItem('gozero-lang');
       if (stored && ['nl','en','de'].indexOf(stored) !== -1) {
         document.documentElement.lang = stored;
@@ -28,6 +29,7 @@
 <body>
   <site-nav></site-nav>
 
+  <div class="page-wrap">
   <main>
     <!-- Section 1: Hero (HERO-01/02) — reference two-column layout + inline SVG illustration -->
     <section class="hero hero-grid">
@@ -308,13 +310,14 @@
   </main>
 
   <site-footer></site-footer>
+  </div><!-- /.page-wrap -->
 
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@0.552.0/dist/umd/lucide.min.js"></script>
   <!-- components.js FIRST — stamps data-i18n nodes into DOM -->
-  <script src="/js/components.js?v=6"></script>
+  <script src="/js/components.js?v=7"></script>
   <!-- i18n.js SECOND — scans for data-i18n nodes after components registered -->
-  <script src="/js/i18n.js?v=6"></script>
+  <script src="/js/i18n.js?v=7"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
   </script>
