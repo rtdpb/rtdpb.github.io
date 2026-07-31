@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=inter:wght@400;500;600;700&family=space-grotesk:wght@500;600;700&display=swap">
 
   <!-- goZERO stylesheet — loads AFTER Pico so token overrides apply -->
-  <link rel="stylesheet" href="/css/main.css?v=42">
+  <link rel="stylesheet" href="/css/main.css?v=44">
 
   <!-- FOUC prevention: synchronous IIFE, NO defer, NO async, NO external src -->
   <script>
@@ -208,8 +208,14 @@
               </span>
               <span class="celestial-orb celestial-orb--moon">
               <svg class="celestial-moon" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="26" cy="26" r="14" fill="#C7B979"/>
-                <circle cx="32" cy="21" r="12" fill="#F5F3EE"/>
+                <defs>
+                  <mask id="moonCrescent">
+                    <rect width="52" height="52" fill="#fff"/>
+                    <circle cx="33" cy="22" r="15" fill="#000"/>
+                  </mask>
+                </defs>
+                <!-- clean crescent: a full disc with an offset circle masked out -->
+                <circle cx="25" cy="26" r="14.5" fill="#F5ECCB" mask="url(#moonCrescent)"/>
               </svg>
               </span>
             </div>
@@ -447,9 +453,9 @@
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@0.552.0/dist/umd/lucide.min.js"></script>
   <!-- components.js FIRST — stamps data-i18n nodes into DOM -->
-  <script src="/js/components.js?v=42"></script>
+  <script src="/js/components.js?v=44"></script>
   <!-- i18n.js SECOND — scans for data-i18n nodes after components registered -->
-  <script src="/js/i18n.js?v=42"></script>
+  <script src="/js/i18n.js?v=44"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
   </script>
