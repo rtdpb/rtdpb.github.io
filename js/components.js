@@ -187,7 +187,8 @@ function initCelestial() {
   }
 
   var ticking = false;
-  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  // NB: wrap update so the rAF timestamp isn't passed as the `force` argument.
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(function () { update(); }); } }
 
   // Debug hook: ?celp=0.5 pins the sun/moon at a fixed progress (for screenshots).
   const forced = new URLSearchParams(location.search).get('celp');
