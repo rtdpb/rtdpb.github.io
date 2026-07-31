@@ -117,7 +117,7 @@ site-nav { position: sticky; top: 0; z-index: 100; }
 }
 .nav-logo { grid-column: 1; justify-self: start; position: relative; text-decoration: none; display: inline-flex; }
 /* Menu (links + language switcher) lives in column 2 and hugs the right edge. */
-.nav-menu { grid-column: 2; justify-self: end; display: flex; align-items: center; gap: var(--space-xl); }
+.nav-menu { grid-column: 2; justify-self: end; display: flex; align-items: center; gap: var(--space-lg); }
 /* Explicit height overrides Pico's `img { height: auto }` (which ignores the
    height attribute). Logo.png is cropped tight to the wordmark. */
 .nav-logo img { display: block; height: 38px; width: auto; }
@@ -147,7 +147,23 @@ site-nav { position: sticky; top: 0; z-index: 100; }
    pulls the whole menu 8px left of the logo/switcher — most visible as clipped text
    in the mobile dropdown. Override with higher specificity so everything aligns. */
 .nav-inner .nav-links { margin-left: 0; }
-.nav-cta { min-height: 40px; padding: 0.6rem 1.2rem; }   /* inherits green rect button from §3c */
+/* Compact green Contact button in the nav (#20) — distinct from the golden page CTAs */
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0.45rem 1.05rem;
+  background: var(--color-green-dark);
+  color: #ffffff;
+  border-radius: var(--radius-btn);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.18s ease, transform 0.15s ease;
+}
+.nav-cta:hover { background: var(--color-green-mid); color: #ffffff; transform: translateY(-1px); }
+/* Active nav section while scrolling (#22) — coloured + persistent underline */
+.nav-links a.is-active { color: var(--color-green-dark); }
 .nav-back { color: var(--color-green-dark); font-weight: 600; text-decoration: underline; }
 
 /* Hamburger toggle — hidden on desktop, shown on mobile via the media query below */
@@ -183,25 +199,32 @@ site-nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rot
 /* Compact pill toggle. `width:auto` + `flex:none` override Pico's
    `[role="group"]` full-width/stretch styling that blew this up to a
    full-width segmented bar. */
-.lang-switcher { display: inline-flex; gap: var(--space-xs); width: auto; flex: 0 0 auto; }
+/* Compact segmented control — one bordered pill, dividers between, exactly-aligned
+   rounded outer corners (#25/#27). `width:auto`+`flex:none` defeat Pico's group stretch. */
+.lang-switcher {
+  display: inline-flex;
+  gap: 0;
+  width: auto; flex: 0 0 auto;
+  border: 1px solid var(--color-green-dark);
+  border-radius: 999px;
+  overflow: hidden;
+}
 .lang-switcher button {
-  padding: 0.35rem 0.7rem;
-  min-height: 34px;
-  font-size: 0.875rem;              /* Label */
+  padding: 0.32rem 0.68rem;
+  min-height: 32px;
+  font-size: 0.82rem;
   background: transparent;
   color: var(--color-text);
-  border: 1px solid var(--color-green-dark);
-  border-radius: 999px;             /* pill switcher */
+  border: none;
+  border-radius: 0;
   cursor: pointer;
-  width: auto;
-  flex: 0 0 auto;                   /* do not stretch (defeats Pico group flex:1) */
+  width: auto; flex: 0 0 auto;
   transition: background 0.15s ease, color 0.15s ease;
 }
-.lang-switcher button[aria-pressed="true"] {
-  background: var(--color-green-dark);   /* dark-green active fill */
-  color: #ffffff;
-}
-.lang-switcher button:hover { border-color: var(--color-green-mid); }
+.lang-switcher button + button { border-left: 1px solid var(--color-green-dark); }
+.lang-switcher button:hover:not([aria-pressed="true"]) { background: rgba(27, 67, 50, 0.08); }
+/* Active language: dark fill + BOLD weight (status change beyond colour, #26) */
+.lang-switcher button[aria-pressed="true"] { background: var(--color-green-dark); color: #ffffff; font-weight: 700; }
 
 /* Full-bleed dark-green footer — a proper closing piece (3 columns + bottom row).
    The golden top seam bridges the CTA band above into the dark close (#107). */
@@ -256,11 +279,12 @@ site-nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rot
   transition: background 0.18s ease, border-color 0.18s ease;
 }
 .footer-cta:hover, .footer-cta:focus-visible { background: rgba(255, 255, 255, 0.10); border-color: #ffffff; color: #ffffff; }
-/* Footer language switcher — light-on-dark variant */
-.lang-switcher--footer { margin-top: var(--space-sm); }
-.lang-switcher--footer button { color: rgba(255, 255, 255, 0.85); border-color: rgba(255, 255, 255, 0.30); }
-.lang-switcher--footer button:hover { border-color: rgba(255, 255, 255, 0.6); }
-.lang-switcher--footer button[aria-pressed="true"] { background: var(--color-accent); color: var(--color-green-dark); border-color: var(--color-accent); }
+/* Footer language switcher — light-on-dark segmented variant */
+.lang-switcher--footer { margin-top: var(--space-sm); border-color: rgba(255, 255, 255, 0.30); }
+.lang-switcher--footer button { color: rgba(255, 255, 255, 0.85); }
+.lang-switcher--footer button + button { border-left-color: rgba(255, 255, 255, 0.30); }
+.lang-switcher--footer button:hover:not([aria-pressed="true"]) { background: rgba(255, 255, 255, 0.10); }
+.lang-switcher--footer button[aria-pressed="true"] { background: var(--color-accent); color: var(--color-green-dark); font-weight: 700; }
 /* Bottom row — secondary copyright, divided from the columns */
 .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.12); }
 .footer-bottom .footer-copy {
@@ -299,7 +323,7 @@ site-nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rot
     width: 100%;
   }
   .nav-links a { display: block; padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-border); }
-  .lang-switcher { justify-content: flex-start; padding-top: var(--space-sm); }
+  .lang-switcher { justify-content: flex-start; align-self: flex-start; margin-top: var(--space-sm); }
   .nav-cta, .nav-back { align-self: flex-start; }
   /* Footer stacks into a single neat column on mobile */
   .footer-inner { grid-template-columns: 1fr; gap: var(--space-xl); }
@@ -1444,7 +1468,8 @@ html { scroll-behavior: smooth; }
     transition: transform 0.25s ease;
   }
   .nav-links a:hover { text-decoration: none; }
-  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-links a:hover::after,
+  .nav-links a.is-active::after { transform: scaleX(1); }
 }
 
 /* -- 11. Interaction consistency (batch 5) --------------- */

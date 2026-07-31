@@ -54,6 +54,7 @@ class SiteNav extends HTMLElement {
                 <button type="button" data-lang="en">EN</button>
                 <button type="button" data-lang="de">DE</button>
               </div>
+              <a href="/contact.html" class="nav-cta" data-i18n="nav.contact"></a>
             </div>
           </div>
         </nav>
@@ -261,6 +262,30 @@ function initCountUp() {
   io.observe(row);
 }
 document.addEventListener('DOMContentLoaded', initCountUp);
+
+// Scroll-spy — highlight the nav link whose section is currently in view (#22).
+function initScrollSpy() {
+  if (!('IntersectionObserver' in window)) return;
+  const links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href*="#"]'));
+  const map = {};
+  links.forEach(function (a) {
+    const id = (a.getAttribute('href').split('#')[1] || '');
+    const sec = id && document.getElementById(id);
+    if (sec) map[id] = a;
+  });
+  const ids = Object.keys(map);
+  if (!ids.length) return;
+  const io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) {
+        links.forEach(function (a) { a.classList.remove('is-active'); });
+        map[en.target.id].classList.add('is-active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+  ids.forEach(function (id) { io.observe(document.getElementById(id)); });
+}
+document.addEventListener('DOMContentLoaded', initScrollSpy);
 
 // Scroll-progress "sunbeam" — a thin golden bar fixed at the very top that fills
 // as you scroll. Injected here so it appears on every page (both load this file).
