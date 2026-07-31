@@ -391,12 +391,16 @@ a[role="button"]:hover {
 }
 .hero-bg {
   position: absolute;
-  inset: 0;
+  /* Vertical overscan (132% tall, centred) gives the parallax room to travel
+     without exposing an edge — JS translates this within the ±16% budget. */
+  top: -16%;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: 132%;
   object-fit: cover;
   object-position: center;
   z-index: 0;
+  will-change: transform;
 }
 /* Darkening + left-weighted scrim so white text stays readable */
 .hero--banner::after {
@@ -457,9 +461,74 @@ a[role="button"]:hover {
   background: var(--color-green-light);
   flex: 0 0 auto;
 }
+/* Cursor-follow warm glow over the photo. z-index 1 = same layer as the scrim,
+   but the ::after scrim paints ABOVE it, so the glow only shows through where the
+   scrim is light (the right/photo side) and never washes over the left-side text
+   (which lives at z-index 2). Position driven by --gx/--gy set in JS. */
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  mix-blend-mode: screen;
+  background: radial-gradient(220px circle at var(--gx, 50%) var(--gy, 50%),
+              rgba(255, 214, 122, 0.28), rgba(255, 214, 122, 0) 62%);
+}
+.hero--banner.is-glowing .hero-glow { opacity: 1; }
+
+/* Fake-live production chip floating on the photo (bottom-right on desktop) */
+.hero-badge {
+  position: absolute;
+  z-index: 2;
+  right: var(--space-xl);
+  bottom: var(--space-2xl);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(11, 38, 28, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px) saturate(1.1);
+  -webkit-backdrop-filter: blur(8px) saturate(1.1);
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+.hero-badge-sun { color: var(--color-accent); }
+.hero-badge-val { font-variant-numeric: tabular-nums; }
+.hero-badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding-left: var(--space-sm);
+  border-left: 1px solid rgba(255, 255, 255, 0.22);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+.hero-badge-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--color-green-light);
+  flex: 0 0 auto;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-badge-dot { animation: livePulse 1.9s ease-in-out infinite; }
+  @keyframes livePulse {
+    0%, 100% { opacity: 1;   box-shadow: 0 0 0 0 rgba(82, 183, 136, 0.55); }
+    50%      { opacity: 0.6; box-shadow: 0 0 0 5px rgba(82, 183, 136, 0); }
+  }
+}
+
 @media (max-width: 599px) {
   .hero--banner { min-height: 480px; }
   .hero-inner { padding: var(--space-2xl) var(--space-md); }
+  .hero-badge { display: none; }   /* keep the mobile hero uncluttered */
 }
 
 /* Shared section lead paragraph (centered intro under an h2) */

@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=inter:wght@400;500;600;700&family=space-grotesk:wght@500;600;700&display=swap">
 
   <!-- goZERO stylesheet — loads AFTER Pico so token overrides apply -->
-  <link rel="stylesheet" href="/css/main.css?v=21">
+  <link rel="stylesheet" href="/css/main.css?v=22">
 
   <!-- FOUC prevention: synchronous IIFE, NO defer, NO async, NO external src -->
   <script>
@@ -35,6 +35,14 @@
     <section class="hero hero--banner">
       <img class="hero-bg" src="/img/hero-wijk.webp"
            alt="Woonwijk met zonnepanelen op de daken in het avondlicht">
+      <!-- Cursor-follow warm light glow over the photo (desktop pointer-fine; JS sets position). Sits under the scrim so it never touches the text. -->
+      <div class="hero-glow" aria-hidden="true"></div>
+      <!-- Decorative fake-live production chip. aria-hidden: numbers flicker via JS, "live" is language-neutral. -->
+      <div class="hero-badge" aria-hidden="true">
+        <span class="hero-badge-sun">☀</span>
+        <span class="hero-badge-val">4.82 kW</span>
+        <span class="hero-badge-live"><i class="hero-badge-dot"></i>live</span>
+      </div>
       <div class="hero-inner">
         <div class="hero-copy">
           <p class="hero-eyebrow" data-i18n="home.hero.eyebrow"></p>
@@ -432,9 +440,9 @@
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@0.552.0/dist/umd/lucide.min.js"></script>
   <!-- components.js FIRST — stamps data-i18n nodes into DOM -->
-  <script src="/js/components.js?v=21"></script>
+  <script src="/js/components.js?v=22"></script>
   <!-- i18n.js SECOND — scans for data-i18n nodes after components registered -->
-  <script src="/js/i18n.js?v=21"></script>
+  <script src="/js/i18n.js?v=22"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
   </script>

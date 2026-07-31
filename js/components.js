@@ -246,6 +246,52 @@ function initCountUp() {
 }
 document.addEventListener('DOMContentLoaded', initCountUp);
 
+// Hero photo touches: (1) subtle parallax on the background, (2) a fake-live kW
+// readout that gently flickers, (3) a cursor-follow warm glow (desktop only).
+function initHero() {
+  const hero = document.querySelector('.hero--banner');
+  if (!hero) return;
+  const bg = hero.querySelector('.hero-bg');
+  const val = hero.querySelector('.hero-badge-val');
+  const glow = hero.querySelector('.hero-glow');
+  const mm = window.matchMedia;
+  const reduce = mm && mm('(prefers-reduced-motion: reduce)').matches;
+  const fine = mm && mm('(pointer: fine)').matches;
+
+  // Parallax — translate the (overscanned) background slower than the scroll.
+  if (bg && !reduce) {
+    let ticking = false;
+    function apply() {
+      ticking = false;
+      const shift = Math.min((window.scrollY || 0) * 0.15, 85);  // stay within the 16% overscan
+      bg.style.transform = 'translate3d(0,' + shift + 'px,0)';
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(apply); }
+    }, { passive: true });
+    apply();
+  }
+
+  // Fake-live — nudge the kW readout every ~2.2s so the chip feels live.
+  if (val && !reduce) {
+    setInterval(function () {
+      val.textContent = (4.7 + Math.random() * 0.3).toFixed(2) + ' kW';
+    }, 2200);
+  }
+
+  // Cursor-follow glow — desktop pointer-fine only.
+  if (glow && fine) {
+    hero.addEventListener('pointermove', function (e) {
+      const r = hero.getBoundingClientRect();
+      glow.style.setProperty('--gx', (e.clientX - r.left) + 'px');
+      glow.style.setProperty('--gy', (e.clientY - r.top) + 'px');
+      hero.classList.add('is-glowing');
+    });
+    hero.addEventListener('pointerleave', function () { hero.classList.remove('is-glowing'); });
+  }
+}
+document.addEventListener('DOMContentLoaded', initHero);
+
 // Magnetic CTAs — primary (golden) buttons nudge slightly toward the cursor on
 // hover and spring back on leave. Desktop pointer-fine only; the existing
 // `transition: transform` on the button eases both the follow and the release.
