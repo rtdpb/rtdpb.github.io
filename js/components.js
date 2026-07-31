@@ -167,6 +167,7 @@ function initCelestial() {
   const body = document.querySelector('.celestial-body');
   const sun = document.querySelector('.celestial-sun');
   const moon = document.querySelector('.celestial-moon');
+  const art = document.querySelector('.upsell-art');
   if (!section || !track || !body) return;
 
   function clamp(v) { return v < 0 ? 0 : (v > 1 ? 1 : v); }
@@ -181,9 +182,12 @@ function initCelestial() {
     const x = p * travel;
     const y = -Math.sin(p * Math.PI) * 20;   // gentle day-arc: highest in the middle
     body.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
-    // Overlapping crossfade (both partly visible around the midpoint → smooth morph)
-    if (sun) sun.style.opacity = String(clamp(1.4 - p * 2.0));
-    if (moon) moon.style.opacity = String(clamp((p - 0.3) * 2.0));
+    // Overlapping crossfade, weighted late so it stays a sun longer and the moon
+    // appears later (both partly visible around p≈0.65 → smooth morph)
+    if (sun) sun.style.opacity = String(clamp(1.9 - p * 2.2));
+    if (moon) moon.style.opacity = String(clamp((p - 0.5) * 2.4));
+    // The scene gradually darkens toward night as the moon rises
+    if (art) art.style.filter = 'brightness(' + (1 - p * 0.4).toFixed(3) + ') saturate(' + (1 - p * 0.18).toFixed(3) + ')';
   }
 
   var ticking = false;
