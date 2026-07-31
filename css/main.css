@@ -886,24 +886,25 @@ html { scroll-behavior: smooth; }
   max-width: 840px;
   margin: 0 auto;
   min-height: 408px;
-  /* Day sky: soft blue fading into the light ground. Top padding opens a clear
-     sky band for the sun/moon arc, above the illustration + pills. */
-  background: linear-gradient(180deg, #CFE6F3 0%, #E4F0EA 46%, #EDF4EF 100%);
+  /* Day sky: one smooth wash from a soft blue top into the light ground — a plain
+     2-stop gradient so there is NO visible seam between the sky and the scene.
+     Top padding opens a clear sky band for the sun/moon arc, above the pills. */
+  background: linear-gradient(180deg, #CFE6F3 0%, #EDF4EF 100%);
   border: 1px solid var(--color-border);
   border-radius: 28px;
   padding: 74px var(--space-lg) var(--space-lg);
   overflow: hidden;
   transition: background 1s ease;
 }
-/* Night sky: dark navy → deep green, so the moon + stars read clearly */
-.upsell.is-night .upsell-stage { background: linear-gradient(180deg, #0E2233 0%, #123528 60%); }
+/* Night sky: one smooth wash from dark navy into deep green (seamless too) */
+.upsell.is-night .upsell-stage { background: linear-gradient(180deg, #0E2233 0%, #143A2B 100%); }
 .upsell-stage::before {   /* soft green glow behind the house */
   content: "";
   position: absolute;
-  left: 50%; top: 52%;
-  width: 58%; height: 66%;
+  left: 50%; top: 60%;
+  width: 62%; height: 56%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(82,183,136,0.22), rgba(82,183,136,0) 70%);
+  background: radial-gradient(circle, rgba(82,183,136,0.13), rgba(82,183,136,0) 72%);
   pointer-events: none;
 }
 .upsell-art { position: relative; z-index: 1; display: block; width: 500px; max-width: 80%; height: auto; margin: 0 auto; }
