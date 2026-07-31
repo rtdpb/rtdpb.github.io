@@ -70,8 +70,8 @@
   --width-text: 760px;   /* hero copy, about, FAQ text bands */
   --width-form: 680px;   /* contact form band */
   /* section vertical rhythm (tightened ~30% so sections read as one page, not disconnected blocks) */
-  --section-y:        56px;   /* desktop/tablet band padding */
-  --section-y-mobile: 44px;   /* <=599px band padding */
+  --section-y:        44px;   /* desktop/tablet band padding (tightened for a snappier vertical rhythm) */
+  --section-y-mobile: 34px;   /* <=599px band padding */
 }
 
 /* -- 3. Web Component Layout -------------------------- */
@@ -384,10 +384,14 @@ a[role="button"]:hover {
   position: relative;
   display: flex;
   align-items: center;
-  min-height: 560px;
+  min-height: 528px;
   padding: 0;
   overflow: hidden;
   background: var(--color-band-deep);   /* fallback while the image loads */
+}
+/* Shorter laptops: don't let the hero eat the whole viewport height (#12) */
+@media (min-width: 1024px) and (max-height: 800px) {
+  .hero--banner { min-height: 464px; }
 }
 .hero-bg {
   position: absolute;
@@ -579,7 +583,7 @@ html { scroll-behavior: smooth; }
   grid-template-columns: 1fr 1fr;
   gap: var(--space-2xl);
   align-items: end;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
 }
 .help-head h2 { margin: 0; font-size: 1.75rem; line-height: 1.15; color: var(--color-green-dark); }
 .help-intro { margin: 0; color: var(--color-body-green); }
@@ -660,7 +664,7 @@ html { scroll-behavior: smooth; }
   grid-template-columns: 1fr 1fr;
   gap: var(--space-2xl);
   align-items: center;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
 }
 .monitor-intro { display: flex; flex-direction: column; gap: var(--space-lg); }
 .monitor-title { margin: 0; color: #ffffff; font-size: 2rem; line-height: 1.1; }
@@ -713,7 +717,7 @@ html { scroll-behavior: smooth; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-2xl);
-  padding: var(--space-xl) 0;
+  padding: var(--space-lg) 0;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
@@ -745,7 +749,7 @@ html { scroll-behavior: smooth; }
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-xl);
   text-align: center;
-  padding-top: var(--space-2xl);
+  padding-top: var(--space-xl);
 }
 .stat-num {
   display: block;
@@ -767,7 +771,7 @@ html { scroll-behavior: smooth; }
 
 /* (B1) Upsell showcase — "meer uit uw energie" (heat pump / battery / charger / energy mgmt) */
 .section.upsell { background: var(--color-page-bg); }   /* blends with the page (no separate band) */
-.upsell-head { max-width: var(--width-text); margin: 0 auto var(--space-2xl); text-align: center; }
+.upsell-head { max-width: var(--width-text); margin: 0 auto var(--space-xl); text-align: center; }
 .upsell-head h2 { margin: 0 0 var(--space-sm); font-size: 1.75rem; line-height: 1.15; color: var(--color-green-dark); }
 .upsell-lead { margin: 0; color: var(--color-body-green); }
 
