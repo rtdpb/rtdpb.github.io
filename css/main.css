@@ -886,31 +886,24 @@ html { scroll-behavior: smooth; }
   max-width: 840px;
   margin: 0 auto;
   min-height: 408px;
-  /* Day: a RADIAL ground-glow rather than a top→bottom linear wash. A linear
-     gradient flips hue across a horizontal midline (the eye reads it as a "shelf"
-     splitting sky from scene); a radial centred low-centre has no horizontal line,
-     so the light ground melts up into the blue sky as one scene.
+  /* Day: a soft radial ground-glow, NOT a top→bottom linear wash. Two things kill
+     any visible transition line: (1) only TWO low-contrast stops, so there is no
+     bright "core" whose edge draws an arc; (2) the centre sits BELOW the stage
+     (at 50% 128%), so the iso-colour contours flatten into gentle, imperceptible
+     curves across the visible area. Ground melts up into the sky as one scene.
      Top padding opens a clear sky band for the sun/moon arc, above the pills. */
-  background: radial-gradient(135% 105% at 50% 100%, #EDF4EF 0%, #DCEEF0 45%, #CFE6F3 100%);
+  background: radial-gradient(150% 130% at 50% 128%, #E7F3EC 0%, #CFE6F3 100%);
   border: 1px solid var(--color-border);
   border-radius: 28px;
   padding: 46px var(--space-lg) var(--space-lg);
   overflow: hidden;
   transition: background 1s ease;
 }
-/* Night: same radial ground-glow — a warm green ground low-centre (behind the
-   house) fading up to a navy sky at the top. No horizontal hue line, so the
-   sun/moon sky and the house read as one continuous scene. */
-.upsell.is-night .upsell-stage { background: radial-gradient(135% 105% at 50% 100%, #17442F 0%, #123328 45%, #0E2233 100%); }
-.upsell-stage::before {   /* soft green glow behind the house */
-  content: "";
-  position: absolute;
-  left: 50%; top: 60%;
-  width: 62%; height: 56%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(82,183,136,0.13), rgba(82,183,136,0) 72%);
-  pointer-events: none;
-}
+/* Night: same soft two-stop ground-glow. Sky kept a hair teal (#0F2833, not pure
+   navy) so the green→sky shift is a gentle value change, not a blue↔green hue flip.
+   No separate ::before halo any more — a second radial's soft edge landed right at
+   the sun/moon-band height and drew exactly the arc we were trying to remove. */
+.upsell.is-night .upsell-stage { background: radial-gradient(150% 130% at 50% 128%, #164029 0%, #0F2833 100%); }
 .upsell-art { position: relative; z-index: 1; display: block; width: 500px; max-width: 80%; height: auto; margin: 0 auto; }
 
 /* Sun/moon ride a rotating "sky disk": the pivot sits at the horizon (bottom of the
