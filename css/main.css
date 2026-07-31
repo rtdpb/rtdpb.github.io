@@ -157,6 +157,7 @@ site-nav { position: sticky; top: 0; z-index: 100; }
   justify-self: end;
   width: 44px; height: 44px;
   padding: 0;
+  flex-direction: column;   /* stack the three bars vertically (was defaulting to row) */
   align-items: center;
   justify-content: center;
   background: none;
