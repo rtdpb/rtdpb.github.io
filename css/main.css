@@ -296,8 +296,9 @@ site-nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rot
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* On narrow screens stack nav + footer so nothing overflows at 375px */
-@media (max-width: 600px) {
+/* Nav collapses to a hamburger early enough that links + lang + Contact button
+   never crowd (covers tablets too, up to 860px). */
+@media (max-width: 860px) {
   /* Row 1: logo (left) + hamburger (right). Menu drops into row 2, full width. */
   .nav-inner { grid-template-columns: 1fr auto; align-items: center; gap: var(--space-sm) var(--space-md); }
   .nav-logo { grid-column: 1; justify-self: start; }
@@ -325,7 +326,9 @@ site-nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rot
   .nav-links a { display: block; padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-border); }
   .lang-switcher { justify-content: flex-start; align-self: flex-start; margin-top: var(--space-sm); }
   .nav-cta, .nav-back { align-self: flex-start; }
-  /* Footer stacks into a single neat column on mobile */
+}
+/* Footer stacks to one column on small screens only (3 columns still fit on tablet) */
+@media (max-width: 600px) {
   .footer-inner { grid-template-columns: 1fr; gap: var(--space-xl); }
 }
 
@@ -1456,7 +1459,7 @@ html { scroll-behavior: smooth; }
 .confetti-canvas { position: fixed; inset: 0; z-index: 300; pointer-events: none; }
 
 /* Animated underline for the desktop nav links (replaces the plain underline) */
-@media (min-width: 601px) {
+@media (min-width: 861px) {
   .nav-links a { position: relative; }
   .nav-links a::after {
     content: "";
