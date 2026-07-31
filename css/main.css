@@ -1116,6 +1116,18 @@ html { scroll-behavior: smooth; }
     0%, 100% { transform: translateY(0); }
     50%      { transform: translateY(-8px); }
   }
+
+  /* Service-card icons react on hover: wrench cocks, euro bobs, plus turns.
+     The svg is the rendered lucide icon inside .icon-circle; the circle itself
+     still scales (rule in §5) — these add per-icon character on top. */
+  .help-card .icon-circle svg { transition: transform 0.25s ease; }
+  .help-card:nth-child(1):hover .icon-circle svg { transform: rotate(-20deg); }   /* wrench */
+  .help-card:nth-child(3):hover .icon-circle svg { transform: rotate(90deg); }    /* plus */
+  .help-card:nth-child(2):hover .icon-circle svg { animation: euroBob 0.9s ease-in-out infinite; }  /* euro */
+  @keyframes euroBob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-4px); }
+  }
 }
 
 /* Animated underline for the desktop nav links (replaces the plain underline) */

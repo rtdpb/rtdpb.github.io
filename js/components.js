@@ -194,3 +194,75 @@ function initCelestial() {
   check();
 }
 document.addEventListener('DOMContentLoaded', initCelestial);
+
+// Stat count-up (dark monitoring band). Each .stat-num animates 0 → target the
+// first time the stats row scrolls into view. Suffixes ("+", " werkdagen") are
+// preserved; the leading number is parsed from whatever text is present (so the
+// i18n "2 werkdagen" value works in NL/EN/DE). Reduced-motion → leave as-is.
+function initCountUp() {
+  const row = document.querySelector('.stats-row');
+  if (!row) return;
+  const nums = row.querySelectorAll('.stat-num');
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) return;  // show final values as-is
+
+  // Split "1.100+" → {target:1100, suffix:"+", grouped:true}; "2 werkdagen" →
+  // {target:2, suffix:" werkdagen", grouped:false}. Returns null if no leading digit.
+  function parse(text) {
+    const m = String(text).match(/^\s*([\d.,]+)(.*)$/);
+    if (!m) return null;
+    const digits = m[1].replace(/[.,]/g, '');
+    if (!digits) return null;
+    return { target: parseInt(digits, 10), suffix: m[2], grouped: /[.,]/.test(m[1]) };
+  }
+  function fmt(n, grouped) { return grouped ? n.toLocaleString('nl-NL') : String(n); }
+
+  function animate(el) {
+    const spec = parse(el.textContent);
+    if (!spec) return;                          // i18n hasn't filled it yet → leave alone
+    const DUR = 1100;
+    let start = null;
+    function frame(ts) {
+      if (start === null) start = ts;
+      const p = Math.min((ts - start) / DUR, 1);
+      const eased = 1 - Math.pow(1 - p, 3);     // easeOutCubic
+      el.textContent = fmt(Math.round(eased * spec.target), spec.grouped) + spec.suffix;
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  let done = false;
+  const io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting && !done) {
+        done = true;
+        nums.forEach(animate);
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  io.observe(row);
+}
+document.addEventListener('DOMContentLoaded', initCountUp);
+
+// Magnetic CTAs — primary (golden) buttons nudge slightly toward the cursor on
+// hover and spring back on leave. Desktop pointer-fine only; the existing
+// `transition: transform` on the button eases both the follow and the release.
+function initMagnetic() {
+  if (!window.matchMedia) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+
+  const clamp = function (v, m) { return Math.max(-m, Math.min(m, v)); };
+  document.querySelectorAll('a[role="button"], button[type="submit"]').forEach(function (btn) {
+    btn.addEventListener('pointermove', function (e) {
+      const r = btn.getBoundingClientRect();
+      const mx = e.clientX - (r.left + r.width / 2);
+      const my = e.clientY - (r.top + r.height / 2);
+      btn.style.transform = 'translate(' + clamp(mx * 0.2, 12) + 'px,' + clamp(my * 0.2, 8) + 'px)';
+    });
+    btn.addEventListener('pointerleave', function () { btn.style.transform = ''; });
+  });
+}
+document.addEventListener('DOMContentLoaded', initMagnetic);
