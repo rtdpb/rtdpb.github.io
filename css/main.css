@@ -528,7 +528,16 @@ a[role="button"]:hover {
 @media (max-width: 599px) {
   .hero--banner { min-height: 480px; }
   .hero-inner { padding: var(--space-2xl) var(--space-md); }
-  .hero-badge { display: none; }   /* keep the mobile hero uncluttered */
+  /* Keep the live chip on mobile too — tuck it top-right in the photo area,
+     above the (left-aligned) copy so it never overlaps the text. */
+  .hero-badge {
+    top: var(--space-md);
+    right: var(--space-md);
+    bottom: auto;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.78rem;
+    gap: 6px;
+  }
 }
 
 /* Shared section lead paragraph (centered intro under an h2) */
@@ -817,8 +826,11 @@ html { scroll-behavior: smooth; }
 .upsell.is-night .pill-title       { color: #ffffff; }
 .upsell.is-night .pill-save        { color: #8FE0B4; }
 
-/* Heat-pump fan — slow continuous spin around its own centre (runs day + night) */
-.upsell-fan { transform-box: fill-box; transform-origin: center; animation: fanSpin 9s linear infinite; }
+/* Heat-pump fan — slow continuous spin around the hub where the blades meet.
+   The three blades form a "Y", so the group's bounding-box centre is NOT the hub
+   (it sits ~3px too high). Rotating around the exact view-box point (105,314)
+   keeps the axis dead still instead of letting it orbit/wobble. */
+.upsell-fan { transform-box: view-box; transform-origin: 105px 314px; animation: fanSpin 9s linear infinite; }
 @keyframes fanSpin { to { transform: rotate(360deg); } }
 
 /* Twinkling stars — invisible by day; fade in + gentle twinkle when .is-night */
@@ -1226,6 +1238,22 @@ html { scroll-behavior: smooth; }
     0%, 100% { transform: translateY(0); }
     50%      { transform: translateY(-4px); }
   }
+}
+
+/* Touch parity — devices without hover can't trigger the icon reactions or the
+   magnetic buttons, so give them equivalents: each card's icon plays its reaction
+   ONCE as the card scrolls into view, and primary buttons give a quick press dip. */
+@media (prefers-reduced-motion: no-preference) and (hover: none) {
+  .help-card.is-visible:nth-child(1) .icon-circle svg { animation: iconWrenchPeek 0.9s ease 0.35s 1; }
+  .help-card.is-visible:nth-child(2) .icon-circle svg { animation: euroBob 0.9s ease 0.35s 1; }
+  .help-card.is-visible:nth-child(3) .icon-circle svg { animation: iconPlusPeek 0.9s ease 0.35s 1; }
+  @keyframes iconWrenchPeek { 0%, 100% { transform: rotate(0); } 45% { transform: rotate(-20deg); } }
+  @keyframes iconPlusPeek   { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(90deg); } }
+}
+@media (hover: none) {
+  .btn:active,
+  button[type="submit"]:active,
+  a[role="button"]:active { transform: scale(0.96); }
 }
 
 /* -- 9. Monitoring panel choreography (playful v21) ------ */
