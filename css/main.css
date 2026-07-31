@@ -825,23 +825,29 @@ html { scroll-behavior: smooth; }
 .upsell-head h2 { margin: 0 0 var(--space-sm); font-size: 1.75rem; line-height: 1.15; color: var(--color-green-dark); }
 .upsell-lead { margin: 0; color: var(--color-body-green); }
 
-/* Stage: house SVG centered, product pills floating around it (desktop) */
+/* Stage: soft rounded panel that groups the illustration + its floating product
+   labels into ONE coherent block (#61/#70). Tighter + bigger art = less empty
+   space and more visual weight (#59/#60). */
 .upsell-stage {
   position: relative;
-  max-width: 900px;
+  max-width: 840px;
   margin: 0 auto;
-  min-height: 520px;
+  min-height: 408px;
+  background: #EDF4EF;
+  border: 1px solid var(--color-border);
+  border-radius: 28px;
+  padding: var(--space-lg);
 }
 .upsell-stage::before {   /* soft green glow behind the house */
   content: "";
   position: absolute;
   left: 50%; top: 52%;
-  width: 60%; height: 70%;
+  width: 58%; height: 66%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(82,183,136,0.18), rgba(82,183,136,0) 70%);
+  background: radial-gradient(circle, rgba(82,183,136,0.22), rgba(82,183,136,0) 70%);
   pointer-events: none;
 }
-.upsell-art { position: relative; z-index: 1; display: block; width: 460px; max-width: 90%; height: auto; margin: 0 auto; }
+.upsell-art { position: relative; z-index: 1; display: block; width: 500px; max-width: 80%; height: auto; margin: 0 auto; }
 
 /* Scroll-driven sun→moon that arcs across the sky (position set by JS on scroll) */
 .celestial {
@@ -940,20 +946,21 @@ html { scroll-behavior: smooth; }
    "Ladestation") break instead of spilling out — so NO language ever overflows. */
 .pill-body { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
 .pill-title { font-weight: 700; color: var(--color-green-dark); font-size: 0.95rem; overflow-wrap: break-word; hyphens: auto; }
-.pill-save { font-size: 0.85rem; font-weight: 600; color: #2E8B62; overflow-wrap: break-word; }
-/* corner placement (desktop) */
-.upsell-pill--tl { top: 58px;  left: 0; }    /* nudged below the sun's sky strip */
-.upsell-pill--tr { top: 42px;  right: 0; }
-.upsell-pill--bl { bottom: 96px; left: 6px; }
-.upsell-pill--br { bottom: 34px; right: 12px; }
+/* Savings is clearly SECONDARY to the product name (#64/#65) — smaller, lighter, muted */
+.pill-save { font-size: 0.8rem; font-weight: 500; color: var(--color-body-green); overflow-wrap: break-word; }
+/* corner placement (desktop) — tucked closer to the illustration inside the panel */
+.upsell-pill--tl { top: 34px;  left: 2px; }
+.upsell-pill--tr { top: 22px;  right: 2px; }
+.upsell-pill--bl { bottom: 40px; left: 8px; }
+.upsell-pill--br { bottom: 20px; right: 12px; }
 
-/* 3-step process */
+/* 3-step process — pulled closer to the illustration so the section reads as one unit (#66/#70) */
 .upsell-steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-2xl);
-  margin-top: var(--space-xl);
-  padding-top: var(--space-xl);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
   border-top: 1px solid var(--color-border);
 }
 .upsell-step { position: relative; }
@@ -986,8 +993,16 @@ html { scroll-behavior: smooth; }
   flex-wrap: wrap;
   margin-top: var(--space-xl);
 }
-.upsell-partners { display: flex; align-items: center; gap: var(--space-sm); margin: 0; color: var(--color-body-green); font-weight: 600; }
-.upsell-partners svg { width: 20px; height: 20px; stroke: var(--color-green-light); flex: 0 0 auto; }
+/* Certified-partners note styled as a trust chip (#69) */
+.upsell-partners {
+  display: inline-flex; align-items: center; gap: var(--space-sm);
+  margin: 0; padding: 0.4rem 0.9rem;
+  background: rgba(82, 183, 136, 0.10);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-green-dark); font-weight: 600; font-size: 0.9rem;
+}
+.upsell-partners svg { width: 18px; height: 18px; stroke: var(--color-green-light); flex: 0 0 auto; }
 .upsell-cta { min-height: 44px; }
 
 @media (max-width: 768px) {
