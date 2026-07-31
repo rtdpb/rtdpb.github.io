@@ -320,11 +320,28 @@ function initHero() {
     apply();
   }
 
-  // Fake-live — nudge the kW readout every ~2.2s so the chip feels live.
-  if (val && !reduce) {
-    setInterval(function () {
-      val.textContent = (4.7 + Math.random() * 0.3).toFixed(2) + ' kW';
-    }, 2200);
+  // Fake-live production readout that HONOURS the visitor's real clock: a solar
+  // curve during daylight, 0 at night — so an evening visitor never sees "live"
+  // production (which would instantly give the fake away). The sun glyph turns
+  // into a moon after sunset. The value is set once for everyone (incl. reduced
+  // motion); only the gentle flicker needs motion.
+  const sunEl = hero.querySelector('.hero-badge-sun');
+  function daylight(h) { return h > 6.5 && h < 21; }        // approx sunrise → sunset
+  function solarKw(d) {
+    const h = d.getHours() + d.getMinutes() / 60;
+    if (!daylight(h)) return 0;                             // night → no production
+    const x = (h - 13.75) / 7.25;                           // -1..1 across the daylight window
+    return Math.max(0, 5.2 * Math.cos(x * Math.PI / 2) + (Math.random() * 0.3 - 0.15));
+  }
+  function updateBadge() {
+    const now = new Date();
+    const h = now.getHours() + now.getMinutes() / 60;
+    if (sunEl) sunEl.textContent = daylight(h) ? '☀' : '☾';
+    if (val) val.textContent = solarKw(now).toFixed(2) + ' kW';
+  }
+  if (val) {
+    updateBadge();                                          // correct day/night value immediately
+    if (!reduce) setInterval(updateBadge, 2200);            // gentle live flicker (motion only)
   }
 
   // Cursor-follow glow — desktop pointer-fine only.
