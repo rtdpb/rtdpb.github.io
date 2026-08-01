@@ -91,7 +91,7 @@
       "line1": "Gemeldet.",
       "line2": "Aufgegriffen.",
       "line3": "Gelöst.",
-      "lead": "Bemerken Sie, dass mit Ihrer Anlage etwas nicht stimmt? Sobald ein Problem im Blick ist, kümmern wir uns so schnell wie möglich darum — gemeinsam mit unseren zertifizierten Installationspartnern.",
+      "lead": "Bemerken Sie, dass mit Ihrer Anlage etwas nicht stimmt? Sobald ein Problem im Blick ist, kümmern wir uns so schnell wie möglich darum, gemeinsam mit unseren zertifizierten Installationspartnern.",
       "s1": {
         "title": "Sie melden es",
         "desc": "Sehen Sie etwas Auffälliges oder ist der Ertrag geringer als erwartet? Teilen Sie es uns über das Kontaktformular mit."
@@ -112,7 +112,7 @@
     "upsell": {
       "eyebrow": "Mehr aus Ihrer Energie",
       "heading": "Bereit für den nächsten Schritt?",
-      "lead": "Erweitern Sie Ihre Anlage mit Wärmepumpe, Heimspeicher, Ladestation oder Energiemanagement — installiert von zertifizierten Partnern.",
+      "lead": "Erweitern Sie Ihre Anlage mit Wärmepumpe, Heimspeicher, Ladestation oder Energiemanagement, installiert von zertifizierten Partnern.",
       "p1": { "title": "Wärmepumpe", "save": "Bis zu €700/Jahr sparen" },
       "p2": { "title": "Heimspeicher", "save": "Bis zu €400/Jahr sparen" },
       "p3": { "title": "Ladestation", "save": "Bis zu €300/Jahr sparen" },
@@ -155,7 +155,7 @@
       },
       "q3": {
         "question": "Wie reiche ich eine Serviceanfrage ein?",
-        "answer": "Eine Serviceanfrage reichen Sie einfach über unser Kontaktformular ein; wählen Sie dabei die Kategorie \"Serviceanfrage\". Beschreiben Sie möglichst genau, was Ihnen auffällt — am besten innerhalb von 14 Tagen nach Feststellung — damit wir Ihnen schneller helfen können. Wir antworten innerhalb von 5 Werktagen. Haben Sie eine dringende Störung? Vermerken Sie dies bitte in Ihrer Nachricht."
+        "answer": "Eine Serviceanfrage reichen Sie einfach über unser Kontaktformular ein; wählen Sie dabei die Kategorie \"Serviceanfrage\". Beschreiben Sie möglichst genau, was Ihnen auffällt, am besten innerhalb von 14 Tagen nach Feststellung, damit wir Ihnen schneller helfen können. Wir antworten innerhalb von 5 Werktagen. Haben Sie eine dringende Störung? Vermerken Sie dies bitte in Ihrer Nachricht."
       },
       "q4": {
         "question": "Welche Garantien gelten?",
@@ -180,12 +180,13 @@
       "emailLabel": "E-Mail-Adresse",
       "emailPlaceholder": "sie@beispiel.de",
       "phoneLabel": "Telefon (optional)",
-      "phonePlaceholder": "Optional — z. B. +49 151 12345678",
+      "phonePlaceholder": "Optional, z. B. +49 151 12345678",
       "categoryLabel": "Betreff",
-      "categoryPlaceholder": "— Betreff wählen —",
+      "categoryPlaceholder": "Betreff wählen",
       "categories": {
         "service": "Serviceanfrage",
         "payment": "Frage zur Zahlung",
+        "expansion": "Erweitern",
         "cancellation": "Kündigung / Vertragsänderung",
         "other": "Sonstige Fragen"
       },
@@ -194,7 +195,7 @@
       "submit": "Nachricht senden",
       "sending": "Senden…",
       "responseTime": "Wir antworten innerhalb von 5 Werktagen.",
-      "success": "Vielen Dank für Ihre Nachricht — wir antworten innerhalb von 5 Werktagen.",
+      "success": "Vielen Dank für Ihre Nachricht. Wir antworten innerhalb von 5 Werktagen.",
       "error": "Beim Senden ist etwas schiefgelaufen. Schreiben Sie uns direkt an info@nl-go-zero.nl oder versuchen Sie es später erneut."
     }
   }

@@ -91,7 +91,7 @@
       "line1": "Gemeld.",
       "line2": "Opgepakt.",
       "line3": "Opgelost.",
-      "lead": "Merk je dat er iets niet klopt met je installatie? Zodra een probleem in beeld is, pakken we het zo snel mogelijk op — samen met onze gecertificeerde installatiepartners.",
+      "lead": "Merk je dat er iets niet klopt met je installatie? Zodra een probleem in beeld is, pakken we het zo snel mogelijk op, samen met onze gecertificeerde installatiepartners.",
       "s1": {
         "title": "Je meldt het",
         "desc": "Zie je iets afwijkends of valt de opbrengst tegen? Geef het aan ons door via het contactformulier."
@@ -112,7 +112,7 @@
     "upsell": {
       "eyebrow": "Meer uit je energie",
       "heading": "Klaar voor de volgende stap?",
-      "lead": "Breid je installatie uit met een warmtepomp, thuisbatterij, laadpaal of energiemanagement — geïnstalleerd door gecertificeerde partners.",
+      "lead": "Breid je installatie uit met een warmtepomp, thuisbatterij, laadpaal of energiemanagement, geïnstalleerd door gecertificeerde partners.",
       "p1": { "title": "Warmtepomp", "save": "Bespaar tot €700 p/j" },
       "p2": { "title": "Thuisbatterij", "save": "Bespaar tot €400 p/j" },
       "p3": { "title": "Laadpaal", "save": "Bespaar tot €300 p/j" },
@@ -155,7 +155,7 @@
       },
       "q3": {
         "question": "Hoe kan ik een serviceverzoek indienen?",
-        "answer": "Een serviceverzoek dien je eenvoudig in via ons contactformulier; kies daarbij de categorie \"Serviceverzoek\". Beschrijf zo duidelijk mogelijk wat je opvalt — bij voorkeur binnen 14 dagen nadat je het hebt geconstateerd — dan kunnen we je sneller helpen. We reageren binnen 5 werkdagen. Heb je een dringende storing? Vermeld dit dan in je bericht."
+        "answer": "Een serviceverzoek dien je eenvoudig in via ons contactformulier; kies daarbij de categorie \"Serviceverzoek\". Beschrijf zo duidelijk mogelijk wat je opvalt, bij voorkeur binnen 14 dagen nadat je het hebt geconstateerd. Zo kunnen we je sneller helpen. We reageren binnen 5 werkdagen. Heb je een dringende storing? Vermeld dit dan in je bericht."
       },
       "q4": {
         "question": "Welke garanties zijn er van toepassing?",
@@ -180,12 +180,13 @@
       "emailLabel": "E-mailadres",
       "emailPlaceholder": "je@voorbeeld.nl",
       "phoneLabel": "Telefoon (optioneel)",
-      "phonePlaceholder": "Optioneel — bijv. 06 12345678",
+      "phonePlaceholder": "Optioneel, bijv. 06 12345678",
       "categoryLabel": "Onderwerp",
-      "categoryPlaceholder": "— Kies onderwerp —",
+      "categoryPlaceholder": "Kies onderwerp",
       "categories": {
         "service": "Serviceverzoek",
         "payment": "Betalingsvraag",
+        "expansion": "Uitbreiden",
         "cancellation": "Opzegging / contractwijziging",
         "other": "Overige vragen"
       },
@@ -194,7 +195,7 @@
       "submit": "Verstuur bericht",
       "sending": "Verzenden…",
       "responseTime": "We reageren binnen 5 werkdagen.",
-      "success": "Bedankt voor je bericht — we reageren binnen 5 werkdagen.",
+      "success": "Bedankt voor je bericht. We reageren binnen 5 werkdagen.",
       "error": "Er ging iets mis bij het verzenden. Mail ons direct op info@nl-go-zero.nl of probeer het later opnieuw."
     }
   }

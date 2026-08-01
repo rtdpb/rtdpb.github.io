@@ -529,7 +529,7 @@ a[role="button"]:hover {
   color: var(--color-accent);
   margin: 0 0 var(--space-md);
 }
-.hero-eyebrow::before { content: "— "; color: var(--color-accent); }
+.hero-eyebrow::before { content: ""; }
 /* Big, confident white display headline */
 .hero-copy h1 {
   max-width: 16ch;
@@ -671,12 +671,10 @@ a[role="button"]:hover {
   color: var(--color-accent-strong);
   margin: 0 0 var(--space-md);
 }
-.eyebrow::before { content: "— "; color: var(--color-accent); }
+.eyebrow::before { content: ""; }
 .eyebrow--on-dark { color: var(--color-accent); }
-.eyebrow--on-dark::before { color: var(--color-accent); }
 /* On the golden CTA band, eyebrow text is dark green (AA on gold) */
 .eyebrow--on-gold { color: var(--color-green-dark); }
-.eyebrow--on-gold::before { color: var(--color-green-dark); }
 
 /* -- 4b. About goZERO (company intro under the hero) --------------- */
 .section.about { background: var(--color-page-bg); }

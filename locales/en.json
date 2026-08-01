@@ -91,7 +91,7 @@
       "line1": "Reported.",
       "line2": "Picked up.",
       "line3": "Resolved.",
-      "lead": "Notice something isn't right with your installation? As soon as an issue is in view, we pick it up as quickly as possible — together with our certified installation partners.",
+      "lead": "Notice something isn't right with your installation? As soon as an issue is in view, we pick it up as quickly as possible, together with our certified installation partners.",
       "s1": {
         "title": "You report it",
         "desc": "See something unusual or is output lower than expected? Let us know via the contact form."
@@ -112,7 +112,7 @@
     "upsell": {
       "eyebrow": "More from your energy",
       "heading": "Ready for the next step?",
-      "lead": "Expand your installation with a heat pump, home battery, charging station or energy management — installed by certified partners.",
+      "lead": "Expand your installation with a heat pump, home battery, charging station or energy management, installed by certified partners.",
       "p1": { "title": "Heat pump", "save": "Save up to €700/yr" },
       "p2": { "title": "Home battery", "save": "Save up to €400/yr" },
       "p3": { "title": "Charging station", "save": "Save up to €300/yr" },
@@ -155,7 +155,7 @@
       },
       "q3": {
         "question": "How do I submit a service request?",
-        "answer": "You submit a service request easily through our contact form; select the \"Service request\" category. Describe as clearly as possible what you have noticed — ideally within 14 days of noticing it — so we can help you faster. We respond within 5 business days. Do you have an urgent fault? Please mention this in your message."
+        "answer": "You submit a service request easily through our contact form; select the \"Service request\" category. Describe as clearly as possible what you have noticed, ideally within 14 days of noticing it, so we can help you faster. We respond within 5 business days. Do you have an urgent fault? Please mention this in your message."
       },
       "q4": {
         "question": "Which warranties apply?",
@@ -180,12 +180,13 @@
       "emailLabel": "Email address",
       "emailPlaceholder": "you@example.com",
       "phoneLabel": "Phone (optional)",
-      "phonePlaceholder": "Optional — e.g. +31 6 12345678",
+      "phonePlaceholder": "Optional, e.g. +31 6 12345678",
       "categoryLabel": "Subject",
-      "categoryPlaceholder": "— Choose a subject —",
+      "categoryPlaceholder": "Choose a subject",
       "categories": {
         "service": "Service request",
         "payment": "Billing question",
+        "expansion": "Expand",
         "cancellation": "Cancellation / contract change",
         "other": "Other questions"
       },
@@ -194,7 +195,7 @@
       "submit": "Send message",
       "sending": "Sending…",
       "responseTime": "We respond within 5 business days.",
-      "success": "Thank you for your message — we will respond within 5 business days.",
+      "success": "Thank you for your message. We will respond within 5 business days.",
       "error": "Something went wrong while sending. Email us directly at info@nl-go-zero.nl or try again later."
     }
   }
