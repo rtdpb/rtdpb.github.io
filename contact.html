@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=inter:wght@400;500;600;700&family=space-grotesk:wght@500;600;700&display=swap">
 
   <!-- goZERO stylesheet — loads AFTER Pico so token overrides apply -->
-  <link rel="stylesheet" href="/css/main.css?v=50">
+  <link rel="stylesheet" href="/css/main.css?v=51">
 
   <!-- FOUC prevention: synchronous IIFE, NO defer, NO async, NO external src -->
   <script>
@@ -36,27 +36,23 @@
         <h1 data-i18n="contact.title"></h1>
         <p class="contact-intro" data-i18n="contact.form.intro"></p>
 
-        <!-- Web3Forms AJAX form. access_key is a PLACEHOLDER — see GO-LIVE BLOCKER comment below. -->
+        <!-- Contact form. Submissions are delivered via FormSubmit.co (see plumbing below + js/contact.js). -->
         <form id="contact-form" class="contact-form card">
-          <!-- === Web3Forms hidden plumbing === -->
-          <!--
-            GO-LIVE BLOCKER (CONT-09 / D-11): access_key is a FAKE placeholder.
-            Web3Forms will return success:false and the form will ALWAYS show the
-            error panel until this is replaced with the real goZERO key AND the
-            real inbox email is configured in the Web3Forms dashboard.
-            Tracked in .planning/STATE.md + .planning/PROJECT.md.
-          -->
-          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-          <input type="hidden" name="subject" value="Nieuw bericht via goZERO contactformulier">
-          <input type="hidden" name="from_name" value="goZERO Website">
+          <!-- === FormSubmit plumbing (TEMPORARY delivery to rpbontekoning@gmail.com) ===
+               Submissions go through FormSubmit.co (no API key). The endpoint email
+               lives in js/contact.js (ENDPOINT).
+               ONE-TIME STEP: the FIRST submission triggers an activation email to that
+               inbox — the link inside it must be clicked once before messages arrive.
+               TODO before final launch: switch to the real goZERO inbox / Web3Forms key. -->
+          <input type="hidden" name="_subject" value="Nieuw bericht via goZERO contactformulier">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
 
-          <!-- === Spam layer 1: Web3Forms native botcheck (server-enforced) === -->
-          <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-          <!-- === Spam layer 2: custom off-screen honeypot (checked client-side by contact.js) === -->
+          <!-- === Spam honeypot: off-screen field, checked client-side (contact.js) AND
+               server-side by FormSubmit (fields named _honey are treated as a honeypot). === -->
           <div class="hp-field" aria-hidden="true">
             <label for="hp-url">Laat dit veld leeg</label>
-            <input type="text" id="hp-url" name="botcheck_url" tabindex="-1" autocomplete="off">
+            <input type="text" id="hp-url" name="_honey" tabindex="-1" autocomplete="off">
           </div>
 
           <!-- === Real fields === -->
@@ -137,11 +133,11 @@
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@0.552.0/dist/umd/lucide.min.js"></script>
   <!-- components.js FIRST — stamps data-i18n nodes into DOM -->
-  <script src="/js/components.js?v=50"></script>
+  <script src="/js/components.js?v=51"></script>
   <!-- i18n.js SECOND — scans for data-i18n nodes after components registered -->
-  <script src="/js/i18n.js?v=50"></script>
+  <script src="/js/i18n.js?v=51"></script>
   <!-- contact.js LAST — needs i18n nodes stamped + engine loaded before wiring submit -->
-  <script src="/js/contact.js?v=50"></script>
+  <script src="/js/contact.js?v=51"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
   </script>

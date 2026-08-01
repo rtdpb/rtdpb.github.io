@@ -61,13 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!form) return;
 
   const button    = form.querySelector('button[type="submit"]');
-  const honeypot  = form.querySelector('[name="botcheck_url"]');
+  const honeypot  = form.querySelector('[name="_honey"]');
   const successEl = document.getElementById('contact-success');
   const errorEl   = document.getElementById('contact-error');
   const sendingEl = document.getElementById('label-sending'); // translated "Verzenden…"
   const submitEl  = document.getElementById('label-submit');  // translated "Verstuur bericht"
 
-  const ENDPOINT = 'https://api.web3forms.com/submit';
+  // TEMPORARY: deliver submissions to rpbontekoning@gmail.com via FormSubmit (no API key).
+  // The first submission triggers a one-time activation email to that inbox.
+  const ENDPOINT = 'https://formsubmit.co/ajax/rpbontekoning@gmail.com';
 
   function showError() {
     errorEl.hidden = false;        // keep the form visible so the user can retry / read fallback email
@@ -96,10 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         body: JSON.stringify(object)
       });
-      const data = await res.json();     // { success, message }
-      console.log('[contact] web3forms:', data.message); // message is English-only → console ONLY
+      const data = await res.json();     // { success, message } — FormSubmit returns success as a string
+      console.log('[contact] formsubmit:', data.message); // message is English-only → console ONLY
 
-      if (data.success) {
+      // FormSubmit reports success as the STRING "true"/"false", Web3Forms as a boolean — handle both.
+      const ok = data && (data.success === true || String(data.success).toLowerCase() === 'true');
+      if (ok) {
         form.hidden = true;              // hide the form entirely (CONT-05 / D-06)
         successEl.hidden = false;
         if (successEl.focus) successEl.focus(); // move SR/keyboard focus to the confirmation
