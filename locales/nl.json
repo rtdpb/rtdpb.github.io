@@ -15,7 +15,7 @@
     "contact_cta": "Contact opnemen",
     "contact": {
       "heading": "Contact",
-      "email": "info@gozero.nl [TE BEVESTIGEN]",
+      "email": "info@nl-go-zero.nl",
       "cta": "Neem contact op"
     },
     "nav": {
@@ -25,73 +25,100 @@
       "contact": "Contact"
     }
   },
+  "offices": {
+    "heading": "Onze vestigingen",
+    "nl": {
+      "name": "goZERO Nederland",
+      "address": "Schuttersweg 8\n1271 PZ Hilversum",
+      "phone": "+31 (0)85 1309 295",
+      "email": "info@nl-go-zero.nl"
+    },
+    "be": {
+      "name": "goZERO Belgium",
+      "address": "Borsbeeksebrug 34\n2600 Antwerpen",
+      "phone": "+31 (0)85 1309 295",
+      "email": "info@nl-go-zero.nl"
+    },
+    "za": {
+      "name": "goZERO South Africa",
+      "address": "32 Somerset Road\nDe Waterkant, Cape Town, 8001",
+      "website": "www.go-zero.co.za"
+    }
+  },
   "home": {
     "title": "goZERO",
     "hero": {
       "eyebrow": "Zorgeloos zonne-energie",
-      "headline": "Altijd zicht op uw zonne-installatie.",
-      "body": "Wij monitoren, signaleren en lossen problemen op — vaak voordat u ze zelf merkt.",
-      "proof": "1.100 installaties • actief in 3 landen",
-      "stat_label": "installaties beheerd in NL, BE en DE",
+      "headline": "Jouw zonne-installatie, goed geregeld.",
+      "body": "Werkt er iets niet goed aan je installatie? Wij pakken het snel op en lossen het samen met gecertificeerde partners op.",
+      "proof": "2.000 installaties • actief in 4 landen",
+      "stat_label": "installaties beheerd in NL, BE, DE en ZA",
       "cta": "Contact opnemen",
       "services_link": "Diensten",
       "card1_label": "Live productie",
       "card2_title": "Systeem werkt goed",
       "card2_sub": "Zojuist gecontroleerd"
     },
+    "about": {
+      "eyebrow": "Over goZERO",
+      "heading": "Jouw partner in zonne-energie",
+      "body": "goZERO is een energy service bedrijf. Opgericht in 2018 en actief in zowel de residentiële als de zakelijke markt. Op dit moment beheren wij zo'n 2.000 zonne-energie installaties in Nederland, België, Duitsland en Zuid-Afrika. Bij elkaar opgeteld gaat dit om 12 MW aan zonne-energie.",
+      "f1": { "value": "2018", "label": "Opgericht" },
+      "f2": { "value": "2.000+", "label": "Installaties beheerd" },
+      "f3": { "value": "12 MW", "label": "Aan zonne-energie" }
+    },
     "help": {
       "eyebrow": "Service voor klanten",
-      "heading": "Waarmee kunnen we u helpen?",
-      "intro": "Kies het onderwerp van uw vraag. Zo komt u direct bij de juiste collega terecht.",
+      "heading": "Waarmee kunnen we je helpen?",
       "card1": {
         "title": "Serviceverzoek",
-        "desc": "Installatie werkt niet goed? Meld het direct.",
+        "desc": "Werkt je installatie niet goed? Meld het direct.",
         "link": "Storing melden"
       },
       "card2": {
         "title": "Betaling & factuur",
         "desc": "Een vraag over betaling, termijn of factuur.",
-        "link": "Stel uw vraag"
+        "link": "Stel je vraag"
       },
       "card3": {
         "title": "Uitbreiden",
-        "desc": "Meer uit uw energie halen, bijv. met een thuisbatterij.",
+        "desc": "Meer uit je energie halen, bijv. met een thuisbatterij.",
         "link": "Bekijk mogelijkheden"
       }
     },
     "monitor": {
-      "eyebrow": "Altijd zicht op uw systeem",
-      "line1": "Opgewekt.",
-      "line2": "Gemonitord.",
-      "line3": "Geregeld.",
-      "lead": "Wij volgen de prestaties van uw installatie op afstand. Zien we iets afwijkends, dan komen we in actie — vaak voordat u er zelf iets van merkt.",
+      "eyebrow": "Service waar je op kunt rekenen",
+      "line1": "Gemeld.",
+      "line2": "Opgepakt.",
+      "line3": "Opgelost.",
+      "lead": "Merk je dat er iets niet klopt met je installatie? Zodra een probleem in beeld is, pakken we het zo snel mogelijk op — samen met onze gecertificeerde installatiepartners.",
       "s1": {
-        "title": "Wij monitoren",
-        "desc": "De prestaties van uw zonnepanelen worden continu gevolgd."
+        "title": "Je meldt het",
+        "desc": "Zie je iets afwijkends of valt de opbrengst tegen? Geef het aan ons door via het contactformulier."
       },
       "s2": {
-        "title": "Wij signaleren",
-        "desc": "Afwijkingen en storingen komen automatisch bij ons in beeld."
+        "title": "Wij pakken het op",
+        "desc": "We beoordelen je melding en plannen zo snel mogelijk de juiste actie in."
       },
       "s3": {
-        "title": "Wij lossen op",
-        "desc": "We pakken het op of nemen contact met u op als dat nodig is."
+        "title": "Opgelost met partners",
+        "desc": "Een gecertificeerde partner verhelpt het probleem zo spoedig mogelijk."
       },
       "stat1": { "label": "Installaties in beheer" },
       "stat2": { "label": "Landen actief" },
-      "stat3": { "value": "2 werkdagen", "label": "Maximale reactietijd" },
-      "panel": { "title": "Live prestaties", "alert": "Afwijking gedetecteerd", "status": "Actie ingepland" }
+      "stat3": { "value": "5 werkdagen", "label": "Maximale reactietijd" },
+      "panel": { "title": "Serviceverzoek", "alert": "Melding ontvangen", "status": "Partner ingepland" }
     },
     "upsell": {
-      "eyebrow": "Meer uit uw energie",
+      "eyebrow": "Meer uit je energie",
       "heading": "Klaar voor de volgende stap?",
-      "lead": "Breid uw installatie uit met een warmtepomp, thuisbatterij, laadpaal of energiemanagement — geïnstalleerd door gecertificeerde partners.",
+      "lead": "Breid je installatie uit met een warmtepomp, thuisbatterij, laadpaal of energiemanagement — geïnstalleerd door gecertificeerde partners.",
       "p1": { "title": "Warmtepomp", "save": "Bespaar tot €700 p/j" },
       "p2": { "title": "Thuisbatterij", "save": "Bespaar tot €400 p/j" },
       "p3": { "title": "Laadpaal", "save": "Bespaar tot €300 p/j" },
       "p4": { "title": "Energiemanagement", "save": "Bespaar tot €150 p/j" },
-      "step1": { "title": "Aanvraag", "desc": "U geeft door waarin u geïnteresseerd bent." },
-      "step2": { "title": "Inspectie", "desc": "Een partner bekijkt uw situatie ter plaatse." },
+      "step1": { "title": "Aanvraag", "desc": "Je geeft door waarin je geïnteresseerd bent." },
+      "step2": { "title": "Inspectie", "desc": "Een partner bekijkt je situatie ter plaatse." },
       "step3": { "title": "Installatie", "desc": "Alles wordt vakkundig geïnstalleerd." },
       "partners": "Door gecertificeerde partners",
       "cta": "Bekijk de mogelijkheden"
@@ -102,56 +129,56 @@
       "intro": "Vind direct antwoord op de vragen die onze klanten het vaakst stellen."
     },
     "testimonial": {
-      "quote": "Toen mijn omvormer uitviel, had goZERO het al gezien voordat ik iets doorhad. Binnen een dag was alles weer opgelost.",
+      "quote": "Toen mijn omvormer uitviel, reageerde goZERO binnen een dag en was het probleem dezelfde week al verholpen.",
       "initials": "dV",
       "name": "Familie de Vries",
       "role": "Klant sinds 2021 • Utrecht"
     },
     "cta": {
       "eyebrow": "Zorgeloos zonne-energie",
-      "heading": "We helpen u graag verder.",
-      "body": "Vertel ons waar we u mee kunnen helpen. U ontvangt binnen twee werkdagen een reactie.",
-      "button": "Stel uw vraag"
+      "heading": "We helpen je graag verder.",
+      "body": "Vertel ons waar we je mee kunnen helpen. Je ontvangt binnen vijf werkdagen een reactie.",
+      "button": "Stel je vraag"
     }
   },
   "faq": {
     "title": "Veelgestelde vragen",
-    "intro": "Hieronder vindt u antwoorden op de meestgestelde vragen over uw huurcontract, service en garanties. Staat uw vraag er niet bij? Neem gerust contact met ons op.",
+    "intro": "Hieronder vind je antwoorden op de meestgestelde vragen over je huurcontract, service en garanties. Staat je vraag er niet bij? Neem gerust contact met ons op.",
     "items": {
       "q1": {
         "question": "Kan ik tussentijds opzeggen?",
-        "answer": "Tussentijds opzeggen tijdens de lopende huurtermijn is in de regel niet mogelijk; er geldt een vaste contractperiode. [TE BEVESTIGEN] De exacte opzegtermijn en voorwaarden staan in uw huurovereenkomst en kunnen per contract verschillen. Neem contact met ons op zodat wij uw specifieke situatie kunnen bekijken."
+        "answer": "Tussentijds opzeggen tijdens de looptijd is in de regel niet mogelijk; er geldt een vaste contractperiode die van rechtswege eindigt na afloop van de termijn. Heb je de overeenkomst op afstand gesloten (online of telefonisch), dan geldt wel een wettelijke bedenktijd van 14 dagen, zolang de installatie nog niet is geplaatst. De exacte voorwaarden staan in je huurovereenkomst. Neem contact met ons op zodat we je situatie kunnen bekijken."
       },
       "q2": {
         "question": "Wat gebeurt er na de huurtermijn?",
-        "answer": "Als uw huurtermijn afloopt heeft u drie mogelijkheden: u kunt de installatie kopen tegen de dan geldende restwaarde, de huur verlengen, of de panelen kosteloos laten verwijderen. Wij nemen ruim voor het einde van uw contract contact met u op om de opties door te nemen. Twijfelt u welke keuze bij u past? Neem contact met ons op."
+        "answer": "Als je huurtermijn afloopt heb je drie mogelijkheden: je kunt de installatie overnemen tegen de dan geldende restwaarde, de huur voortzetten tegen een gereduceerd tarief, of de panelen kosteloos laten verwijderen. We nemen ruim voor het einde van je contract contact met je op om de opties door te nemen. Twijfel je welke keuze bij je past? Neem contact met ons op."
       },
       "q3": {
         "question": "Hoe kan ik een serviceverzoek indienen?",
-        "answer": "Een serviceverzoek dient u eenvoudig in via ons contactformulier; kies daarbij de categorie \"Serviceverzoek\". Beschrijf zo duidelijk mogelijk wat u opvalt, dan kunnen wij u sneller helpen. Wij reageren binnen 2 werkdagen. Heeft u een dringende storing? Vermeld dit dan in uw bericht via het contactformulier."
+        "answer": "Een serviceverzoek dien je eenvoudig in via ons contactformulier; kies daarbij de categorie \"Serviceverzoek\". Beschrijf zo duidelijk mogelijk wat je opvalt — bij voorkeur binnen 14 dagen nadat je het hebt geconstateerd — dan kunnen we je sneller helpen. We reageren binnen 5 werkdagen. Heb je een dringende storing? Vermeld dit dan in je bericht."
       },
       "q4": {
         "question": "Welke garanties zijn er van toepassing?",
-        "answer": "Op uw installatie zijn verschillende garanties van toepassing, waaronder fabrieksgarantie op de panelen en de omvormer. [TE BEVESTIGEN] De exacte garantietermijnen en dekking verschillen per component en per contract. De voor u geldende voorwaarden vindt u in uw overeenkomst; neem bij twijfel contact met ons op voor uw specifieke situatie."
+        "answer": "Gedurende de looptijd van je huurovereenkomst verhelpen wij gebreken, storingen en beschadigingen aan de installatie, zodat deze aan de redelijk te stellen eisen blijft voldoen. Daarnaast geldt de fabrieksgarantie op onder meer de panelen en de omvormer. De exacte termijnen en dekking verschillen per component en staan in je overeenkomst; neem bij twijfel contact met ons op."
       },
       "q5": {
         "question": "Hoe lang gaat mijn systeem mee?",
-        "answer": "Zonnepanelen gaan gemiddeld 25 tot 30 jaar mee en blijven ook daarna doorgaans nog stroom opwekken, zij het met een geleidelijk afnemend rendement. De omvormer heeft meestal een kortere levensduur en wordt tijdens de looptijd mogelijk een keer vervangen. Wij monitoren de prestaties van uw installatie doorlopend. Vragen over de staat van uw systeem? Neem contact met ons op."
+        "answer": "Zonnepanelen gaan gemiddeld 25 tot 30 jaar mee en blijven ook daarna doorgaans nog stroom opwekken, zij het met een geleidelijk afnemend rendement. De omvormer heeft meestal een kortere levensduur en wordt tijdens de looptijd mogelijk een keer vervangen. Vragen over de staat van je systeem? Neem contact met ons op."
       },
       "q6": {
         "question": "Wat gebeurt er als ik mijn huis verkoop?",
-        "answer": "Bij verkoop van uw woning kan het huurcontract in de meeste gevallen worden overgedragen aan de nieuwe eigenaar, zodat de installatie gewoon kan blijven liggen. Wij begeleiden u en de koper bij deze contractoverdracht. Laat het ons tijdig weten zodra een verkoop in beeld komt, dan regelen wij de overdracht soepel. Neem contact met ons op om de overdracht in gang te zetten."
+        "answer": "Bij verkoop van je woning kan het huurcontract in de meeste gevallen worden overgedragen aan de nieuwe eigenaar, zodat de installatie gewoon kan blijven liggen. We begeleiden jou en de koper bij deze overdracht. Laat het ons tijdig weten zodra een verkoop in beeld komt, dan regelen we de overdracht soepel. Neem contact met ons op om de overdracht in gang te zetten."
       }
     }
   },
   "contact": {
     "title": "Contact",
     "form": {
-      "intro": "Heeft u een vraag over service, betaling, uw contract of iets anders? Vul het formulier in en wij nemen zo snel mogelijk contact met u op.",
+      "intro": "Heb je een vraag over service, betaling, je contract of iets anders? Vul het formulier in en we nemen zo snel mogelijk contact met je op.",
       "nameLabel": "Naam",
-      "namePlaceholder": "Uw volledige naam",
+      "namePlaceholder": "Je volledige naam",
       "emailLabel": "E-mailadres",
-      "emailPlaceholder": "u@voorbeeld.nl",
+      "emailPlaceholder": "je@voorbeeld.nl",
       "phoneLabel": "Telefoon (optioneel)",
       "phonePlaceholder": "Optioneel — bijv. 06 12345678",
       "categoryLabel": "Onderwerp",
@@ -163,12 +190,12 @@
         "other": "Overige vragen"
       },
       "messageLabel": "Bericht",
-      "messagePlaceholder": "Waarmee kunnen wij u helpen?",
+      "messagePlaceholder": "Waarmee kunnen we je helpen?",
       "submit": "Verstuur bericht",
       "sending": "Verzenden…",
-      "responseTime": "We reageren binnen 2 werkdagen.",
-      "success": "Bedankt voor uw bericht — we reageren binnen 2 werkdagen.",
-      "error": "Er ging iets mis bij het verzenden. Mail ons direct op info@gozero.nl [TE BEVESTIGEN] of probeer het later opnieuw."
+      "responseTime": "We reageren binnen 5 werkdagen.",
+      "success": "Bedankt voor je bericht — we reageren binnen 5 werkdagen.",
+      "error": "Er ging iets mis bij het verzenden. Mail ons direct op info@nl-go-zero.nl of probeer het later opnieuw."
     }
   }
 }

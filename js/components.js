@@ -134,6 +134,28 @@ class SiteFooter extends HTMLElement {
             <a href="/contact.html" class="footer-cta" data-i18n="footer.contact_cta"></a>
           </div>
         </div>
+        <div class="footer-offices">
+          <h3 class="footer-heading" data-i18n="offices.heading"></h3>
+          <div class="footer-offices-grid">
+            <address class="footer-office">
+              <span class="office-name" data-i18n="offices.nl.name"></span>
+              <span class="office-addr" data-i18n="offices.nl.address"></span>
+              <a class="office-line" href="tel:+31851309295" data-i18n="offices.nl.phone"></a>
+              <a class="office-line" href="mailto:info@nl-go-zero.nl" data-i18n="offices.nl.email"></a>
+            </address>
+            <address class="footer-office">
+              <span class="office-name" data-i18n="offices.be.name"></span>
+              <span class="office-addr" data-i18n="offices.be.address"></span>
+              <a class="office-line" href="tel:+31851309295" data-i18n="offices.be.phone"></a>
+              <a class="office-line" href="mailto:info@nl-go-zero.nl" data-i18n="offices.be.email"></a>
+            </address>
+            <address class="footer-office">
+              <span class="office-name" data-i18n="offices.za.name"></span>
+              <span class="office-addr" data-i18n="offices.za.address"></span>
+              <a class="office-line" href="https://www.go-zero.co.za" target="_blank" rel="noopener" data-i18n="offices.za.website"></a>
+            </address>
+          </div>
+        </div>
         <div class="footer-bottom">
           <span class="footer-copy" data-i18n="footer.copy"></span>
         </div>
@@ -148,7 +170,7 @@ customElements.define('site-footer', SiteFooter);
 // Scroll-reveal: fade + rise sections into view. Gated by prefers-reduced-motion
 // and matched to the CSS in main.css §8 (which only hides elements when html.js is set).
 function initReveal() {
-  const sel = '.hero-copy > *, .hero-art, .help-head, .help-card, ' +
+  const sel = '.hero-copy > *, .hero-art, .about-copy > *, .about-figure, .help-head, .help-card, ' +
               '.monitor-intro, .monitor-panel, .monitor-step, .stat, ' +
               '.upsell-head, .upsell-pill, .upsell-step, .upsell-foot, ' +
               '.quote-card, .faq-intro-col, .faq-list details, .cta-inner';

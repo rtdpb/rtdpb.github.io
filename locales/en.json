@@ -15,7 +15,7 @@
     "contact_cta": "Get in touch",
     "contact": {
       "heading": "Contact",
-      "email": "info@gozero.nl [TE BEVESTIGEN]",
+      "email": "info@nl-go-zero.nl",
       "cta": "Get in touch"
     },
     "nav": {
@@ -25,24 +25,51 @@
       "contact": "Contact"
     }
   },
+  "offices": {
+    "heading": "Our offices",
+    "nl": {
+      "name": "goZERO Nederland",
+      "address": "Schuttersweg 8\n1271 PZ Hilversum",
+      "phone": "+31 (0)85 1309 295",
+      "email": "info@nl-go-zero.nl"
+    },
+    "be": {
+      "name": "goZERO Belgium",
+      "address": "Borsbeeksebrug 34\n2600 Antwerpen",
+      "phone": "+31 (0)85 1309 295",
+      "email": "info@nl-go-zero.nl"
+    },
+    "za": {
+      "name": "goZERO South Africa",
+      "address": "32 Somerset Road\nDe Waterkant, Cape Town, 8001",
+      "website": "www.go-zero.co.za"
+    }
+  },
   "home": {
     "title": "goZERO",
     "hero": {
       "eyebrow": "Worry-free solar energy",
-      "headline": "Always a clear view of your solar installation.",
-      "body": "We monitor, flag and resolve issues — often before you even notice them.",
-      "proof": "1,100 installations • active in 3 countries",
-      "stat_label": "installations managed in NL, BE and DE",
+      "headline": "Your solar installation, well taken care of.",
+      "body": "Something not working right with your installation? We pick it up quickly and resolve it together with certified partners.",
+      "proof": "2,000 installations • active in 4 countries",
+      "stat_label": "installations managed in NL, BE, DE and ZA",
       "cta": "Get in touch",
       "services_link": "Services",
       "card1_label": "Live production",
       "card2_title": "System is healthy",
       "card2_sub": "Just checked"
     },
+    "about": {
+      "eyebrow": "About goZERO",
+      "heading": "Your partner in solar energy",
+      "body": "goZERO is an energy service company. Founded in 2018 and active in both the residential and the business market. Right now we manage around 2,000 solar energy installations in the Netherlands, Belgium, Germany and South Africa. Combined, that adds up to 12 MW of solar energy.",
+      "f1": { "value": "2018", "label": "Founded" },
+      "f2": { "value": "2,000+", "label": "Installations managed" },
+      "f3": { "value": "12 MW", "label": "Of solar energy" }
+    },
     "help": {
       "eyebrow": "Service for customers",
       "heading": "How can we help you?",
-      "intro": "Choose the topic of your question. That way you reach the right colleague right away.",
       "card1": {
         "title": "Service request",
         "desc": "Installation not working right? Report it now.",
@@ -60,27 +87,27 @@
       }
     },
     "monitor": {
-      "eyebrow": "Always eyes on your system",
-      "line1": "Generated.",
-      "line2": "Monitored.",
-      "line3": "Handled.",
-      "lead": "We track the performance of your installation remotely. If we spot anything unusual, we take action — often before you notice a thing.",
+      "eyebrow": "Service you can count on",
+      "line1": "Reported.",
+      "line2": "Picked up.",
+      "line3": "Resolved.",
+      "lead": "Notice something isn't right with your installation? As soon as an issue is in view, we pick it up as quickly as possible — together with our certified installation partners.",
       "s1": {
-        "title": "We monitor",
-        "desc": "The performance of your solar panels is tracked continuously."
+        "title": "You report it",
+        "desc": "See something unusual or is output lower than expected? Let us know via the contact form."
       },
       "s2": {
-        "title": "We detect",
-        "desc": "Deviations and faults appear on our radar automatically."
+        "title": "We pick it up",
+        "desc": "We assess your report and schedule the right action as quickly as possible."
       },
       "s3": {
-        "title": "We resolve",
-        "desc": "We handle it, or get in touch with you if that is needed."
+        "title": "Resolved with partners",
+        "desc": "A certified partner fixes the issue as soon as possible."
       },
       "stat1": { "label": "Installations managed" },
       "stat2": { "label": "Countries active" },
-      "stat3": { "value": "2 business days", "label": "Maximum response time" },
-      "panel": { "title": "Live performance", "alert": "Deviation detected", "status": "Action scheduled" }
+      "stat3": { "value": "5 business days", "label": "Maximum response time" },
+      "panel": { "title": "Service request", "alert": "Report received", "status": "Partner scheduled" }
     },
     "upsell": {
       "eyebrow": "More from your energy",
@@ -102,7 +129,7 @@
       "intro": "Find an instant answer to the questions our customers ask most."
     },
     "testimonial": {
-      "quote": "When my inverter failed, goZERO had already spotted it before I noticed a thing. Everything was back up within a day.",
+      "quote": "When my inverter failed, goZERO responded within a day and the problem was fixed that same week.",
       "initials": "dV",
       "name": "The de Vries family",
       "role": "Customer since 2021 • Utrecht"
@@ -110,7 +137,7 @@
     "cta": {
       "eyebrow": "Worry-free solar energy",
       "heading": "We're happy to help you further.",
-      "body": "Tell us what we can help you with. You'll receive a reply within two business days.",
+      "body": "Tell us what we can help you with. You'll receive a reply within five business days.",
       "button": "Ask your question"
     }
   },
@@ -120,27 +147,27 @@
     "items": {
       "q1": {
         "question": "Can I cancel early?",
-        "answer": "Cancelling during the ongoing rental term is generally not possible; a fixed contract period applies. [TE BEVESTIGEN] The exact notice period and conditions are stated in your rental agreement and may differ per contract. Contact us so we can review your specific situation."
+        "answer": "Cancelling during the ongoing term is generally not possible; a fixed contract period applies that ends automatically once the term is over. If you concluded the agreement remotely (online or by phone), you do have a statutory 14-day cooling-off period, as long as the installation has not yet been placed. The exact conditions are stated in your rental agreement. Contact us so we can review your specific situation."
       },
       "q2": {
         "question": "What happens after the rental term?",
-        "answer": "When your rental term ends you have three options: you can buy the installation at its residual value, extend the rental, or have the panels removed free of charge. We contact you well before your contract ends to go through the options. Unsure which choice suits you? Contact us."
+        "answer": "When your rental term ends you have three options: you can take over the installation at its residual value, continue renting at a reduced rate, or have the panels removed free of charge. We contact you well before your contract ends to go through the options. Unsure which choice suits you? Contact us."
       },
       "q3": {
         "question": "How do I submit a service request?",
-        "answer": "You submit a service request easily through our contact form; select the \"Service request\" category. Describe as clearly as possible what you have noticed, so we can help you faster. We respond within 2 business days. Do you have an urgent fault? Please mention this in your message via the contact form."
+        "answer": "You submit a service request easily through our contact form; select the \"Service request\" category. Describe as clearly as possible what you have noticed — ideally within 14 days of noticing it — so we can help you faster. We respond within 5 business days. Do you have an urgent fault? Please mention this in your message."
       },
       "q4": {
         "question": "Which warranties apply?",
-        "answer": "Several warranties apply to your installation, including the manufacturer's warranty on the panels and the inverter. [TE BEVESTIGEN] The exact warranty periods and coverage differ per component and per contract. The conditions that apply to you are set out in your agreement; when in doubt, contact us about your specific situation."
+        "answer": "Throughout the term of your rental agreement we repair defects, faults and damage to the installation, so it keeps meeting reasonable requirements. In addition, the manufacturer's warranty applies to the panels and the inverter, among other things. The exact periods and coverage differ per component and are set out in your agreement; when in doubt, contact us."
       },
       "q5": {
         "question": "How long will my system last?",
-        "answer": "Solar panels last 25 to 30 years on average and usually keep generating power afterwards, albeit at a gradually declining yield. The inverter typically has a shorter lifespan and may be replaced once during the term. We continuously monitor the performance of your installation. Questions about the condition of your system? Contact us."
+        "answer": "Solar panels last 25 to 30 years on average and usually keep generating power afterwards, albeit at a gradually declining yield. The inverter typically has a shorter lifespan and may be replaced once during the term. Questions about the condition of your system? Contact us."
       },
       "q6": {
         "question": "What happens if I sell my house?",
-        "answer": "When you sell your home the rental contract can in most cases be transferred to the new owner, so the installation can simply stay in place. We guide you and the buyer through this contract transfer. Let us know in good time once a sale is on the horizon, and we will arrange the transfer smoothly. Contact us to start the transfer."
+        "answer": "When you sell your home the rental contract can in most cases be transferred to the new owner, so the installation can simply stay in place. We guide you and the buyer through this transfer. Let us know in good time once a sale is on the horizon, and we will arrange the transfer smoothly. Contact us to start the transfer."
       }
     }
   },
@@ -166,9 +193,9 @@
       "messagePlaceholder": "How can we help you?",
       "submit": "Send message",
       "sending": "Sending…",
-      "responseTime": "We respond within 2 business days.",
-      "success": "Thank you for your message — we will respond within 2 business days.",
-      "error": "Something went wrong while sending. Email us directly at info@gozero.nl [TE BEVESTIGEN] or try again later."
+      "responseTime": "We respond within 5 business days.",
+      "success": "Thank you for your message — we will respond within 5 business days.",
+      "error": "Something went wrong while sending. Email us directly at info@nl-go-zero.nl or try again later."
     }
   }
 }

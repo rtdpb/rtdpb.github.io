@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=inter:wght@400;500;600;700&family=space-grotesk:wght@500;600;700&display=swap">
 
   <!-- goZERO stylesheet — loads AFTER Pico so token overrides apply -->
-  <link rel="stylesheet" href="/css/main.css?v=48">
+  <link rel="stylesheet" href="/css/main.css?v=49">
 
   <!-- FOUC prevention: synchronous IIFE, NO defer, NO async, NO external src -->
   <script>
@@ -58,13 +58,37 @@
       </div>
     </section>
 
-    <!-- Section 2: Service cards (HV-01) — "Waarmee kunnen we u helpen?" 3 white cards -->
+    <!-- Section 1b: About goZERO — short company intro directly under the hero -->
+    <section class="section about" id="over">
+      <div class="section-inner about-inner">
+        <div class="about-copy">
+          <p class="eyebrow" data-i18n="home.about.eyebrow"></p>
+          <h2 data-i18n="home.about.heading"></h2>
+          <p class="about-body" data-i18n="home.about.body"></p>
+        </div>
+        <div class="about-figures">
+          <div class="about-figure">
+            <span class="about-figure-num" data-i18n="home.about.f1.value"></span>
+            <span class="about-figure-label" data-i18n="home.about.f1.label"></span>
+          </div>
+          <div class="about-figure">
+            <span class="about-figure-num" data-i18n="home.about.f2.value"></span>
+            <span class="about-figure-label" data-i18n="home.about.f2.label"></span>
+          </div>
+          <div class="about-figure">
+            <span class="about-figure-num" data-i18n="home.about.f3.value"></span>
+            <span class="about-figure-label" data-i18n="home.about.f3.label"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Service cards (HV-01) — "Waarmee kunnen we je helpen?" 3 white cards -->
     <section class="section help" id="diensten">
       <div class="section-inner">
         <p class="eyebrow" data-i18n="home.help.eyebrow"></p>
         <div class="help-head">
           <h2 data-i18n="home.help.heading"></h2>
-          <p class="help-intro" data-i18n="home.help.intro"></p>
         </div>
         <div class="help-grid">
           <article class="help-card help-card--primary">
@@ -162,11 +186,11 @@
 
         <div class="stats-row">
           <div class="stat">
-            <span class="stat-num" aria-hidden="true">1.100+</span>
+            <span class="stat-num" aria-hidden="true">2.000+</span>
             <span class="stat-label" data-i18n="home.monitor.stat1.label"></span>
           </div>
           <div class="stat">
-            <span class="stat-num" aria-hidden="true">3</span>
+            <span class="stat-num" aria-hidden="true">4</span>
             <span class="stat-label" data-i18n="home.monitor.stat2.label"></span>
           </div>
           <div class="stat">
@@ -453,9 +477,9 @@
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@0.552.0/dist/umd/lucide.min.js"></script>
   <!-- components.js FIRST — stamps data-i18n nodes into DOM -->
-  <script src="/js/components.js?v=48"></script>
+  <script src="/js/components.js?v=49"></script>
   <!-- i18n.js SECOND — scans for data-i18n nodes after components registered -->
-  <script src="/js/i18n.js?v=48"></script>
+  <script src="/js/i18n.js?v=49"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
   </script>
