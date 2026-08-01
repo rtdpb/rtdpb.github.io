@@ -231,12 +231,21 @@ site-nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rot
 /* Active language: dark fill + BOLD weight (status change beyond colour, #26) */
 .lang-switcher button[aria-pressed="true"] { background: var(--color-green-dark); color: #ffffff; font-weight: 700; }
 
-/* Desktop: the language switcher sits in the far top-right corner — after the
-   Contact CTA. nav-links keep their default order (0), so the row reads
-   links → Contact → NL/EN/DE. (On mobile the in-menu switcher is hidden and the
-   top-bar switcher is used, so these orders are harmless there.) */
+/* Desktop (>=1061px): pin the language switcher to the very top-right CORNER of the
+   page, flush to the window edge (not the centered 1200px nav container). It is taken
+   out of the flow (absolute in the full-width sticky bar) and the nav row reserves
+   space on the right so the Contact button never slides under it. nav-cta stays after
+   the links. (On mobile the in-menu switcher is hidden and the top-bar one is used.) */
 .nav-cta { order: 2; }
-.nav-menu .lang-switcher { order: 3; }
+@media (min-width: 1061px) {
+  .nav-inner { padding-right: 184px; }   /* reserve the corner so the Contact CTA never slides under the switcher */
+  .nav-menu .lang-switcher {
+    position: absolute;
+    top: 50%;
+    right: var(--space-lg);
+    transform: translateY(-50%);
+  }
+}
 
 /* Full-bleed dark-green footer — a proper closing piece (3 columns + bottom row).
    The golden top seam bridges the CTA band above into the dark close (#107). */

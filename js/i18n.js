@@ -4,6 +4,16 @@ const SUPPORTED = ['nl', 'en', 'de'];
 const DEFAULT_LANG = 'nl';
 const STORAGE_KEY = 'gozero-lang';
 
+// Reuse this script's own ?v= query so the locale JSON is cache-busted in lockstep
+// with the HTML's asset version. Without it, browsers keep serving stale translations
+// after a deploy (the JSON has no version in its URL otherwise).
+const ASSET_VER = (function () {
+  try {
+    const s = document.currentScript && document.currentScript.src;
+    return s ? (new URL(s).search || '') : '';
+  } catch (e) { return ''; }
+})();
+
 function detectLang() {
   const stored = localStorage.getItem(STORAGE_KEY);
   if (stored && SUPPORTED.includes(stored)) return stored;
@@ -34,7 +44,7 @@ async function setLang(lang) {
     btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
   });
   try {
-    const res = await fetch(`/locales/${lang}.json`);
+    const res = await fetch(`/locales/${lang}.json${ASSET_VER}`);
     if (!res.ok) throw new Error(`Missing: ${lang}.json`);
     const translations = await res.json();
     applyTranslations(translations);
