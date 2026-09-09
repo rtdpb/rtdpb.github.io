@@ -349,7 +349,12 @@ site-nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rot
     gap: 0;
     width: 100%;
   }
-  .nav-links a { display: block; padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-border); }
+  /* Pico sets `nav li :where(a) { margin: -Vv -8px }` on every nav link. In the
+     horizontal desktop row that -8px is invisible, but in this vertical mobile
+     menu it drags each link 8px left of the container padding → the first letter
+     gets clipped at the window edge. Zero the margin so links align at the 24px
+     inset like the logo + Contact button. */
+  .nav-links a { display: block; margin: 0; padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-border); }
   .nav-cta, .nav-back { align-self: flex-start; }
 }
 /* Footer stacks to one column on small screens only (3 columns still fit on tablet) */
@@ -783,7 +788,7 @@ a[role="button"]:hover {
 .footer-offices .footer-heading { margin-bottom: var(--space-md); }
 .footer-offices-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: var(--space-xl);
 }
 .footer-office {

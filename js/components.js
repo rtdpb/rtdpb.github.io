@@ -150,6 +150,10 @@ class SiteFooter extends HTMLElement {
               <a class="office-line" href="mailto:info@nl-go-zero.nl" data-i18n="offices.be.email"></a>
             </address>
             <address class="footer-office">
+              <span class="office-name" data-i18n="offices.de.name"></span>
+              <span class="office-addr" data-i18n="offices.de.address"></span>
+            </address>
+            <address class="footer-office">
               <span class="office-name" data-i18n="offices.za.name"></span>
               <span class="office-addr" data-i18n="offices.za.address"></span>
               <a class="office-line" href="https://www.go-zero.co.za" target="_blank" rel="noopener" data-i18n="offices.za.website"></a>
